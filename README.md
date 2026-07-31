@@ -103,16 +103,19 @@ lessons. Rule 1 is binding: no book, no table.
 ## Copyright note · 版权说明
 
 *Dragon Masters* is © Tracey West / Scholastic Inc. This repository contains
-**no book text** for redistribution — the skills read chapter PDFs **you
-provide from books you own** and generate original teaching materials from
-them. The bundled reference templates contain only teacher-authored keyword
-fragments and short model summaries used as style references. Materials
-generated with these skills are intended for personal classroom use.
+**no book text**. The bundled reference templates are style references only:
+every place that would hold a sentence or a line of dialogue from the book
+carries a visible placeholder (`[quote from the chapter]`,
+`Sentence from the chapter containing <word> — replace with the real one`).
+The skills read chapter PDFs **you provide from books you own** and fill those
+placeholders with the real sentences at generation time. Materials generated
+with these skills are for personal classroom use.
 
-《Dragon Masters》版权归 Tracey West / Scholastic 所有。本仓库不含任何可再分发的
-书籍原文 —— skill 读取的是**你自己拥有的书**的章节 PDF，并据此生成原创教学材料。
-自带的参考模板仅包含教师编写的关键词片段和简短示范摘要，用作样式参考。
-生成的材料仅供个人课堂教学使用。
+《Dragon Masters》版权归 Tracey West / Scholastic 所有。本仓库**不含任何书籍原文**。
+自带的参考模板只是样式参考：凡是原本该放书中原句或台词的位置，都换成了显式占位符
+（`[quote from the chapter]`、`Sentence from the chapter containing <词> — replace
+with the real one`）。skill 运行时会从**你自己拥有的书**的章节 PDF 里读出真实原句
+填进去。生成的材料仅供个人课堂教学使用。
 
 ## License
 
