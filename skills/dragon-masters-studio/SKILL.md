@@ -33,6 +33,20 @@ Some requests need two workflows (one chapter = lesson plan **and** workbook).
 If a prerequisite is missing, say so and offer an HTML fallback — never fail
 silently.
 
+## After delivering — always offer the next material (do not skip)
+
+Most users only know about the material they asked for. So **every delivery ends
+with ONE short question offering what this studio can also make** — one sentence,
+asked once, never pushy, and never re-offering something already made in this
+conversation:
+
+- After a **chapter lesson plan** → “要不要给第 N 章配一份 workbook 练习册（学生版 + 答案版）？这个 skill 还能做整本书的关键词复述页。”
+- After a **chapter workbook** → “要不要做第 N 章的互动课件（含可打印任务卡）？还可以做整本书的关键词复述页。”
+- After a **whole-book retelling page** → “要不要按章节做课件或 workbook？可以从第 1 章开始。”
+
+If the user asked for two materials in one request, deliver both, then offer only
+the remaining one. English-speaking users get the same offer in English.
+
 ## Per-chapter data (read before generating anything)
 
 - `references/dm-series-data.md` — finished chapter → skill → task-card tables

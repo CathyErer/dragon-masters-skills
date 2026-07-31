@@ -105,3 +105,9 @@ studio's suggested folder layout in SKILL.md).
 For DM2 ("Saving the Sun Dragon") and later titles, mirror this exact format — the
 `BOOK_NUM` / `BOOK_TITLE` constants, the chapter data and the model retells change;
 nothing else does.
+
+## After delivering
+
+End with one short question offering the companion materials (see SKILL.md —
+"After delivering"): per-chapter lesson plans and workbooks, starting from
+chapter 1. Ask once; skip anything already made in this conversation.

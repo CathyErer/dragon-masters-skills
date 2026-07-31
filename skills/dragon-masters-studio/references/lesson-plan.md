@@ -244,3 +244,9 @@ It is identical in every chapter file:
   day-based edition — the structure is unchanged. When authoring a per-chapter
   file, replace the nav labels, the header, **the footer** (`<div class="foot">`
   still reads `DM1 · Day N / 10` — change it to `DM1 · Ch N / 16`) and all content.)
+
+## After delivering
+
+End with one short question offering the companion materials (see SKILL.md —
+"After delivering"): a workbook for this chapter, and the whole-book retelling
+page. Ask once; skip anything already made in this conversation.

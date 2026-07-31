@@ -215,3 +215,10 @@ If the user uploads a chapter from any of these, this skill applies:
 
 The layout and formula are identical across all books — only the content
 arrays in `build_workbook.js` change.
+
+## After delivering
+
+End with one short question offering the companion materials (see SKILL.md —
+"After delivering"): the interactive lesson plan for this chapter, and the
+whole-book retelling page. Ask once; skip anything already made in this
+conversation.
