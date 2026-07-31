@@ -1,80 +1,81 @@
 ---
-name: dm1-daily-lesson-plan
+name: dm-lesson-plan
 description: >
-  Generates a Daily Lesson Plan interactive HTML for the Dragon Masters series
-  (DM1 "Rise of the Earth Dragon", reusable for DM2), one file per teaching DAY
-  (Day 1–10, some days cover two chapters). Trigger when the user says "做 DM1 Day N
-  lesson plan", "DM1 第 N 章教案", "继续做 Day 2-10", "按 Day 1 模板做下一章",
-  or uploads Dragon Masters chapter PDFs asking for a daily lesson plan / 教案 /
-  课件. Output is a single self-contained HTML in the locked "课堂手账" style
-  (sky-blue notebook background + lemon-yellow highlighter + 📌 pinned cards,
-  rounded sans-serif, full-screen). Task cards are DRAWING-FIRST (draw, don't
-  write sentences) and print to one filled page. NEVER invent a new layout — copy
-  assets/template_day01.html (world card) or assets/template_story_card_day08.html
-  (story card) and replace content only.
+  Generates a Chapter Lesson Plan interactive HTML for the Dragon Masters series
+  (DM1 "Rise of the Earth Dragon", DM2 "Saving the Sun Dragon", and later titles),
+  ONE FILE PER CHAPTER. Trigger when the user says "做 DM1 第 N 章教案", "DM
+  Chapter N lesson plan", "继续做下一章", "按模板做下一章", or uploads Dragon
+  Masters chapter PDFs asking for a lesson plan / 教案 / 课件. Output is a single
+  self-contained HTML in the locked "课堂手账" style (sky-blue notebook background
+  + lemon-yellow highlighter + 📌 pinned cards, rounded sans-serif, full-screen).
+  Task cards are DRAWING-FIRST (draw, don't write sentences) and print to one
+  filled page. NEVER invent a new layout — copy assets/template_day01.html (world
+  card) or assets/template_story_card_day08.html (story card) and replace content
+  only.
 ---
 
-# DM1 Daily Lesson Plan (v6 · locked 2026-07-15)
+# DM Chapter Lesson Plan (per-chapter edition)
 
-> v6 (2026-07-15): **Day navigation bar** added to all 20 DM1+DM2 day files (like
-> the MTH lesson plans). Every day file starts with `<nav class="daynav">` right
-> after `<body>`: a centered pill cluster — `← Day N-1` link · a `<select>`
-> dropdown listing all 10 days (label = `Day title（Ch X）`, current day
-> `selected` with empty value, `onchange` navigates via `location.href`) ·
-> `Day N+1 →` link. Day 1's prev is `<span class="off">← Prev</span>` (grayed,
-> unclickable); Day 10's next is `<span class="off">The End 🐉</span>`. Links are
-> **relative filenames** — works only if all day files stay in the same
-> `Daily Lesson Plans/` folder with unchanged names. Matching CSS block
-> (`/* ── Day navigation (auto-added) ── */` … `@media print{.daynav{display:none
-> !important;}}`) is injected before the first `</style>`; nav is hidden in print
-> and stays clear of the fixed top-right toolbar (centered, `z-index:40`). Both
-> reference templates already contain the nav + CSS — when creating a new day
-> file, **update the nav's prev/next hrefs and the dropdown options** to match
-> the actual day, and add the new file as an option in the other days' dropdowns
-> if the day list changes.
+One interactive HTML per **chapter** (DM1 = 16 files, DM2 = 14 files). The
+template was finalized with the original author after several rounds —
+**every rule below is a hard requirement. Do not regress.**
+
+> **Chapter navigation bar**: every chapter file starts with `<nav
+> class="daynav">` right after `<body>`: a centered pill cluster — `← Ch N-1`
+> link · a `<select>` dropdown listing all chapters of the book (label =
+> `Ch N · Title`, current chapter `selected` with empty value, `onchange`
+> navigates via `location.href`) · `Ch N+1 →` link. Chapter 1's prev is
+> `<span class="off">← Prev</span>` (grayed, unclickable); the last chapter's
+> next is `<span class="off">The End 🐉</span>`. Links are **relative
+> filenames** — works only if all chapter files stay in the same folder with
+> unchanged names. The matching CSS block (`/* ── Day navigation (auto-added)
+> ── */` … `@media print{.daynav{display:none !important;}}`) is injected
+> before the first `</style>`; nav is hidden in print and stays clear of the
+> fixed top-right toolbar (centered, `z-index:40`). Both reference templates
+> already contain the nav + CSS — they were built when lessons were grouped by
+> teaching day, so when creating a chapter file **relabel the nav from days to
+> chapters** and update the prev/next hrefs + dropdown options accordingly.
 >
-> v5 (2026-06-25): four content changes locked across all 20 DM1+DM2 day
-> files — (1) vocab table = **Word / Definition (英英释义) / In the Book** (中文 +
-> Quick Check columns removed); (2) GOs have **no hints**, and an **Answer Key
-> button fills the answers straight into the boxes** (`toggleGO`, per-box
-> `data-ans`) — no reference paragraph under the GO; (3) GO answers that narrate
-> the chapter are **past tense**; (4) **no 💡/⚠️ tipline notes** on task cards.
-> The reference templates already contain all of this.
+> Locked content rules (v5): (1) vocab table = **Word / Definition (英英释义) /
+> In the Book** (中文 + Quick Check columns removed); (2) GOs have **no hints**,
+> and an **Answer Key button fills the answers straight into the boxes**
+> (`toggleGO`, per-box `data-ans`) — no reference paragraph under the GO;
+> (3) GO answers that narrate the chapter are **past tense**; (4) **no 💡/⚠️
+> tipline notes** on task cards. The reference templates already contain all of this.
 >
-> v4 (2026-06-13): task cards are **DRAWING-FIRST** (draw, don't write
+> Locked card rules (v4): task cards are **DRAWING-FIRST** (draw, don't write
 > sentences) and print to **exactly one page, filled, never cut**. See the
 > Task Card rules below and the two reference assets.
 
-One interactive HTML per teaching **day** for Dragon Masters Book 1.
-The template was finalized with the original author after several rounds —
-**every rule below is a hard requirement. Do not regress.**
-
 ## Inputs
 
-1. **Chapter PDF(s)**: provided by the user (ask for them if missing) —
+1. **Chapter PDF**: provided by the user (ask for it if missing) —
    always read the actual chapter text first; quotes and page numbers must be real.
-2. **Day → chapter → skill → task card mapping**: the `dragon-studio` hub skill's
-   `references/dm-series-data.md` (10-day plan table + per-chapter reading-skill
-   map + 11-card story arc). If the user maintains their own plan document, use
-   theirs instead.
+2. **Chapter → skill → task card mapping**: the `dragon-studio` hub skill's
+   `references/dm-series-data.md` (per-chapter reading-skill map + per-chapter
+   task-card table + 11-card story arc). If the user maintains their own plan
+   document, use theirs instead.
 3. **Graphic organizer designs**: one GO per reading skill. Follow the GO
    patterns already present in the two reference templates (fillable `.fill`
    boxes, one `data-ans` per box); if the user supplies their own GO designs,
    convert those into HTML inside the lesson plan.
-4. **Task card content**: follow the 11-card story arc in `dm-series-data.md`.
-   Card prompts are rendered as a printable all-English **drawing-first** student
-   card — convert any "write" prompts into draw frames / 4-panel boards (see
-   Task Card v4).
+4. **Task card content**: follow the 11-card story arc and the per-chapter card
+   table in `dm-series-data.md`. Card prompts are rendered as a printable
+   all-English **drawing-first** student card — convert any "write" prompts into
+   draw frames / 4-panel boards (see Task Card v4). **Chapters with no card of
+   their own** get a lightweight "Continue your card" page instead: finish or
+   improve the most recent card using what this chapter added (same drawing-first
+   rules, no new writing blocks).
 
 ## Output
 
-- File: `DM1_DayNN_ChX_Lesson_Plan.html` (e.g. `DM1_Day04_Ch4-5_Lesson_Plan.html`
-  for a two-chapter day), delivered to the user (into their book folder's
-  `3-Lesson Plan/Daily Lesson Plans/` subfolder if they keep one — all day files
-  must stay together in one folder for the relative day-nav links to work).
-- Start from `assets/template_day01.html` (Day 1, final approved version).
+- File: `DM<book>_Ch<NN>_Lesson_Plan.html` (e.g. `DM1_Ch04_Lesson_Plan.html`),
+  delivered to the user (into their book folder's `3-Lesson Plan/` subfolder if
+  they keep one — all chapter files must stay together in one folder for the
+  relative chapter-nav links to work).
+- Start from `assets/template_day01.html` (final approved version).
   **Copy it, keep ALL CSS/JS untouched, replace content only.**
-- Bump the localStorage key: `var KEY='dm1-dayNN-lp-v1'` (unique per file;
+- Bump the localStorage key: `var KEY='dm<book>-ch<NN>-lp-v1'` (unique per file;
   bump suffix on every content revision so stale saved edits don't mask updates).
 
 ## Locked template rules
@@ -85,7 +86,7 @@ The template was finalized with the original author after several rounds —
 - Rounded sans font stack (Quicksand / Varela Round / Yuanti SC / 幼圆 / PingFang SC).
   **No serif fonts.**
 - Full-screen layout — no max-width container ("不要细长的，要全屏").
-- Header: eyebrow (🐉 series line) + highlighted H1 `Day N · Chapter Title` +
+- Header: eyebrow (🐉 series line) + highlighted H1 `Chapter N · Chapter Title` +
   subtitle + 4 meta cards (Chapter / Reading Skill / Task Card / Time).
 
 ### Four tabs (exactly these, in this order)
@@ -97,14 +98,14 @@ The template was finalized with the original author after several rounds —
    removed in v5.
 2. **Pause Points 共读停顿点** — 3–5 stops anchored to real page numbers
    ("PAUSE ① · end of p.2 — quote"). Each stop asks **exactly ONE question that
-   points at the day's reading skill** (+ a yellow skill tag). The answer sits
+   points at the chapter's reading skill** (+ a yellow skill tag). The answer sits
    inside `<details class="ans">` — 👁 click-to-show, never visible by default.
-3. **Close Reading 精读策略** — if the day has two skills, **teach them separately**:
+3. **Close Reading 精读策略** — if the chapter has two skills, **teach them separately**:
    `SKILL A` blue bar, `SKILL B` gold bar. Each skill section =
    (a) concept definition cards — student-facing definitions, e.g.
    "CHARACTER: the people or animals in the story", English first, Chinese below,
    plus a chapter example; then
-   (b) practice with the matching Graphic Organizer for the day's reading skill
+   (b) practice with the matching Graphic Organizer for the chapter's reading skill
    rebuilt as fillable HTML (`.fill` contenteditable lines, **NO hints / no
    `data-hint`** — boxes start blank). Each GO ends with an **Answer Key button**
    `<button class="ansbtn" onclick="toggleGO(this)">👁 Answer Key</button>`:
@@ -113,7 +114,7 @@ The template was finalized with the original author after several rounds —
    NARRATE the chapter are **past tense** (book quotes, theme sentences, and
    general "what I know" facts keep their natural tense).
    **NO reference-answer paragraph under the GO** — answers live only in the boxes (v5).
-   **You-do work must only practice content already taught that day — never new material.**
+   **You-do work must only practice content already taught in this lesson — never new material.**
    **NO teaching-method instructions in the visible text**: no "I do/We do/You do"
    labels, no "project this card", no "fill together / on their own", no printing
    notes. Pure teaching content only (definitions, examples, GO, answers).
@@ -137,8 +138,9 @@ The template was finalized with the original author after several rounds —
      beats); #7 quiet moment (activity → share → past → alike); #8 cause-&-effect
      chain (action → because → so → finally); #9 trap → try1❌ → try2❌ →
      cliffhanger; #10 climax (small → BIG → saved → faces); #11 keeps the Story
-     Mountain SVG + a `.draw-pair` Before/After. **Day 9 prints TWO cards**
-     (page-break between). Reference: `assets/template_story_card_day08.html`.
+     Mountain SVG + a `.draw-pair` Before/After. Each chapter prints ONE card
+     (see the per-chapter card table in `dm-series-data.md`).
+     Reference: `assets/template_story_card_day08.html`.
    - All prompts stay English (e.g. "Label it — 1 word or a tiny picture",
      "draw 4 panels"). `.draw-*` / `.board` CSS is appended in both reference
      templates — see "Drawing-first CSS & print" below; paste it verbatim.
@@ -156,12 +158,12 @@ The template was finalized with the original author after several rounds —
   .teacher-only, .meta, table, .idwy { break-inside: avoid; }` — **GOs and cards
   must never be cut across PDF pages**.
 
-### Drawing-first CSS & print (v4 — paste verbatim into every day file)
+### Drawing-first CSS & print (v4 — paste verbatim into every chapter file)
 
 Append this block **after** the base `@media print{…}` and the
 `@media (max-width:640px){…}` block (so its print rules win by source order),
-right before `</style>`. It is identical in every day file (already present in
-both reference templates):
+right before `</style>`. It is identical in every chapter file (already present
+in both reference templates):
 
 ```css
 /* ── drawing-first / storyboard task card (shared) ── */
@@ -215,28 +217,34 @@ both reference templates):
 - Quotes must be verbatim from the chapter PDF with correct page numbers.
 - Question ladder across pause points: recall → outside-trait/skill question →
   synthesis → prediction at the chapter cliffhanger (when the chapter has one).
-- Day N must reference its task card's role in the 11-card story arc
-  (Cards #6–#11 = the student's own 6-chapter story; Day 9 has TWO cards).
+- Each chapter must reference its task card's role in the 11-card story arc
+  (Cards #6–#11 = the student's own 6-chapter story).
 
 ## Workflow
 
-1. Read the chapter PDF(s) for the day (provided by the user).
-2. Pull the day's skill + task card from the 10-day plan in the `dragon-studio`
-   hub's `references/dm-series-data.md` (or the user's own plan document); design
-   the GO for that skill following the patterns in the reference templates.
+1. Read the chapter PDF (provided by the user).
+2. Pull the chapter's skill + task card from the per-chapter tables in the
+   `dragon-studio` hub's `references/dm-series-data.md` (or the user's own plan
+   document); design the GO for that skill following the patterns in the
+   reference templates.
 3. Copy `assets/template_day01.html` → new filename; replace header/meta,
    vocabulary rows (Word / Definition / In the Book), pause points, skill sections
    + GOs (blank `.fill` boxes + one `data-ans` each, past-tense narration, no ref
-   paragraph), task card (drawing-first, no tipline). Keep CSS/JS.
+   paragraph), task card (drawing-first, no tipline; "Continue your card" page
+   for chapters without their own card). Keep CSS/JS.
 4. Bump the localStorage KEY.
-5. **Fix the day-nav (v6)**: update `<nav class="daynav">` prev/next hrefs and
-   the `<select>` options for the new day (current day = `selected`, empty value).
-6. Deliver the file to the user (keep all day files together in one folder).
+5. **Fix the chapter nav**: relabel `<nav class="daynav">` to chapters — update
+   prev/next hrefs and the `<select>` options (current chapter = `selected`,
+   empty value; list all chapters of the book).
+6. Deliver the file to the user (keep all chapter files together in one folder).
 
 ## Files
 
-- `assets/template_day01.html` — Day 1 final file (v4). Single source of truth for
-  structure, CSS and JS, **and the reference for a WORLD-building drawing card**
-  (`.draw-frame` + `.draw-grid` + `.checks`). Copy this for any new day.
-- `assets/template_story_card_day08.html` — Day 8 final file (v4). Reference for a
-  **STORY card**: the 4-panel `.board` storyboard pattern + captions.
+- `assets/template_day01.html` — final approved file for a chapter teaching a
+  WORLD-building drawing card (`.draw-frame` + `.draw-grid` + `.checks`). Single
+  source of truth for structure, CSS and JS. Copy this for any new chapter.
+- `assets/template_story_card_day08.html` — final approved file for a chapter
+  teaching a **STORY card**: the 4-panel `.board` storyboard pattern + captions.
+- (The template filenames keep their original `day01`/`day08` names from the
+  day-based edition — the structure is unchanged; only the nav labels and
+  header change when authoring per-chapter files.)

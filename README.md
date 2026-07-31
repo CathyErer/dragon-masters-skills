@@ -2,8 +2,8 @@
 
 Open-source agent skills for making bilingual (English + 简体中文) ESL teaching
 materials for the **Dragon Masters** series (Tracey West, Scholastic Branches) —
-drawing-first daily lesson plans, student workbooks + answer keys, and key-word
-retelling pages.
+drawing-first per-chapter lesson plans, student workbooks + answer keys, and
+key-word retelling pages.
 
 为 **Dragon Masters（驯龙大师）** 系列制作双语 ESL 教学材料的开源 agent skills：
 画画优先的每日课件、学生练习册 + 答案版、关键词复述页。
@@ -17,8 +17,8 @@ the standard.
 
 | Skill | What it makes · 产出 |
 |---|---|
-| `dragon-studio` | The hub 中枢：house rules 风格规范、10-day plan、per-chapter reading-skill map、11-card story arc；自动路由到下面三个 skill。 |
-| `dm1-daily-lesson-plan` | One interactive daily lesson-plan HTML per teaching day（4 tabs、drawing-first printable task cards、中英双语 + EN-only toggle）。 |
+| `dragon-studio` | The hub 中枢：house rules 风格规范、per-chapter reading-skill + task-card map、11-card story arc；自动路由到下面三个 skill。 |
+| `dm-lesson-plan` | One interactive lesson-plan HTML **per chapter** 每章一个课件（4 tabs、drawing-first printable task cards、中英双语 + EN-only toggle）。 |
 | `dm-workbook` | Per-chapter student workbook + red answer key（.docx，需要 Node.js + `docx` 包）。 |
 | `dm-retelling` | Whole-book retelling practice page（.html）— STOP cards with WHO / DID WHAT keyword groups，浏览器可编辑。 |
 
@@ -74,7 +74,7 @@ standard works — point it at the folders in `skills/`.
 Provide the chapter PDFs of the book you own, then ask in plain language —
 先提供你自己书的章节 PDF，然后直接说：
 
-- "做 DM1 Day 7 的课件" → daily lesson plan HTML
+- "做 DM1 第 7 章的课件" → chapter lesson plan HTML
 - "给 DM1 第 12 章做 workbook" → workbook + answer key (.docx)
 - "做 DM2 复述" → whole-book retelling HTML
 
@@ -86,7 +86,7 @@ House rules baked in 内置风格规范：ESL Grade 1–3 · English on top / �
 
 - `dm-workbook` needs **Node.js** with the `docx` package (`npm install docx`).
 - `dm-retelling` needs **Python 3** (standard library only).
-- `dm1-daily-lesson-plan` has no dependencies (template-copy + edit).
+- `dm-lesson-plan` has no dependencies (template-copy + edit).
 
 ## Copyright note · 版权说明
 

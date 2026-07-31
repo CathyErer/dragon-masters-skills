@@ -1,32 +1,43 @@
-# Dragon Masters — series data (read before generating a day or card)
+# Dragon Masters — series data (read before generating a chapter lesson or card)
 
-## DM1 "Rise of the Earth Dragon" — 10-day plan
+## DM1 "Rise of the Earth Dragon" — per-chapter map (16 ch)
 
-| Day | Ch | Title | 🎯 Reading skill | 📝 Task card |
-|----|----|----|----|----|
-| 1 | 1 | To the Castle! | Story Elements + Outside Traits | #1 Meet Your Dragon Master |
-| 2 | 2 | The Dragon Stone | Inside Traits | #2 Design Your Dragon |
-| 3 | 3 | More Dragons! | Character Traits (综合) | #3 Name Your Dragon |
-| 4 | 4-5 | Worm + Do Something! | Name Origins / Word Choice | #4 Your Dragon's Power |
-| 5 | 6-7 | A New Friend + A Strange Dream | Cause & Effect + 5 Senses | #5 A Strange Dream |
-| 6 | 8-9 | Flying Practice + Whispers | SWBST + Making Inferences | 📐 Story Planner → #6 My Secret Plan |
-| 7 | 10-11 | Worm's Story + A Noise in the Night | Making Connections / Friendship | #7 A Quiet Moment (story Ch2) |
-| 8 | 12-13 | A Sneaky Plan + Trouble in the Tunnel | Group Dynamics / Cause & Effect | #8 Things Go Wrong (story Ch3) |
-| 9 | 14-15 | Trapped! + Worm's Surprise | Problem & Solution / Don't Judge by Cover | #9 Trapped! (story Ch4) + #10 Hidden Power Revealed 🌟 (story Ch5 climax) |
-| 10 | 16 | Just the Beginning | Story Mountain + Character Growth | #11 A New Beginning 🌅 (story Ch6 + bind the book) |
+Lesson plans are generated **one per chapter**. Each chapter's main reading
+skill and task card:
 
-Notes: Day 5 is a skill day whose card (#5) is drawing-first 5-senses + cause/effect.
-The SWBST "Story Planner" is filled at Day 5 end / Day 6 start as the skeleton of the
-6-chapter story. **Day 9 has TWO cards.**
+| Ch | Title | 🎯 Reading skill | 📝 Task card |
+|----|----|----|----|
+| 1 | To the Castle! | Setting / Story Elements + Outside Traits | #1 Meet Your Dragon Master |
+| 2 | The Dragon Stone | Asking Questions + Inside Traits | #2 Design Your Dragon |
+| 3 | More Dragons! | Compare & Contrast (character traits 综合) | #3 Name Your Dragon |
+| 4 | Worm | Author's Word Choice (Worm's "surprise" description) | — continue #3 |
+| 5 | Do Something! | Parallel Structure / Name Origins | #4 Your Dragon's Power |
+| 6 | A New Friend | Compare Backgrounds (+ Friendship) | — continue #4 |
+| 7 | A Strange Dream | Foreshadowing / 5 Senses (the dream) | #5 A Strange Dream |
+| 8 | Flying Practice | SWBST / Compare Abilities | 📐 Story Planner (SWBST outline) |
+| 9 | Whispers | Making Inferences (Rori's sneaky look) | #6 My Secret Plan (story Ch1) |
+| 10 | Worm's Story | Making Connections (Drake↔Worm) | — continue #6 |
+| 11 | A Noise in the Night | Predicting (+ Friendship) | #7 A Quiet Moment (story Ch2) |
+| 12 | A Sneaky Plan | Group Dynamics / Peer Pressure | — continue #7 |
+| 13 | Trouble in the Tunnel | Cause & Effect (the cave-in) | #8 Things Go Wrong (story Ch3) |
+| 14 | Trapped! | Problem & Solution | #9 Trapped! (story Ch4) |
+| 15 | Worm's Surprise | Theme — Don't Judge by Cover / Payoff | #10 Hidden Power Revealed 🌟 (story Ch5 climax) |
+| 16 | Just the Beginning | Story Mountain + Theme — Identity + Character Growth | #11 A New Beginning 🌅 (story Ch6 + bind the book) |
 
-## DM1 — main reading skill per chapter (16 ch)
+"— continue #N" chapters have no card of their own: the lesson's Task Card tab
+becomes a lightweight "Continue your card" page — finish or improve card #N using
+what this chapter added (same drawing-first rules, no new writing blocks).
 
-1 Setting / Story Elements · 2 Asking Questions (+ Inside Traits) · 3 Compare & Contrast (character traits) ·
-4 Author's Word Choice (Worm's "surprise" description) · 5 Parallel Structure / Name Origins ·
-6 Compare Backgrounds (+ Friendship) · 7 Foreshadowing / 5 Senses (the dream) · 8 SWBST / Compare Abilities ·
-9 Making Inferences (Rori's sneaky look) · 10 Making Connections (Drake↔Worm) · 11 Predicting (+ Friendship) ·
-12 Group Dynamics / Peer Pressure · 13 Cause & Effect (the cave-in) · 14 Problem & Solution ·
-15 Theme — Don't Judge by Cover / Payoff · 16 Theme — Identity + Character Growth + sequel foreshadowing.
+The 📐 SWBST "Story Planner" (Ch8) is the whole-story skeleton that Cards #6–#11
+expand.
+
+### Optional 10-day pacing (from the original classroom run)
+
+If the user teaches on a fixed 10-day schedule, chapters were originally grouped:
+Day 1–3 = Ch 1/2/3 · Day 4 = Ch 4-5 · Day 5 = Ch 6-7 · Day 6 = Ch 8-9 ·
+Day 7 = Ch 10-11 · Day 8 = Ch 12-13 · Day 9 = Ch 14-15 · Day 10 = Ch 16.
+Per-chapter lesson files pair naturally into this schedule (teach two files on a
+two-chapter day).
 
 ## DM1 — 11-card story arc (drawing-first task cards)
 
@@ -45,9 +56,9 @@ Final: bind all into 《My Dragon Master Book 1》 (cover + 11 cards + "To be co
 ## DM2 "Saving the Sun Dragon" — facts
 
 - 14 chapters. DM2 = 续集冒险; students reuse the character / dragon / hidden power created in DM1.
-- When starting DM2, design a 10-day plan + per-chapter skill map following the same
-  shape as DM1's table above (14 chapters → 10 days, some days pair two chapters),
-  or use a plan document the user provides.
+- When starting DM2, design a per-chapter map (skill + task card per chapter,
+  14 chapters) following the same shape as DM1's table above, or use a plan
+  document the user provides.
 - DM2 reading focus shifts from "how to read" (DM1 strategies) to "what to read" (story-element depth:
   character, theme, integrating clues, problem-solving, sequel prediction).
 
