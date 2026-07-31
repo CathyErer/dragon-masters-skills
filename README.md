@@ -17,7 +17,7 @@ the standard.
 
 | Skill | What it makes · 产出 |
 |---|---|
-| `dragon-studio` | The hub 中枢：house rules 风格规范、per-chapter reading-skill + task-card map、11-card story arc；自动路由到下面三个 skill。 |
+| `dragon-studio` | The hub 中枢：house rules 风格规范、DM1 16 章 / DM2 14 章的逐章 reading skill + 任务卡对照表；自动路由到下面三个 skill。 |
 | `dm-lesson-plan` | One interactive lesson-plan HTML **per chapter** 每章一个课件（4 tabs、drawing-first printable task cards、中英双语 + EN-only toggle）。 |
 | `dm-workbook` | Per-chapter student workbook + red answer key（.docx，需要 Node.js + `docx` 包）。 |
 | `dm-retelling` | Whole-book retelling practice page（.html）— STOP cards with WHO / DID WHAT keyword groups，浏览器可编辑。 |

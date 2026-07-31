@@ -8,8 +8,8 @@ description: >
   Masters teaching material — "做 DM1/DM2 第 N 章", "DM 第X章 workbook", "Dragon
   Masters 任务卡/复述", "继续做下一章", "按 studio 风格做", or references Drake,
   Worm, Bo, Ana, Rori, the Dragon Stone, or King Roland. It carries the shared house
-  rules, the per-chapter reading-skill + task-card map, the 11-card story arc, and
-  DM1/DM2 metadata, then routes to the right sub-skill.
+  rules, the per-chapter reading-skill + task-card maps for DM1 and DM2, and the
+  bound-book card arc, then routes to the right sub-skill.
 ---
 
 # Dragon Studio — house guide
@@ -53,9 +53,9 @@ outputs themselves.
 
 ## Series facts
 
-- **DM1 "Rise of the Earth Dragon"** = 16 chapters → 16 chapter lesson plans. **DM1 = 创角期**: across 11 task cards students build their own Dragon Master + dragon, then write a 6-chapter story bound into 《My Dragon Master Book 1》.
-- **DM2 "Saving the Sun Dragon"** = 14 chapters. **DM2 = 续集冒险**: reuse the DM1 character / dragon / hidden power. When starting DM2, design its per-chapter map following the same shape as DM1's (see `references/dm-series-data.md`), or use a plan the user provides.
-- The per-chapter reading-skill + task-card map and the 11-card arc are in
+- **DM1 "Rise of the Earth Dragon"** = 16 chapters → 16 chapter lesson plans + 16 task cards. **DM1 = 创角期**: card by card students build their own Dragon Master + dragon, bound at the end into 《My Dragon Master Book 1》.
+- **DM2 "Saving the Sun Dragon"** = 14 chapters → 14 lessons + 14 cards. **DM2 = 续集冒险**: students reuse the DM1 character / dragon / hidden power and write a 6-chapter sequel, bound into 《My Dragon Master Book 2》.
+- The per-chapter reading-skill + task-card maps for both books are in
   `references/dm-series-data.md`. **Read it before generating any chapter or card.**
 
 ## Workflow for "做 DM<book> 第 N 章"

@@ -52,20 +52,18 @@ template was finalized with the original author after several rounds —
 1. **Chapter PDF**: provided by the user (ask for it if missing) —
    always read the actual chapter text first; quotes and page numbers must be real.
 2. **Chapter → skill → task card mapping**: the `dragon-studio` hub skill's
-   `references/dm-series-data.md` (per-chapter reading-skill map + per-chapter
-   task-card table + 11-card story arc). If the user maintains their own plan
-   document, use theirs instead.
+   `references/dm-series-data.md` — one table per book giving each chapter its
+   SKILL A, optional SKILL B, and its own task card. If the user maintains their
+   own plan document, use theirs instead.
 3. **Graphic organizer designs**: one GO per reading skill. Follow the GO
    patterns already present in the two reference templates (fillable `.fill`
    boxes, one `data-ans` per box); if the user supplies their own GO designs,
    convert those into HTML inside the lesson plan.
-4. **Task card content**: follow the 11-card story arc and the per-chapter card
-   table in `dm-series-data.md`. Card prompts are rendered as a printable
-   all-English **drawing-first** student card — convert any "write" prompts into
-   draw frames / 4-panel boards (see Task Card v4). **Chapters with no card of
-   their own** get a lightweight "Continue your card" page instead: finish or
-   improve the most recent card using what this chapter added (same drawing-first
-   rules, no new writing blocks).
+4. **Task card content**: every chapter has its own card — take it from the
+   per-chapter table in `dm-series-data.md` (DM1 = 16 cards, DM2 = 14 cards,
+   bound at the end into 《My Dragon Master Book N》). Card prompts are rendered
+   as a printable all-English **drawing-first** student card — convert any
+   "write" prompts into draw frames / 4-panel boards (see Task Card v4).
 
 ## Output
 
@@ -127,20 +125,22 @@ template was finalized with the original author after several rounds —
    **NO 💡/⚠️ `.tipline` notes** at the bottom of the card — every
    "In the book…" model and writing tip was removed in v5; the `.tipline` print CSS may stay
    (harmless, no element uses it). Two patterns:
-   - **World-building cards (#1–#5)** → one big `.draw-frame` (draw the character /
-     dragon / power / dream) + a `.draw-grid` of small `.draw-cell` label boxes
-     ("1 word OR a tiny picture") + `.checks` for trait/word choices. #5 (A Strange
-     Dream) adds a `.draw-pair` (cause → effect, two mini-sketches). Naming (#3)
+   - **Profile / world-building cards** (character, dragon, name, power, home,
+     dream — DM1 Ch1–7, DM2 Ch1/3/5) → one big `.draw-frame` (draw the character /
+     dragon / place) + a `.draw-grid` of small `.draw-cell` label boxes
+     ("1 word OR a tiny picture") + `.checks` for trait/word choices. A dream or
+     cause→effect card adds a `.draw-pair` (two mini-sketches). A naming card
      keeps ONE short name line only. Reference: `assets/template_day01.html`.
-   - **Story cards (#6–#11)** → a 4-panel comic `.board` of `.frame-cell`s
-     (`.fc-num` beat label + `.fc-draw` panel + `.fc-cap` one ✍ caption line). The
-     four panels map to the chapter's structure — #6 secret plan (4 show-don't-tell
-     beats); #7 quiet moment (activity → share → past → alike); #8 cause-&-effect
-     chain (action → because → so → finally); #9 trap → try1❌ → try2❌ →
-     cliffhanger; #10 climax (small → BIG → saved → faces); #11 keeps the Story
-     Mountain SVG + a `.draw-pair` Before/After. Each chapter prints ONE card
-     (see the per-chapter card table in `dm-series-data.md`).
+   - **Story / sequence cards** (anything with beats: SWBST, cause chains, trap →
+     tries → solution, action scenes, the reveal) → a 4-panel comic `.board` of
+     `.frame-cell`s (`.fc-num` beat label + `.fc-draw` panel + `.fc-cap` one ✍
+     caption line). The four panels map to the chapter's structure — e.g. a cause
+     chain (action → because → so → finally); a trap (trap → try1❌ → try2❌ →
+     cliffhanger); a climax (small → BIG → saved → faces). The final chapter's
+     card keeps the Story Mountain SVG + a `.draw-pair` Before/After.
      Reference: `assets/template_story_card_day08.html`.
+   - Each chapter prints exactly ONE card — see the per-chapter card table in
+     `dm-series-data.md`.
    - All prompts stay English (e.g. "Label it — 1 word or a tiny picture",
      "draw 4 panels"). `.draw-*` / `.board` CSS is appended in both reference
      templates — see "Drawing-first CSS & print" below; paste it verbatim.
@@ -217,8 +217,10 @@ in both reference templates):
 - Quotes must be verbatim from the chapter PDF with correct page numbers.
 - Question ladder across pause points: recall → outside-trait/skill question →
   synthesis → prediction at the chapter cliffhanger (when the chapter has one).
-- Each chapter must reference its task card's role in the 11-card story arc
-  (Cards #6–#11 = the student's own 6-chapter story).
+- Each chapter must reference its task card's role in the book's card arc — the
+  cards accumulate into the student's own bound book, so a later card should
+  build on what earlier ones established (e.g. the dragon's hidden power planted
+  early pays off near the climax).
 
 ## Workflow
 
@@ -230,8 +232,7 @@ in both reference templates):
 3. Copy `assets/template_day01.html` → new filename; replace header/meta,
    vocabulary rows (Word / Definition / In the Book), pause points, skill sections
    + GOs (blank `.fill` boxes + one `data-ans` each, past-tense narration, no ref
-   paragraph), task card (drawing-first, no tipline; "Continue your card" page
-   for chapters without their own card). Keep CSS/JS.
+   paragraph), task card (drawing-first, no tipline). Keep CSS/JS.
 4. Bump the localStorage KEY.
 5. **Fix the chapter nav**: relabel `<nav class="daynav">` to chapters — update
    prev/next hrefs and the `<select>` options (current chapter = `selected`,
