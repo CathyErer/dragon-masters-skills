@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dragon Masters Studio"
+  short_description: "Bilingual ESL teaching materials for the Dragon Masters series: per-chapter lesson plans, workbooks + answer keys, and retelling pages"
+  default_prompt: "Use $dragon-masters-studio to create a Dragon Masters lesson plan, workbook, or retelling page from my chapter PDF."

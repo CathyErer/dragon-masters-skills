@@ -291,12 +291,445 @@
     border:1.5px solid var(--border);border-radius:999px;padding:6px 14px;
     background:var(--white);color:var(--blue);box-shadow:0 2px 6px rgba(40,80,120,.12);max-width:360px;}
   @media print{.daynav{display:none !important;}}
+
+  /* ══════════════════════════════════════════════════════════════
+     DRAGON KEEP THEME · DAY 1 VISUAL PROTOTYPE
+     Castle shell + parchment lesson workspace
+     ══════════════════════════════════════════════════════════════ */
+  :root{
+    --night:#0b1512;
+    --night-2:#13241d;
+    --forest:#1e3a2d;
+    --forest-bright:#315f45;
+    --parchment:#f4ead0;
+    --parchment-light:#fffaf0;
+    --parchment-deep:#e8d7ad;
+    --bronze:#b96d32;
+    --gold:#d6ad53;
+    --gold-pale:#f2d890;
+    --teal:#198b83;
+    --stone:#425148;
+    --charcoal:#202820;
+    --ink:#2e3028;
+    --muted:#746f60;
+    --border:#cbb98d;
+    --blue:#245847;
+    --blue-soft:#a5622f;
+    --yellow:#e7c66c;
+    --yellow-bg:#f7edcf;
+    --yellow-edge:#cda754;
+    --white:#fffaf0;
+    --display:"Iowan Old Style",Baskerville,"Songti SC","STSong",serif;
+    --sans:"Avenir Next","Nunito","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+
+  html{background:var(--night);}
+  body{
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 14% 8%,rgba(42,91,67,.44),transparent 32rem),
+      radial-gradient(circle at 88% 28%,rgba(132,77,36,.20),transparent 28rem),
+      linear-gradient(145deg,var(--night-2),var(--night) 58%,#070d0b);
+    background-attachment:fixed;
+    padding:0 4vw 72px;
+    line-height:1.72;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    opacity:.26;
+    background-image:
+      linear-gradient(30deg,rgba(255,255,255,.025) 12%,transparent 12.5%,transparent 87%,rgba(255,255,255,.025) 87.5%),
+      linear-gradient(150deg,rgba(255,255,255,.025) 12%,transparent 12.5%,transparent 87%,rgba(255,255,255,.025) 87.5%),
+      linear-gradient(30deg,rgba(255,255,255,.025) 12%,transparent 12.5%,transparent 87%,rgba(255,255,255,.025) 87.5%);
+    background-size:56px 98px;
+    background-position:0 0,0 0,28px 49px;
+  }
+  #doc,.dragon-progress{position:relative;z-index:1;}
+  #doc{max-width:1240px;margin:0 auto;}
+
+  /* Top castle navigation */
+  .daynav{
+    position:sticky;top:0;z-index:60;
+    min-height:68px;margin:0 -4vw 0;padding:12px max(4vw,24px);
+    justify-content:flex-start;
+    background:rgba(7,14,11,.92);
+    border-bottom:1px solid rgba(214,173,83,.28);
+    box-shadow:0 12px 30px rgba(0,0,0,.28);
+    backdrop-filter:blur(15px);
+  }
+  .daynav::before{
+    content:"DRAGON MASTERS";
+    margin-right:auto;
+    font-family:var(--display);font-size:12px;font-weight:700;
+    letter-spacing:.22em;color:var(--gold);
+  }
+  .daynav a,.daynav .off,.daynav select{
+    font-family:var(--sans);font-size:12px;font-weight:700;
+    border:1px solid rgba(214,173,83,.42);
+    border-radius:4px;padding:7px 12px;
+    background:rgba(255,250,240,.06);color:#f1e7ce;
+    box-shadow:none;
+  }
+  .daynav a:hover{background:rgba(214,173,83,.16);color:#fff;}
+  .daynav .off{opacity:.28;}
+  .daynav select{max-width:310px;color-scheme:dark;}
+
+  .toolbar{
+    position:relative;top:auto;right:auto;z-index:55;gap:6px;
+    max-width:1240px;margin:-4px auto 16px;justify-content:flex-end;
+  }
+  .toolbar button{
+    font-family:var(--sans);font-size:12px;
+    border:1px solid rgba(214,173,83,.42);border-radius:5px;padding:7px 11px;
+    background:rgba(11,21,18,.88);color:#f3e9d1;
+    box-shadow:0 6px 18px rgba(0,0,0,.24);backdrop-filter:blur(10px);
+  }
+  .toolbar button:hover{background:var(--forest);border-color:var(--gold);}
+  body.editing .toolbar #editBtn{background:var(--bronze);border-color:var(--gold-pale);color:#fff;}
+  body.en .toolbar #langBtn{background:var(--teal);border-color:#73c5b5;color:#fff;}
+
+  /* Ten Dragon Stones: the signature course-progress device */
+  .dragon-progress{
+    max-width:920px;margin:22px auto 20px;padding:16px 24px 14px;
+    border:1px solid rgba(214,173,83,.26);border-radius:14px;
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 14px 35px rgba(0,0,0,.20);
+  }
+  .progress-kicker{
+    display:block;margin-bottom:12px;text-align:center;
+    font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#9eb09f;
+  }
+  .stone-track{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;position:relative;}
+  .stone-track::before{
+    content:"";position:absolute;left:4%;right:4%;top:16px;height:1px;
+    background:linear-gradient(90deg,var(--gold),rgba(214,173,83,.16));z-index:0;
+  }
+  .stone{
+    position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:5px;
+    color:#718177;font-size:9px;font-weight:800;letter-spacing:.05em;
+  }
+  .stone::before{
+    content:"◆";display:grid;place-items:center;width:31px;height:31px;
+    border:1px solid #56665c;border-radius:50% 46% 52% 44%;
+    background:linear-gradient(145deg,#34443a,#152019);color:#74877b;
+    box-shadow:inset 1px 1px 3px rgba(255,255,255,.10),inset -2px -2px 4px rgba(0,0,0,.45);
+    transform:rotate(45deg);font-size:11px;
+  }
+  .stone span{white-space:nowrap;}
+  .stone.current{color:var(--gold-pale);}
+  .stone.current::before{
+    color:#fff4c7;border-color:var(--gold);
+    background:radial-gradient(circle at 38% 35%,#f8df94,#ae692f 55%,#402619);
+    box-shadow:0 0 0 4px rgba(214,173,83,.12),0 0 22px rgba(232,181,75,.48),inset 1px 1px 4px rgba(255,255,255,.30);
+    animation:stoneGlow 3.2s ease-in-out infinite;
+  }
+  @keyframes stoneGlow{
+    0%,100%{filter:brightness(.95);transform:rotate(45deg) scale(1);}
+    50%{filter:brightness(1.16);transform:rotate(45deg) scale(1.06);}
+  }
+
+  /* Chapter mission plaque */
+  header.dragon-hero{
+    position:relative;min-height:388px;margin:0 0 24px;padding:190px clamp(24px,5vw,64px) 30px;
+    border:1px solid rgba(214,173,83,.44);border-radius:26px;overflow:hidden;
+    background:
+      linear-gradient(90deg,rgba(7,14,11,.96) 0%,rgba(7,14,11,.72) 46%,rgba(7,14,11,.15) 100%),
+      linear-gradient(0deg,rgba(7,14,11,.92),transparent 55%);
+      /* Optional hero art: append e.g.
+         , url("assets/art/ch01.webp") center 43%/cover no-repeat
+         — or set ART_BASE in dragon-keep-theme.js. Use only art you own. */
+    box-shadow:0 24px 65px rgba(0,0,0,.42),inset 0 0 0 7px rgba(255,255,255,.025);
+    isolation:isolate;
+  }
+  header.dragon-hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background:
+      linear-gradient(120deg,rgba(214,173,83,.14),transparent 30%),
+      radial-gradient(circle at 78% 22%,rgba(255,218,142,.16),transparent 28%);
+  }
+  header.dragon-hero::after{
+    content:"CHAPTER ONE  ·  THE CALL";
+    position:absolute;top:26px;left:clamp(24px,5vw,64px);z-index:1;
+    font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.25em;color:#f0cf78;
+  }
+  header.dragon-hero>*{position:relative;z-index:1;}
+  .eyebrow{
+    width:max-content;max-width:100%;margin-bottom:12px;padding:5px 10px;
+    border-left:2px solid var(--gold);
+    background:rgba(7,14,11,.64);
+    color:#d9c493;font-size:10px;letter-spacing:.21em;
+  }
+  h1{
+    display:block;width:max-content;max-width:100%;
+    font-family:var(--display);font-size:clamp(34px,5vw,58px);font-weight:700;
+    color:#fff8e5;background:none;line-height:1.05;
+    text-shadow:0 3px 20px rgba(0,0,0,.75);
+  }
+  .subtitle{
+    max-width:680px;margin:12px 0 20px;color:#e4d9bd;font-size:15px;
+    text-shadow:0 2px 8px rgba(0,0,0,.8);
+  }
+  .subtitle .cn{color:#bdb59f;}
+  .edit-tip{color:#f3dfaa;background:rgba(25,41,33,.88);border-color:rgba(214,173,83,.55);}
+  .meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:0;}
+  .meta div,.meta div:nth-child(2n){
+    min-width:0;padding:10px 13px;transform:none;
+    border:1px solid rgba(214,173,83,.32);border-radius:8px;
+    background:rgba(9,18,14,.76);color:#aaa991;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .meta b{margin-top:2px;color:#f0dfb8;font-size:13px;}
+
+  /* Four training seals */
+  .tabs{gap:10px;margin:0 10px -1px;position:relative;z-index:3;align-items:flex-end;}
+  .tab{
+    display:flex;align-items:center;gap:9px;min-height:54px;
+    font-family:var(--sans);font-size:13px;font-weight:800;color:#b7b3a5;
+    background:linear-gradient(180deg,#25332b,#17211b);
+    border:1px solid #4b5a50;border-bottom-color:var(--gold);
+    border-radius:10px 10px 0 0;padding:9px 18px;box-shadow:inset 0 1px rgba(255,255,255,.05);
+  }
+  .tab:hover{color:#f6e7c1;background:linear-gradient(180deg,#304337,#1c2921);}
+  .tab.on{
+    min-height:62px;color:#fff2ce;
+    background:linear-gradient(180deg,#4a3723,#2a241a);
+    border-color:var(--gold);border-bottom-color:var(--parchment);
+  }
+  .tab.on::after{background:var(--parchment);height:4px;}
+  .tab-icon{
+    display:grid;place-items:center;min-width:29px;height:29px;padding:0 5px;
+    border:1px solid currentColor;border-radius:50%;
+    font-family:var(--display);font-size:12px;color:var(--gold);
+  }
+
+  /* Parchment teaching surface */
+  .panel{
+    position:relative;
+    background:
+      radial-gradient(circle at 14% 12%,rgba(255,255,255,.58),transparent 24rem),
+      repeating-linear-gradient(0deg,rgba(91,70,36,.018) 0,rgba(91,70,36,.018) 1px,transparent 1px,transparent 5px),
+      var(--parchment);
+    border:1px solid var(--gold);border-radius:14px;
+    padding:38px clamp(22px,4vw,48px);margin-bottom:38px;min-height:60vh;
+    box-shadow:0 24px 56px rgba(0,0,0,.38),inset 0 0 45px rgba(93,65,28,.08);
+  }
+  .panel::before,.panel::after{
+    content:"";position:absolute;left:18px;right:18px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--bronze),transparent);opacity:.55;
+  }
+  .panel::before{top:12px}.panel::after{bottom:12px}
+  .panel h2{
+    font-family:var(--display);font-size:23px;color:var(--forest);
+    border-bottom:1px solid rgba(94,71,35,.25);padding-bottom:12px;margin-bottom:22px;
+  }
+  .panel h2 .badge{
+    display:inline-grid;place-items:center;width:34px;height:34px;padding:0;margin-right:12px;
+    border:1px solid var(--gold);border-radius:50% 44% 50% 46%;
+    background:linear-gradient(145deg,var(--gold-pale),var(--bronze));color:#352418;
+    box-shadow:inset 1px 1px 2px rgba(255,255,255,.45);transform:none;
+  }
+
+  /* Vocabulary ledger */
+  table{border-color:#a58b56;background:rgba(255,250,240,.54);box-shadow:0 5px 18px rgba(72,52,24,.07);}
+  th{
+    color:#f8ecd0;background:linear-gradient(90deg,var(--forest),#2d4938);
+    border-bottom-color:var(--gold);letter-spacing:.12em;
+  }
+  td{border-bottom-color:rgba(109,87,49,.22);}
+  td.w{color:var(--bronze);}
+
+  /* Read-aloud trail */
+  #p2{padding-left:clamp(32px,6vw,74px);}
+  #p2::after{
+    content:"";position:absolute;left:clamp(25px,4vw,50px);top:106px;bottom:48px;width:1px;
+    background:linear-gradient(var(--gold),rgba(185,109,50,.18));opacity:.8;
+  }
+  .pause{
+    border:1px solid rgba(132,99,47,.38);border-left:3px solid var(--bronze);
+    border-radius:8px;background:rgba(255,250,240,.56);
+    padding:18px 22px;margin-bottom:22px;box-shadow:0 5px 15px rgba(72,52,24,.05);
+  }
+  .pause::before{
+    content:"◆";top:18px;left:-31px;width:23px;height:23px;display:grid;place-items:center;
+    border:1px solid var(--gold);border-radius:50%;
+    background:var(--forest);color:var(--gold-pale);font-size:10px;
+    box-shadow:0 0 0 5px var(--parchment);
+  }
+  .pw{color:var(--bronze);letter-spacing:.03em;}
+  .pw .tagx{background:#e8d2a1;color:#5d4825;}
+  .pq b,.pa b{color:var(--forest);}
+  details.ans summary{
+    color:var(--forest);background:rgba(30,58,45,.08);
+    border-color:rgba(30,58,45,.35);border-radius:5px;
+  }
+  details.ans summary:hover{background:rgba(30,58,45,.14);}
+  details.ans[open] summary{color:#fff8e5;background:var(--forest);border-color:var(--gold);}
+
+  /* Dragon Master training chamber */
+  .skillbar{
+    background:linear-gradient(90deg,var(--forest),#284c39);
+    border-left:5px solid var(--gold);border-radius:5px;
+    color:#fff1cb;box-shadow:0 5px 15px rgba(30,58,45,.15);
+  }
+  .skillbar.gold{background:linear-gradient(90deg,#7a4926,#a46431);border-left-color:var(--gold-pale);}
+  .skillintro{color:#5f665c;background:rgba(255,250,240,.56);border-left-color:var(--bronze);}
+  .def{background:rgba(255,250,240,.58);border-color:rgba(132,99,47,.34);}
+  .def .dword,.stepline{color:var(--forest);}
+  .def .dex{color:#5e4b2d;background:#f1e1b9;}
+  .def.hl{border-color:var(--gold);background:#fff5d9;}
+  .stepline .sno{
+    background:var(--forest);box-shadow:0 0 0 3px rgba(30,58,45,.12);
+  }
+  .idwy>div{color:#5b4b30;background:#f1e3bd;border-color:var(--gold);}
+  .idwy b{color:#7f4b27;}
+  .go{border-color:var(--forest);border-radius:9px;background:rgba(255,250,240,.36);}
+  .go-title{background:linear-gradient(90deg,var(--forest),#2b4a38);color:#fff1cb;}
+  .go-body{background:rgba(255,250,240,.48);}
+  .se-grid{border-color:#b9a579;}
+  .se-col{border-right-color:#b9a579;}
+  .se-head{color:var(--forest);background:#e7d9b6;border-bottom-color:#b9a579;}
+  .fill{border-bottom-color:#9b7945;color:#375c48;}
+  .ot-center{background:#f0dfb5;border-color:var(--gold);}
+  .ot-center .who{color:#764621;}
+  .ot-box{background:rgba(255,250,240,.58);border-color:#bca879;}
+  .ot-box .lab{color:var(--forest);}
+  .teacher-only{color:#5b4b30;background:#f1e3bd;border-color:var(--gold);}
+  .teacher-only .tl{color:#7f4b27;}
+  .ansbtn,.cardbar button{
+    color:var(--forest);background:rgba(255,250,240,.72);
+    border-color:rgba(30,58,45,.38);border-radius:5px;
+  }
+  .ansbtn:hover,.cardbar button:hover{background:#e8dbc0;}
+  .go.show-ans .ansbtn{color:#fff;background:var(--bronze);border-color:var(--gold);}
+  .foot{color:#827a69;border-top-color:#c2b28e;}
+
+  /* The student handout stays deliberately ink-friendly */
+  .student-card{
+    border-color:#2e3028;border-radius:4px;background:#fff;color:#222;
+    box-shadow:0 9px 28px rgba(72,52,24,.12);
+  }
+  .student-card .sc-head h3{font-family:var(--display);}
+
+  /* Readability pass: medium weights, open counters, no synthetic heavy bold */
+  body{font-weight:400;font-synthesis:none;}
+  b,strong{font-weight:600;}
+  .cn{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-weight:400;letter-spacing:0;
+  }
+  .tab .cn,th .cn,.se-head .cn,.go-title .cn,.skillbar .cn,
+  .ot-box .cn,.who .cn,.frame .cn,.cardbar .cn,.dex .cn,.tagx .cn{
+    font-weight:400;letter-spacing:0;
+  }
+  .daynav::before,.daynav a,.daynav .off,.daynav select,
+  .toolbar button,.progress-kicker,.stone,header.dragon-hero::after,
+  .eyebrow,.meta b,.tab,details.ans summary{
+    font-weight:600;
+  }
+  h1{font-weight:600;letter-spacing:.005em;}
+  .panel h2{font-weight:600;letter-spacing:.005em;}
+  .panel h2 .badge,.tab-icon{font-weight:500;}
+  th,td.w,.pw,.skillbar,.def .dword,.stepline,.go-title,
+  .se-head,.stepchip,.ot-center .who,.ot-box .lab,.teacher-only .tl{
+    font-weight:600;
+  }
+  .student-card .sc-head h3,.student-card h5,.student-card .sline .lbl,
+  .student-card .draw-cell .dc-lab,.student-card .draw-pair .dp-lab,
+  .student-card .draw-pair .dp-arrow,.student-card .frame-cell .fc-num,
+  .ansbtn,.cardbar button,td:nth-child(2)::before,td:nth-child(3)::before{
+    font-weight:600;
+  }
+  .progress-kicker{letter-spacing:.18em;}
+  .daynav::before{letter-spacing:.18em;}
+  header.dragon-hero::after{letter-spacing:.18em;}
+  .eyebrow{letter-spacing:.16em;}
+  th{letter-spacing:.08em;}
+
+  @media (max-width:900px){
+    body{padding-left:24px;padding-right:24px;}
+    .daynav{margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px;}
+    .daynav::before{width:100%;margin:0 0 3px;text-align:center;}
+    .toolbar{position:static;justify-content:center;flex-wrap:wrap;margin:0 0 16px;}
+    .meta{grid-template-columns:1fr 1fr;}
+    header.dragon-hero{padding-top:175px;}
+    .tab{flex:1 1 calc(50% - 10px);border-radius:8px;justify-content:center;}
+    .tab.on{min-height:54px;border-bottom-color:var(--gold);}
+    .tab.on::after{display:none;}
+    .tabs{margin:0 0 10px;}
+  }
+  @media (max-width:640px){
+    body{padding:0 14px 48px;}
+    .daynav{margin:0 -14px;padding:10px 14px;gap:6px;}
+    .daynav::before{font-size:10px;}
+    .daynav select{order:3;width:100%;max-width:none;}
+    .dragon-progress{margin:14px 0;padding:13px 10px 11px;overflow:hidden;}
+    .stone-track{gap:2px;}
+    .stone::before{width:24px;height:24px;font-size:8px;}
+    .stone span{font-size:7px;}
+    .stone-track::before{top:12px;}
+    header.dragon-hero{
+      min-height:430px;margin-bottom:18px;padding:205px 20px 22px;
+      border-radius:16px;background-position:60% center;
+    }
+    header.dragon-hero::after{top:20px;left:20px;font-size:9px;}
+    h1{font-size:37px;}
+    .subtitle{font-size:14px;}
+    .meta{grid-template-columns:1fr 1fr;gap:7px;}
+    .meta div{padding:8px 9px;font-size:10px;}
+    .meta b{font-size:11px;}
+    .tab{flex-basis:100%;justify-content:flex-start;padding:8px 14px;}
+    .panel{padding:30px 18px;border-radius:10px;}
+    .panel h2{font-size:20px;}
+    table,thead,tbody,tr,th,td{display:block;width:100% !important;}
+    thead{display:none;}
+    tr{padding:12px 0;border-bottom:1px solid rgba(109,87,49,.26);}
+    td{padding:4px 8px;border:0;}
+    td.w{font-size:16px;}
+    td:nth-child(2)::before{content:"Definition · ";font-size:10px;font-weight:800;letter-spacing:.08em;color:#8a7650;text-transform:uppercase;}
+    td:nth-child(3)::before{content:"In the Book · ";font-size:10px;font-weight:800;letter-spacing:.08em;color:#8a7650;text-transform:uppercase;}
+    #p2{padding-left:36px;}
+    #p2::after{left:19px;}
+    .pause::before{left:-30px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;scroll-behavior:auto !important;}
+  }
+  @media print{
+    html,body{background:#fff !important;}
+    body{padding:8mm 12mm;color:#222;}
+    body::before,.dragon-progress,header.dragon-hero::before,header.dragon-hero::after{display:none !important;}
+    #doc{max-width:none;}
+    header.dragon-hero{
+      min-height:0;margin:0 0 12px;padding:0 0 12px;
+      color:#222;background:#fff !important;border:0;border-bottom:2px solid #222;border-radius:0;
+      box-shadow:none;
+    }
+    .eyebrow{padding:0;border:0;background:none;color:#444;}
+    h1{color:#111;text-shadow:none;font-size:28px;}
+    .subtitle,.subtitle .cn{color:#555;text-shadow:none;}
+    .meta{grid-template-columns:repeat(4,1fr);}
+    .meta div,.meta div:nth-child(2n){color:#555;background:#fff;border:1px solid #777;}
+    .meta b{color:#111;}
+    .panel{
+      color:#222;background:#fff !important;border:0;border-radius:0;padding:0 0 12px;
+      box-shadow:none;
+    }
+    .panel::before,.panel::after,#p2::after{display:none;}
+    .panel h2,.def .dword,.stepline,.pq b,.pa b{color:#111;}
+    .skillbar,.skillbar.gold,.go-title{color:#fff !important;background:#333 !important;border-color:#111;}
+    table,.pause,.def,.go,.ot-box,.ot-center,.teacher-only{background:#fff !important;border-color:#555;}
+    th{color:#fff;background:#333 !important;}
+    .pause::before{color:#111;background:#fff;border-color:#111;box-shadow:none;}
+    .student-card{box-shadow:none;}
+  }
 </style>
+<link rel="stylesheet" href="dragon-keep-theme.css">
 </head>
 <body>
 <nav class="daynav">
   <span class="off">← Prev</span>
-  <select onchange="if(this.value)location.href=this.value" title="Jump to another chapter 跳转到其他章节">
+  <select onchange="if(this.value)location.href=this.value" title="跳转到其他 Day">
     <option value="" selected>Day 1 · To the Castle!（Ch 1）</option>
     <option value="DM1_Day02_Ch2_Lesson_Plan.html">Day 2 · The Dragon Stone（Ch 2）</option>
     <option value="DM1_Day03_Ch3_Lesson_Plan.html">Day 3 · More Dragons!（Ch 3）</option>
@@ -314,18 +747,18 @@
 
 <div class="toolbar">
   <button id="langBtn">EN only</button>
-  <button id="editBtn">✏️ Edit<span class="cn"> 编辑</span></button>
-  <button id="resetBtn" title="Discard all edits and restore the original 清除所有修改，恢复原版">↺ Reset<span class="cn"> 重置</span></button>
-  <button onclick="window.print()">🖨 Print<span class="cn"> 打印</span></button>
+  <button id="editBtn">✏️ 编辑<span class="cn2"></span></button>
+  <button id="resetBtn" title="清除所有修改，恢复原版">↺ 重置</button>
+  <button onclick="window.print()">🖨 打印</button>
 </div>
 
 <div id="doc">
 
-<header class="ed">
+<header class="ed dragon-hero">
   <div class="eyebrow">🐉 Dragon Masters · Book 1 · Rise of the Earth Dragon</div>
   <div><h1>Day 1 · To the Castle!</h1></div>
   <div class="subtitle">Chapter 1 lesson plan — Drake is taken to the castle and meets a red dragon behind the stone door.<span class="cn">第 1 章教案 — Drake 被带进城堡，推开石门见到红龙</span></div>
-  <span class="edit-tip">✏️ Edit mode: click any text to change it; click ✕ at the top-right of a block to delete it; click Done to exit. Edits save automatically.<span class="cn"> 编辑模式：点击任意文字直接修改；点模块右上角 ✕ 删除整块；再点「完成」退出。修改自动保存。</span></span>
+  <span class="edit-tip">✏️ 编辑模式：点击任意文字直接修改；点模块右上角 ✕ 删除整块；再点「完成」退出。修改自动保存。</span>
   <div class="meta">
     <div data-del><span class="del-btn">✕</span>Chapter<b>Ch 1（pp. 1–7）</b></div>
     <div data-del><span class="del-btn">✕</span>Reading Skill<b>Story Elements + Outside Traits</b></div>
@@ -335,10 +768,10 @@
 </header>
 
 <div class="tabs">
-  <button class="tab on" data-p="p1">1 · Vocabulary<span class="cn"> 词汇</span></button>
-  <button class="tab" data-p="p2">2 · Pause Points<span class="cn"> 停顿点</span></button>
-  <button class="tab" data-p="p3">3 · Close Reading<span class="cn"> 精读策略</span></button>
-  <button class="tab" data-p="p4">4 · Task Card<span class="cn"> 任务卡</span></button>
+  <button class="tab on" data-p="p1"><span class="tab-icon" aria-hidden="true">Aa</span>1 · Vocabulary<span class="cn"> 词汇</span></button>
+  <button class="tab" data-p="p2"><span class="tab-icon" aria-hidden="true">↟</span>2 · Pause Points<span class="cn"> 停顿点</span></button>
+  <button class="tab" data-p="p3"><span class="tab-icon" aria-hidden="true">◆</span>3 · Close Reading<span class="cn"> 精读策略</span></button>
+  <button class="tab" data-p="p4"><span class="tab-icon" aria-hidden="true">✦</span>4 · Task Card<span class="cn"> 任务卡</span></button>
 </div>
 
 <!-- ═══════ TAB 1 · VOCABULARY ═══════ -->
@@ -577,6 +1010,20 @@
     if(saved){doc.innerHTML=saved;}
   }catch(e){}
 
+  /* keep the visual shell when restoring edits saved by the earlier blue theme */
+  var restoredHero=doc.querySelector('header.ed');
+  if(restoredHero){restoredHero.classList.add('dragon-hero');}
+  var tabMarks=['Aa','↟','◆','✦'];
+  doc.querySelectorAll('.tab').forEach(function(tab,index){
+    if(!tab.querySelector('.tab-icon')){
+      var mark=document.createElement('span');
+      mark.className='tab-icon';
+      mark.setAttribute('aria-hidden','true');
+      mark.textContent=tabMarks[index]||'◆';
+      tab.insertBefore(mark,tab.firstChild);
+    }
+  });
+
   /* restore language */
   try{
     if(localStorage.getItem(LANGKEY)==='en'){document.body.classList.add('en');}
@@ -640,7 +1087,7 @@
     var on=!document.body.classList.contains('editing');
     document.body.classList.toggle('editing',on);
     setEditable(on);
-    editBtn.innerHTML=on?'✓ Done<span class="cn"> 完成</span>':'✏️ Edit<span class="cn"> 编辑</span>';
+    editBtn.textContent=on?'✓ 完成':'✏️ 编辑';
     if(!on)save();
   });
 
@@ -670,5 +1117,6 @@ function toggleGO(btn){
   });
 }
 </script>
+<script src="dragon-keep-theme.js"></script>
 </body>
 </html>
