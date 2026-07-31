@@ -1,0 +1,13 @@
+{
+  "name": "dragon-masters-skills",
+  "owner": {
+    "name": "Cathy Chu"
+  },
+  "plugins": [
+    {
+      "name": "dragon-masters-skills",
+      "source": "./",
+      "description": "Bilingual ESL teaching-material skills for the Dragon Masters series: per-chapter lesson-plan HTML, student workbooks + answer keys, and key-word retelling pages."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 name: dm-retelling
 description: >
-  Generates a single-file, browser-editable RETELLING practice page (.html) for a whole
+  Generates a single-file, printable RETELLING practice page (.html) for a whole
   Dragon Masters book (Tracey West, Scholastic Branches) — one combined file with a tab
   per chapter. Each chapter is broken into STOP cards that give the student the scene
   (Where + When) and then split the key words into two color-coded groups: WHO (the
@@ -9,8 +9,9 @@ description: >
   their OWN words by picking one WHO + one DID WHAT = "Somebody did something", then
   string the STOPs together with First / Then / Next / Finally. Designed so students
   CANNOT just read a printed sentence aloud. Trigger when the user says "做 DM 复述 /
-  retelling", "DM1/DM2 复述", "关键词复述卡", "做复述", "retelling worksheet", or asks
-  for a retell / summary activity for Dragon Masters. English-only, white background.
+  retelling", "DM1/DM2 复述", "关键词复述卡", "做复述", "retelling worksheet", "驯龙大师复述",
+  or asks for a retell / summary activity for Dragon Masters. English-only, white background.
+  Needs Python 3 to run the bundled generator.
   Calibrated to ESL Grade 1–3 (first time retelling chapter books).
 ---
 
@@ -52,10 +53,24 @@ instruction at the top of the page is enough; repeating it on every card is clut
 ## Style reference (match it exactly)
 
 `assets/template_reference_DM1.html` (bundled with this skill) is the locked style
-reference (the finished DM1 page). Match its layout, palette, fonts,
-and behavior. The matching generator that produced it is
-`assets/generate_retelling.py` — copy it and only replace the `chapters` and `models`
-data for a new book.
+reference. It is the **exact output** of `assets/generate_retelling.py` as shipped —
+run the script and you get that file byte for byte. Match its layout, palette, fonts,
+and behavior.
+
+Its book quotes and model retells are **placeholders** (`[quote from the chapter]`,
+"Write the model retell for this chapter here") — the structure is real, the content
+is not. Fill both in from the user's own copy of the book.
+
+For a new book, copy the script and replace **four** things:
+
+| What | Where |
+|---|---|
+| `BOOK_NUM`, `BOOK_TITLE` | the constants block at the top — they drive `<title>`, the `<h1>` and the output filename |
+| `chapters` | the STOP data |
+| `models` | the per-chapter model retells |
+
+Changing only `chapters` / `models` and leaving `BOOK_NUM` alone will emit a page
+titled "Dragon Masters #1" **and overwrite the DM1 file** — always set the constants.
 
 ### Locked house rules
 
@@ -80,14 +95,20 @@ data for a new book.
 
 1. Gather, per chapter, 1–3 **STOP** scenes. For each STOP write:
    `Where`, `When`, a `who[]` list (2–4 characters/dragons in that scene), and a `did[]`
-   list (3–5 action fragments, **verb-led**, in story order).
+   list (2–5 action fragments, **verb-led wherever the event allows**, in story order).
+   A fragment must not be a complete sentence a child could just read aloud.
 2. Write a short **model retell** per chapter (1 short paragraph, ESL G1–3, faithful to
    events) for the teacher-only `<details>`.
-3. Copy `assets/generate_retelling.py`, replace the `chapters` and `models` data, run it.
+3. **Prerequisite: Python 3** on whatever machine runs commands (standard library only —
+   nothing to `pip install`; check with `python3 --version`). Copy
+   `assets/generate_retelling.py`, set `BOOK_NUM` / `BOOK_TITLE`, replace the `chapters`
+   and `models` data, then run `python3 generate_retelling.py`. It writes the `.html`
+   into the current folder and prints the filename.
+   If Python is not available, build the HTML by hand from the reference template instead.
 4. **Verify before delivering**: tags balanced (`<div>`==`</div>`, `<section>`==
    `</section>`), panel count == chapter count, `showCh('1')` present, **no emoji**, no
-   `checkbox`, no per-card "Say it like" line. Render-check chapter 1 in a real browser
-   (LibreOffice does NOT render the flex chips — don't judge layout from it).
+   `checkbox`, no per-card "Say it like" line, and `<title>` / `<h1>` / the filename all
+   name the right book. Render-check chapter 1 in a real browser.
 
 ## Output
 
@@ -97,5 +118,6 @@ user (into their book folder's `4-Retelling/` subfolder if they keep one — see
 
 ## DM2 note
 
-For DM2 ("Saving the Sun Dragon") and later titles, mirror this exact format — only the
-chapter data and model retells change.
+For DM2 ("Saving the Sun Dragon") and later titles, mirror this exact format — the
+`BOOK_NUM` / `BOOK_TITLE` constants, the chapter data and the model retells change;
+nothing else does.

@@ -6,7 +6,7 @@ drawing-first per-chapter lesson plans, student workbooks + answer keys, and
 key-word retelling pages.
 
 为 **Dragon Masters（驯龙大师）** 系列制作双语 ESL 教学材料的开源 agent skills：
-画画优先的每日课件、学生练习册 + 答案版、关键词复述页。
+画画优先的每章课件、学生练习册 + 答案版、关键词复述页。
 
 Follows the open [Agent Skills](https://agentskills.io) standard (`SKILL.md` +
 YAML frontmatter), so the same skill folders work in **Claude Code / Claude
@@ -20,32 +20,50 @@ the standard.
 | `dragon-studio` | The hub 中枢：house rules 风格规范、DM1 16 章 / DM2 14 章的逐章 reading skill + 任务卡对照表、**给 DM3 及以后用的逐章设计标准**（8 条规律 + 7 步流程）；自动路由到下面三个 skill。 |
 | `dm-lesson-plan` | One interactive lesson-plan HTML **per chapter** 每章一个课件（4 tabs、drawing-first printable task cards、中英双语 + EN-only toggle）。 |
 | `dm-workbook` | Per-chapter student workbook + red answer key（.docx，需要 Node.js + `docx` 包）。 |
-| `dm-retelling` | Whole-book retelling practice page（.html）— STOP cards with WHO / DID WHAT keyword groups，浏览器可编辑。 |
+| `dm-retelling` | Whole-book retelling practice page（.html）— STOP cards with WHO / DID WHAT keyword groups，每章一个 tab，可打印。 |
 
 ## Install · 安装
 
-The four skill folders live in `skills/`. Copy them into your agent's skill
-directory (all four together — the hub references the others):
+First get the files:
 
-四个 skill 都在 `skills/` 目录下，整体复制到你所用工具的 skill 目录（四个要一起装，
-hub 会引用其他三个）：
+```bash
+git clone https://github.com/CathyErer/dragon-masters-skills.git
+cd dragon-masters-skills
+```
+
+The four skill folders live in `skills/`. Copy **all four together** into your
+agent's skill directory — `dm-lesson-plan` and `dm-retelling` read the
+per-chapter tables out of `dragon-studio/references/`, so the hub must be
+installed too.
+
+四个 skill 都在 `skills/` 目录下，**必须四个一起装**——`dm-lesson-plan` 和
+`dm-retelling` 要读 `dragon-studio/references/` 里的逐章表。
 
 ### Claude Code
 
 ```bash
-cp -r skills/* ~/.claude/skills/
+mkdir -p ~/.claude/skills && cp -r skills/* ~/.claude/skills/
 ```
 
-Or install the whole repo as a plugin (it ships a `.claude-plugin/plugin.json`):
-add this repo to a plugin marketplace, or use per-project skills at
-`.claude/skills/` in your repo. 也可以作为 plugin 安装（仓库自带
-`.claude-plugin/plugin.json`）。
+Restart Claude Code, then ask 「有哪些 Dragon Masters skill?」 — you should see
+`dragon-studio`, `dm-lesson-plan`, `dm-workbook`, `dm-retelling`.
+
+Per-project instead of global: put the same folders in `.claude/skills/` inside
+your project.
+
+Or install the whole repo as a plugin:
+
+```
+/plugin marketplace add CathyErer/dragon-masters-skills
+/plugin install dragon-masters-skills@dragon-masters-skills
+```
 
 ### Claude.ai / Claude Cowork
 
 Zip each skill folder (the folder containing `SKILL.md`) and upload it in
-**Settings → Capabilities → Skills**. 把每个 skill 文件夹压缩成 zip 后在
-设置 → 功能 → Skills 里上传。
+**Settings → Capabilities → Skills**. Upload **all four** — if `dragon-studio` is
+missing, the other skills will ask you for the per-chapter table instead of
+inventing one. 把**四个**文件夹分别压缩成 zip，在设置 → 功能 → Skills 里全部上传。
 
 ### OpenAI Codex
 
@@ -71,8 +89,13 @@ standard works — point it at the folders in `skills/`.
 
 ## Usage · 用法
 
-Provide the chapter PDFs of the book you own, then ask in plain language —
-先提供你自己书的章节 PDF，然后直接说：
+Give the agent the chapter PDF from your own copy of the book — drag it into the
+chat, or (in Claude Code / Codex) drop it in the working folder and say the
+filename. One chapter at a time is enough. If it's a scan, add 「这是扫描件，请先
+OCR 再读」.
+
+把你自己那本书的章节 PDF 给它（拖进对话框，或放在当前文件夹里告诉它文件名），
+一次一章就够。然后直接说：
 
 - "做 DM1 第 7 章的课件" → chapter lesson plan HTML
 - "给 DM1 第 12 章做 workbook" → workbook + answer key (.docx)
@@ -96,20 +119,42 @@ lessons. Rule 1 is binding: no book, no table.
 
 ## Requirements · 依赖
 
-- `dm-workbook` needs **Node.js** with the `docx` package (`npm install docx`).
-- `dm-retelling` needs **Python 3** (standard library only).
-- `dm-lesson-plan` has no dependencies (template-copy + edit).
+| Skill | Needs | If it's missing |
+|---|---|---|
+| `dm-lesson-plan` | nothing — copies and edits an HTML template | works everywhere |
+| `dm-retelling` | **Python 3** (standard library only) | build the HTML by hand from the reference template |
+| `dm-workbook` | **Node.js 18+** and `npm install docx` (needs internet once) | ask the agent for the workbook as HTML instead of .docx |
+
+如果你用的 agent 不能执行命令，`dm-workbook` 就跑不了 —— 让它直接出 HTML 版练习册。
+
+## Troubleshooting · 常见问题
+
+**打印任务卡** — 用 Chrome 打开课件 → 点「🖨 打印」→ 边距选「默认」，勾上「背景图形」
+→ 任务卡正好占满一页。
+
+**重新生成后页面还是旧内容** — 课件会把你的编辑存在浏览器 localStorage 里。点右上角
+↺ 重置，或用无痕窗口打开。
+
+**`npm: command not found`** — 这台电脑没装 Node.js，见上面 Requirements。
 
 ## Copyright note · 版权说明
 
-*Dragon Masters* is © Tracey West / Scholastic Inc. This repository contains
-**no book text**. The bundled reference templates are style references only:
-every place that would hold a sentence or a line of dialogue from the book
-carries a visible placeholder (`[quote from the chapter]`,
-`Sentence from the chapter containing <word> — replace with the real one`).
-The skills read chapter PDFs **you provide from books you own** and fill those
-placeholders with the real sentences at generation time. Materials generated
-with these skills are for personal classroom use.
+*Dragon Masters* is © Tracey West / Scholastic Inc.
+
+The bundled reference assets carry **no verbatim sentences or dialogue from the
+book** — every such slot is a visible placeholder (`[quote from the chapter]`,
+`Sentence from the chapter containing <word> — replace with the real one`,
+`Write the model retell for this chapter here`). Chapter titles, character names
+and plot facts are used in the planning tables; those appear on the publisher's
+own product pages.
+
+The skills read chapter PDFs **you provide from books you own** and fill the
+placeholders with the real sentences at generation time. Materials generated with
+these skills are for personal classroom use.
+
+随附的参考模板**不含书中原句或台词**——凡是该放原文的位置都是显式占位符。章节标题、
+人物名和情节事实用于排课表（这些在出版社的商品页上就有）。skill 运行时从**你自己拥有
+的书**的章节 PDF 里读出真实原句填进去。生成的材料仅供个人课堂教学使用。
 
 《Dragon Masters》版权归 Tracey West / Scholastic 所有。本仓库**不含任何书籍原文**。
 自带的参考模板只是样式参考：凡是原本该放书中原句或台词的位置，都换成了显式占位符

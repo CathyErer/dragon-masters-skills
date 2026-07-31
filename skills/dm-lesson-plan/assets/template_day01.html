@@ -20,7 +20,7 @@
     --ink:#33424f;
     --muted:#7d93a5;
     --white:#fff;
-    --sans:"[quote from the chapter]","[quote from the chapter]","[quote from the chapter]","[quote from the chapter]","幼圆","[quote from the chapter]","[quote from the chapter]","[quote from the chapter]",sans-serif;
+    --sans:"Quicksand","Varela Round","Comfortaa","Yuanti SC","幼圆","YouYuan","PingFang SC","Microsoft YaHei",sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{background:var(--bg);}
@@ -296,7 +296,7 @@
 <body>
 <nav class="daynav">
   <span class="off">← Prev</span>
-  <select onchange="if(this.value)location.href=this.value" title="跳转到其他 Day">
+  <select onchange="if(this.value)location.href=this.value" title="Jump to another chapter 跳转到其他章节">
     <option value="" selected>Day 1 · To the Castle!（Ch 1）</option>
     <option value="DM1_Day02_Ch2_Lesson_Plan.html">Day 2 · The Dragon Stone（Ch 2）</option>
     <option value="DM1_Day03_Ch3_Lesson_Plan.html">Day 3 · More Dragons!（Ch 3）</option>
@@ -314,9 +314,9 @@
 
 <div class="toolbar">
   <button id="langBtn">EN only</button>
-  <button id="editBtn">✏️ 编辑<span class="cn2"></span></button>
-  <button id="resetBtn" title="清除所有修改，恢复原版">↺ 重置</button>
-  <button onclick="window.print()">🖨 打印</button>
+  <button id="editBtn">✏️ Edit<span class="cn"> 编辑</span></button>
+  <button id="resetBtn" title="Discard all edits and restore the original 清除所有修改，恢复原版">↺ Reset<span class="cn"> 重置</span></button>
+  <button onclick="window.print()">🖨 Print<span class="cn"> 打印</span></button>
 </div>
 
 <div id="doc">
@@ -325,7 +325,7 @@
   <div class="eyebrow">🐉 Dragon Masters · Book 1 · Rise of the Earth Dragon</div>
   <div><h1>Day 1 · To the Castle!</h1></div>
   <div class="subtitle">Chapter 1 lesson plan — Drake is taken to the castle and meets a red dragon behind the stone door.<span class="cn">第 1 章教案 — Drake 被带进城堡，推开石门见到红龙</span></div>
-  <span class="edit-tip">✏️ 编辑模式：点击任意文字直接修改；点模块右上角 ✕ 删除整块；再点「完成」退出。修改自动保存。</span>
+  <span class="edit-tip">✏️ Edit mode: click any text to change it; click ✕ at the top-right of a block to delete it; click Done to exit. Edits save automatically.<span class="cn"> 编辑模式：点击任意文字直接修改；点模块右上角 ✕ 删除整块；再点「完成」退出。修改自动保存。</span></span>
   <div class="meta">
     <div data-del><span class="del-btn">✕</span>Chapter<b>Ch 1（pp. 1–7）</b></div>
     <div data-del><span class="del-btn">✕</span>Reading Skill<b>Story Elements + Outside Traits</b></div>
@@ -385,7 +385,7 @@
     <div class="pw">PAUSE ③ · end of p.6 — "[quote from the chapter]"<span class="tagx">Setting Change</span></div>
     <p class="pq"><b>Q:</b> Drake has moved through many places today. Can you name them in order?</p>
     <details class="ans"><summary>👁 Answer<span class="cn"> 答案</span></summary><div>
-    <p class="pa">onion field → village → stone bridge → castle halls → down, down, down → big stone door. The setting moves from bright and safe to dark and strange.<span class="cn">洋葱地 → 村庄 → 石桥 → 城堡大厅 → 一路向下 → 大石门。场景从「明亮安全」走向「幽深陌生」。</span></p>
+    <p class="pa">onion field → village → stone bridge → castle halls → down, down, down → big stone door. The setting moves from bright and safe to dark and strange.<span class="cn">洋葱地 → 村庄 → 石桥 → 城堡大厅 → 一路向下 → 大石门。场景从「[quote from the chapter]」走向「[quote from the chapter]」。</span></p>
     </div></details>
   </div>
 
@@ -436,7 +436,7 @@
         <div class="se-col">
           <div class="se-head">CHARACTER<small>Who?<span class="cn"> 谁</span></small></div>
           <div class="se-cell">
-            <span class="fill" data-ans="Drake (8, a farmer's son)"[quote from the chapter]"true"></span>
+            <span class="fill" data-ans="Drake (8, a farmer's son)" contenteditable="true"></span>
             <span class="fill" data-ans="the soldier, Mom" contenteditable="true"></span>
           </div>
         </div>
@@ -452,7 +452,7 @@
           <div class="se-cell">
             <span class="fill" data-ans="a soldier took Drake away" contenteditable="true"></span>
             <span class="fill" data-ans="they rode to the castle" contenteditable="true"></span>
-            <span class="fill" data-ans="Drake opened the door and saw a red dragon!"[quote from the chapter]"true"></span>
+            <span class="fill" data-ans="Drake opened the door and saw a red dragon!" contenteditable="true"></span>
           </div>
         </div>
       </div>
@@ -507,7 +507,7 @@
           <div class="ot-box" data-del style="background:var(--yellow-bg);border-color:var(--yellow-edge);"><span class="del-btn">✕</span>
             <div class="lab" style="color:#a07c00;">💡 It tells me…<span class="cn"> 这告诉我</span></div>
             <div class="ask">What do his outside traits tell us about him?</div>
-            <span class="fill" data-ans="he worked for the king (the gold dragon was King Roland's symbol)"[quote from the chapter]"true"></span>
+            <span class="fill" data-ans="he worked for the king (the gold dragon was King Roland's symbol)" contenteditable="true"></span>
           </div>
         </div>
       </div>
@@ -640,7 +640,7 @@
     var on=!document.body.classList.contains('editing');
     document.body.classList.toggle('editing',on);
     setEditable(on);
-    editBtn.textContent=on?'✓ 完成':'✏️ 编辑';
+    editBtn.innerHTML=on?'✓ Done<span class="cn"> 完成</span>':'✏️ Edit<span class="cn"> 编辑</span>';
     if(!on)save();
   });
 

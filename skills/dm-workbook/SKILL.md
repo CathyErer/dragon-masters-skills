@@ -7,21 +7,22 @@ description: >
   of the Earth Dragon", "Saving the Sun Dragon", "Secret of the Water Dragon",
   and later titles. Trigger whenever the user uploads Dragon Masters book pages
   and asks to create, regenerate, or update a workbook, student worksheet,
-  answer key, 练习册, or 答案; or says things like "给龙骑士做 workbook", "Dragon
-  Masters 第X章 练习", "做个 workbook" with Dragon Masters pages in context.
+  answer key, 练习册, 答案版, 学生版, or 答案; or says things like "给龙骑士做
+  workbook", "给驯龙大师做练习", "Dragon Masters 第X章 练习", "给 Dragon Masters
+  做个 workbook" with Dragon Masters pages in context.
   Each workbook has exactly 5 sections: Vocabulary Matching (5), Multiple Choice
   (5), Fill in the Blank (5 + word bank), Short Answer (1), and Think & Create
   (1 creative prompt with drawing box). Content is calibrated to CCSS Grade 2
-  reading and writing standards. Always produce BOTH files unless explicitly
-  told otherwise.
+  reading and writing standards. Needs Node.js to run the bundled build script.
+  Always produce BOTH files unless explicitly told otherwise.
 ---
 
 # Dragon Masters Workbook Generator
 
 Produces a matched pair of `.docx` files from a single Node.js build script:
 
-- **`<BookShort>_Ch<N>_Workbook.docx`** — student-facing, pure black & white, blank answer spaces
-- **`<BookShort>_Ch<N>_AnswerKey.docx`** — teacher-facing, same layout, answers in RED
+- **`<Book_Title>_Ch<N>_Workbook.docx`** — student-facing, pure black & white, blank answer spaces
+- **`<Book_Title>_Ch<N>_AnswerKey.docx`** — teacher-facing, same layout, answers in RED
 
 ---
 
@@ -33,8 +34,17 @@ installed; do NOT rewrite the script from scratch). It generates BOTH files in
 one run and self-checks the content arrays before building (item counts,
 `VOCAB_DEF_ORDER` permutation, word-bank usage).
 
+**Prerequisite: Node.js 18+** (`node -v` to check; macOS `brew install node`, or
+nodejs.org). The first run also needs internet for `npm install docx`. If Node is
+not available, say so to the user and offer the workbook as HTML or Markdown
+instead — do not fail silently.
+
+**Build in a scratch folder, never in the user's teaching-materials folder** —
+`npm install` drops ~11 MB of `node_modules` wherever it runs. Move only the two
+`.docx` files to where the user wants them.
+
 ```bash
-mkdir -p <working-dir> && cd <working-dir>
+mkdir -p /tmp/dm-workbook-build && cd /tmp/dm-workbook-build
 cp <this-skill-folder>/assets/build_workbook.js .
 # EDIT the content arrays at the top of build_workbook.js to match the chapter
 npm install docx   # once per environment, if not already installed
@@ -60,7 +70,7 @@ The Dragon Masters PDF pages are in context. Read carefully to identify:
 - New vocabulary from the chapter
 - Emotional beats or surprising moments (good for the creative question)
 
-### Step 2 — Fill in the 5 content arrays
+### Step 2 — Fill in the content blocks
 Open `build_workbook.js` and edit ONLY the content blocks between the
 `// ===== EDIT CONTENT BELOW =====` and `// ===== END EDIT =====` markers.
 Everything outside those markers is layout/styling — do not touch it.
@@ -127,7 +137,8 @@ All content must be calibrated to:
 
 ## Design specifications
 
-Both files use **identical layout**, differing only in answer visibility.
+Both files use **identical layout**, differing only in answer visibility and the
+Name/Date line (student workbook only).
 
 | Setting | Value |
 |---------|-------|
@@ -174,7 +185,7 @@ These are NOT optional — they come from hard-won experience:
    collapses them into one visible line. Always use 64 underscore characters.
 
 2. **Tables need dual widths.** Set both `columnWidths` on the table AND
-   `width` on each cell, both in DXA. See docx SKILL.md.
+   `width` on each cell, both in DXA.
 
 3. **Never use `ShadingType.SOLID`** — use `CLEAR` or omit shading entirely.
    Student workbook has NO shading anywhere.
@@ -188,10 +199,9 @@ These are NOT optional — they come from hard-won experience:
    has letters A–E, VOCAB_DEF_ORDER must contain all of A, B, C, D, E exactly
    once. Missing or duplicate letters will mis-label the definition column.
 
-7. **Filename convention:**
-   - Strip "Rise of the ", "Saving the ", etc. for short form — OR just use
-     the full title with underscores
-   - Full pattern: `<Title_With_Underscores>_Ch<N>_Workbook.docx` and `_AnswerKey.docx`
+7. **Filename convention:** the script derives it from `BOOK_TITLE` — it does
+   NOT shorten the title.
+   - Pattern: `<Title_With_Underscores>_Ch<N>_Workbook.docx` and `_AnswerKey.docx`
    - Example: `Rise_of_the_Earth_Dragon_Ch1_Workbook.docx`
 
 ---

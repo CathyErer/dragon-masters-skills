@@ -40,6 +40,9 @@ Both books have the same shape (by position in the book):
 Chapter 1 always establishes who/where. The last chapter is always Story Mountain
 + Character Growth / Theme.
 
+Mid-book Theme chapters sit outside this progression (DM1 Ch11 Friendship,
+DM2 Ch5 Homesickness) — the text put them there, and Rule 1 outranks Rule 2.
+
 ## Rule 3 — Skills MAY repeat; repetition is a feature
 
 ESL Grade 1–3 readers need the same skill several times before it sticks. Across
@@ -141,17 +144,17 @@ user the table for confirmation **before** generating 14–16 lesson files.
 
 ## Skill pool
 
-### Already used in DM1 + DM2 (38) — free to reuse in any later book
+### Already used in DM1 + DM2 (37) — free to reuse in any later book
 
 - **Character**: Story Elements · Outside Traits · Inside Traits · Character Traits combined · Character Growth · Bravery · Decision & Motivation · Group Dynamics
 - **Language**: Author's Word Choice · Strong Verbs · 5 Senses · Visualizing · Name Origins
 - **Structure**: SWBST · Cause & Effect · Problem & Solution · Sequencing · Setting · Rising Action · Resolution · Story Mountain
 - **Thinking**: Making Inferences · Predicting · Asking Questions · Making Connections · Compare & Contrast (incl. Backgrounds / Abilities) · Synthesizing · Connecting Earlier Information · Connecting Text to Self
-- **Theme**: Friendship · Don't Judge by Cover · Homesickness · Selflessness · Patience & Bond · Teamwork · Identity · Symbol & Contrast · Foreshadowing
+- **Theme**: Friendship · Don't Judge by Cover · Homesickness · Selflessness · Patience & Bond · Teamwork · Symbol & Contrast · Foreshadowing
 
 ### Not yet used — an **optional** expansion, not a checklist
 
-Text Evidence · Point of View · Dialogue reveals character · Multiple Perspectives ·
+Text Evidence · Point of View · Identity · Dialogue reveals character · Multiple Perspectives ·
 Conflict types (person vs person / nature / self) · Mood & Tone · Flashback ·
 Main Idea & Details · Summarizing (≠ retelling) · Author's Purpose
 

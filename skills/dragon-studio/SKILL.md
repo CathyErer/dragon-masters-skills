@@ -6,10 +6,12 @@ description: >
   Scholastic Branches): Book 1 "Rise of the Earth Dragon", Book 2 "Saving the Sun
   Dragon", and later titles. Load this whenever the user asks to make ANY Dragon
   Masters teaching material — "做 DM1/DM2 第 N 章", "DM 第X章 workbook", "Dragon
-  Masters 任务卡/复述", "继续做下一章", "按 studio 风格做", or references Drake,
+  Masters 任务卡/复述", "继续做下一章", "按 studio 风格做", "驯龙大师", or references Drake,
   Worm, Bo, Ana, Rori, the Dragon Stone, or King Roland. It carries the shared house
   rules, the per-chapter reading-skill + task-card maps for DM1 and DM2, and the
-  bound-book card arc, then routes to the right sub-skill.
+  bound-book card arc, then routes to the right sub-skill. This is a router +
+  house-style skill — always load the matching sub-skill (dm-lesson-plan /
+  dm-workbook / dm-retelling) as well; it does not generate files by itself.
 ---
 
 # Dragon Studio — house guide
@@ -26,7 +28,7 @@ This skill is the **hub**. When the user asks for any Dragon Masters teaching ma
 | Workbook / 练习册 / 学生版 + 答案版 docx | `dm-workbook` |
 | 复述 / retelling 练习 | `dm-retelling` |
 
-Some requests need two skills (a full teaching day = lesson plan **and** workbook).
+Some requests need two skills (one chapter = lesson plan **and** workbook).
 
 ## Suggested folder layout (optional)
 
@@ -46,7 +48,7 @@ outputs themselves.
 - **Audience**: ESL Grade 1–3 (workbooks calibrated to CCSS Grade 2). Short, common-word English.
 - **Bilingual**: English on top, Chinese below; HTML deliverables include an EN-only toggle.
 - **No teaching-method text in student-facing material** — no "I do/We do/You do", no "project this card", no printing notes.
-- **You-do only practices content already taught that day** — never introduce new material.
+- **You-do only practices content already taught in this lesson** — never introduce new material.
 - **Task cards are DRAWING-FIRST** — replace "write N sentences" with draw frames / 4-panel comics + at most one caption; print to one filled page. Full spec in `dm-lesson-plan` (Task Card v4).
 - **Real quotes only** — vocabulary sentences and page numbers must be verbatim from the chapter PDF the user provides. Never invent quotes; if the book text is not available, ask for it.
 - **Answer keys**: answers in red, bold + underlined.

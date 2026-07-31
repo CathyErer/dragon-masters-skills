@@ -3,9 +3,10 @@ name: dm-lesson-plan
 description: >
   Generates a Chapter Lesson Plan interactive HTML for the Dragon Masters series
   (DM1 "Rise of the Earth Dragon", DM2 "Saving the Sun Dragon", and later titles),
-  ONE FILE PER CHAPTER. Trigger when the user says "做 DM1 第 N 章教案", "DM
-  Chapter N lesson plan", "继续做下一章", "按模板做下一章", or uploads Dragon
-  Masters chapter PDFs asking for a lesson plan / 教案 / 课件. Output is a single
+  ONE FILE PER CHAPTER. Trigger when the user says "做 DM1 第 N 章教案", "做 DM1
+  第 N 章课件", "DM 第X章任务卡", "驯龙大师第X章教案", "DM Chapter N lesson plan",
+  "task card", "继续做下一章", "按模板做下一章", or uploads Dragon
+  Masters chapter PDFs asking for a lesson plan / 教案 / 课件 / 任务卡. Output is a single
   self-contained HTML in the locked "课堂手账" style (sky-blue notebook background
   + lemon-yellow highlighter + 📌 pinned cards, rounded sans-serif, full-screen).
   Task cards are DRAWING-FIRST (draw, don't write sentences) and print to one
@@ -55,6 +56,11 @@ template was finalized with the original author after several rounds —
    `references/dm-series-data.md` — one table per book giving each chapter its
    SKILL A, optional SKILL B, and its own task card. If the user maintains their
    own plan document, use theirs instead.
+   **Where to find it**: it is a sibling of this skill folder —
+   `../dragon-studio/references/dm-series-data.md` (installed as a plugin:
+   `$CLAUDE_PLUGIN_ROOT/skills/dragon-studio/references/…`). **If you cannot find
+   it, do not proceed from memory** — tell the user 「请把 dragon-studio skill 一起
+   装上（逐章技能表在里面）」 and stop.
    **Only DM1 and DM2 have a ready-made table.** For DM3 and later titles, build
    one first with `dragon-studio`'s `references/design-standard.md` (read the
    whole book, then derive each chapter's skill from its text), and get the user
@@ -143,8 +149,11 @@ template was finalized with the original author after several rounds —
      caption line). The four panels map to the chapter's structure — e.g. a cause
      chain (action → because → so → finally); a trap (trap → try1❌ → try2❌ →
      cliffhanger); a climax (small → BIG → saved → faces). The final chapter's
-     card keeps the Story Mountain SVG + a `.draw-pair` Before/After.
-     Reference: `assets/template_story_card_day08.html`.
+     card adds a Story Mountain SVG + a `.draw-pair` Before/After. **No Story
+     Mountain reference ships with this skill** — author the SVG fresh (a simple
+     5-point mountain path: setting → problem → climax → solution → ending) and
+     give it `class="sc-mtn"` so the print rule below caps its size.
+     Reference for the 4-panel board itself: `assets/template_story_card_day08.html`.
    - Each chapter prints exactly ONE card — see the per-chapter card table in
      `dm-series-data.md`.
    - All prompts stay English (e.g. "Label it — 1 word or a tiny picture",
@@ -166,10 +175,9 @@ template was finalized with the original author after several rounds —
 
 ### Drawing-first CSS & print (v4 — paste verbatim into every chapter file)
 
-Append this block **after** the base `@media print{…}` and the
-`@media (max-width:640px){…}` block (so its print rules win by source order),
-right before `</style>`. It is identical in every chapter file (already present
-in both reference templates):
+Append this block immediately after the base `@media print{…}` block, where
+both reference templates already carry it (`template_day01.html` lines 238–268).
+It is identical in every chapter file:
 
 ```css
 /* ── drawing-first / storyboard task card (shared) ── */
@@ -203,7 +211,7 @@ in both reference templates):
   body.print-card #p4 .student-card .board{flex:1 1 0;grid-auto-rows:1fr;}
   body.print-card #p4 .student-card .frame-cell{display:flex;flex-direction:column;}
   body.print-card #p4 .student-card .frame-cell .fc-draw{flex:1 1 0;}
-  /* #11 only: cap the Story Mountain SVG so the dense capstone card still fits */
+  /* final-chapter card only (DM1 #16 / DM2 #14): cap the Story Mountain SVG */
   body.print-card #p4 .student-card .sc-mtn{max-width:360px;height:auto;margin:2px auto 6px;}
 }
 ```
@@ -243,7 +251,8 @@ in both reference templates):
 5. **Fix the chapter nav**: relabel `<nav class="daynav">` to chapters — update
    prev/next hrefs and the `<select>` options (current chapter = `selected`,
    empty value; list all chapters of the book).
-6. Deliver the file to the user (keep all chapter files together in one folder).
+6. Replace the footer `<div class="foot">` (`Day N / 10` → `Ch N / <total>`).
+7. Deliver the file to the user (keep all chapter files together in one folder).
 
 ## Files
 
@@ -253,5 +262,6 @@ in both reference templates):
 - `assets/template_story_card_day08.html` — final approved file for a chapter
   teaching a **STORY card**: the 4-panel `.board` storyboard pattern + captions.
 - (The template filenames keep their original `day01`/`day08` names from the
-  day-based edition — the structure is unchanged; only the nav labels and
-  header change when authoring per-chapter files.)
+  day-based edition — the structure is unchanged. When authoring a per-chapter
+  file, replace the nav labels, the header, **the footer** (`<div class="foot">`
+  still reads `DM1 · Day N / 10` — change it to `DM1 · Ch N / 16`) and all content.)

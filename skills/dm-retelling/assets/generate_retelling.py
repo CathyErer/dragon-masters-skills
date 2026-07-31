@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 import html
+
+# ── EDIT THESE THREE FOR A NEW BOOK ──────────────────────────────
+BOOK_NUM   = "1"
+BOOK_TITLE = "Rise of the Earth Dragon"
+OUTFILE    = f"DM{BOOK_NUM}_KeyWord_Retelling_AllChapters.html"
+# ─────────────────────────────────────────────────────────────────
+
 # chapter: (num, title, [stops]); stop=(where, when, who[], did[])
 chapters=[
 ("1","To the Castle!",[
@@ -8,7 +15,7 @@ chapters=[
    ["was digging up onions","came on a black horse","took Drake to see King Roland"]),
  ("Castle Halls & Stairs","After arriving at the castle",
    ["Drake","the soldier"],
-   ["rode through the village, over a stone bridge","saw paintings, statues, fancy clothes","went down the stairs","said \"Good luck!\" and left"]),
+   ["rode through the village, over a stone bridge","saw paintings, statues, fancy clothes","went down the stairs","said \"[quote from the chapter]\" and left"]),
  ("The Big Stone Door","End of the chapter",
    ["Drake","a giant red dragon"],
    ["stood alone — afraid but curious","pushed the door open","shot a huge fireball"]),
@@ -16,18 +23,18 @@ chapters=[
 ("2","The Dragon Stone",[
  ("The Stone Door","Right after Chapter 1",
    ["a red-haired girl","the dragon (Vulcan)","a wizard — white beard, pointy hat"],
-   ["yelled \"Vulcan, stand down!\"","had shiny red scales, a long tail","walked out"]),
+   ["yelled \"[quote from the chapter]\"","had shiny red scales, a long tail","walked out"]),
  ("Griffith's Workshop","After the wizard led Drake inside",
    ["the wizard Griffith","Drake"],
-   ["opened the lock with sparks","showed powders & a wooden box","said Drake had \"the heart of a dragon\"","gave a green stone on a gold chain","warned dragons are dangerous"]),
+   ["opened the lock with sparks","showed powders & a wooden box","said Drake had \"[quote from the chapter]\"","gave a green stone on a gold chain","warned dragons are dangerous"]),
 ]),
 ("3","More Dragons!",[
  ("The Underground Room","After leaving the workshop",
    ["Drake","Rori & Vulcan","Bo & Shu","Ana & Kepri"],
-   ["entered a room with no windows, only torches","met the other masters & dragons","thought \"my family won't believe this!\""]),
+   ["entered a room with no windows, only torches","met the other masters & dragons","thought \"[quote from the chapter]\""]),
  ("Drake's Dragon Cave","When they reached the cave",
    ["Griffith","Drake"],
-   ["said \"Meet your dragon!\"","showed a small cave with wood bars","felt nervous but excited"]),
+   ["said \"[quote from the chapter]\"","showed a small cave with wood bars","felt nervous but excited"]),
 ]),
 ("4","Worm",[
  ("Inside Worm's Cave","After the bars were opened",
@@ -35,12 +42,12 @@ chapters=[
    ["saw a brown, snake-like dragon — tiny wings, no legs","put on the stone and felt tingly","named it Worm"]),
  ("Walking to the Training Room","After leaving the cave",
    ["Drake","Worm","Rori"],
-   ["said \"Worm, follow me\"","teased \"a big, ugly worm!\"","worried he wasn't a real Dragon Master"]),
+   ["said \"[quote from the chapter]\"","teased \"[quote from the chapter]\"","worried he wasn't a real Dragon Master"]),
 ]),
 ("5","Do Something!",[
  ("The Training Room","The day after arriving",
    ["Rori & Vulcan","Bo & Shu","Ana & Kepri","Drake & Worm"],
-   ["shot fire at the bull's-eye","sprayed water to put out the fire","made a rainbow with light","did nothing — Drake felt \"only an onion farmer\""]),
+   ["shot fire at the bull's-eye","sprayed water to put out the fire","made a rainbow with light","did nothing — Drake felt \"[quote from the chapter]\""]),
 ]),
 ("6","A New Friend",[
  ("The Dining Room","At suppertime",
@@ -50,7 +57,7 @@ chapters=[
 ("7","A Strange Dream",[
  ("The Dining Room","After the letter was taken",
    ["King Roland the Bold","Drake"],
-   ["stomped in — red hair, bushy beard","called Drake \"scrawny\"","said \"Do not let me down, boy\""]),
+   ["stomped in — red hair, bushy beard","called Drake \"[quote from the chapter]\"","said \"[quote from the chapter]\""]),
  ("The Bedroom","Later that night",
    ["Drake","Bo"],
    ["had a chest & desk, shared a desk","watched the moon shine in","Bo slept peacefully"]),
@@ -61,7 +68,7 @@ chapters=[
 ("8","Flying Practice",[
  ("The Underground Hallway","Next morning, after breakfast",
    ["Rori","Drake","Griffith"],
-   ["said the dragons are a secret","wondered about a dragon army","said \"We are going outside today!\""]),
+   ["said the dragons are a secret","wondered about a dragon army","said \"[quote from the chapter]\""]),
  ("The Valley of Clouds","After the dark tunnel",
    ["Kepri","Vulcan","Shu","Drake & Worm"],
    ["reached a field of grass and hills","looped and circled in the air","flew like swimming","the Dragon Stone glowed!"]),
@@ -85,7 +92,7 @@ chapters=[
 ("11","A Noise in the Night",[
  ("Outside Worm's Cave","After the vision",
    ["Griffith","Drake"],
-   ["said soldiers captured the dragons","\"the king doesn't think what dragons want\""]),
+   ["said soldiers captured the dragons","\"[quote from the chapter]\""]),
  ("The Bedroom","After supper",
    ["Bo","Drake"],
    ["taught Drake the alphabet","drew a D like a dragon's belly","said his Stone glowed with Worm"]),
@@ -102,7 +109,7 @@ chapters=[
    ["snored — his beard flew up","was asleep at the door","lit candles for everyone"]),
  ("The Dragon Caves","Before the outside tunnel",
    ["the dragons","Worm","Drake"],
-   ["woke up Vulcan, Kepri, Shu, Worm","warned \"Do not go into the tunnel!\"","went anyway — Worm followed"]),
+   ["woke up Vulcan, Kepri, Shu, Worm","warned \"[quote from the chapter]\"","went anyway — Worm followed"]),
 ]),
 ("13","Trouble in the Tunnel",[
  ("The Long Dark Tunnel","Walking toward outside",
@@ -110,7 +117,7 @@ chapters=[
    ["floated closer, getting bigger","said it wasn't Griffith's magic — scary","roared and thrashed his tail"]),
  ("The Long Dark Tunnel","Moments later",
    ["Vulcan","Drake","the tunnel"],
-   ["banged his tail on the walls","yelled \"Run!\"","shook — dirt fell, the walls caved in"]),
+   ["banged his tail on the walls","yelled \"[quote from the chapter]\"","shook — dirt fell, the walls caved in"]),
 ]),
 ("14","Trapped!",[
  ("The Collapsed Tunnel","Right after the cave-in",
@@ -142,22 +149,22 @@ chapters=[
 ]
 
 models={
- "1":"Drake was a farm boy digging up onions one morning. A king's soldier came on a black horse and took him to King Roland. They rode over a stone bridge into the castle, past paintings, statues, and people in fancy clothes, then down the stairs. The soldier said \"Good luck!\" and left. Drake stood alone at a big stone door. Afraid but curious, he pushed it open and saw a giant red dragon shoot a fireball!",
- "2":"A red-haired girl yelled, \"Vulcan, stand down!\" The dragon had shiny red scales and a long tail. A wizard with a white beard came out. In his workshop, sparks opened the lock. There were powders and a wooden box. Griffith said Drake had the heart of a dragon and gave him a green stone on a gold chain to connect with his dragon — but warned that dragons are dangerous.",
- "3":"Drake went into a big underground room with no windows, only torches. He met Rori with Vulcan, Bo with blue Shu, and Ana with Kepri. He thought his family would never believe it. Then they reached a small cave with wood bars. Griffith said, \"Meet your dragon!\" Drake felt nervous but excited.",
- "4":"Inside the cave, Drake's dragon was brown and snake-like, with tiny wings and no legs. When Drake put on the stone, he felt tingly and named the dragon Worm. As they walked to the Training Room, Worm followed. Rori teased that he was a big, ugly worm, and Drake worried he wasn't a real Dragon Master.",
- "5":"In the Training Room, Vulcan shot fire at the bull's-eye, Shu sprayed water to put it out, and Kepri's light made a rainbow. But when Drake asked Worm, Worm did nothing. Rori laughed, and Drake felt he didn't belong — he was only an onion farmer.",
- "6":"At supper there was a feast, and sparks made Drake's plate float over. Bo came from the east, Ana from the warm south. Drake wanted to write to his mother but had never gone to school, so Bo wrote the letter — and they did not mention the dragons.",
- "7":"King Roland the Bold stomped in with red hair and a bushy beard. He called Drake scrawny and said, \"Do not let me down, boy.\" That night, the moon shone in while Bo slept. Drake dreamed of a dark cave that smelled like dirt, full of dragons with green eyes. A loud explosion and smoke filled the air, and he woke up sweating.",
- "8":"Rori said the dragons were a secret and wondered about a dragon army. Griffith said they were going outside. They walked through a dark tunnel into the Valley of Clouds. Kepri looped, Vulcan circled on his red wings, and Shu flew like she was swimming. Then Drake's Dragon Stone glowed!",
- "9":"Griffith taught them to shine their dragons' scales. They had been stuck inside three days. A letter came from Drake's mother, but he had to keep the dragons secret. Later, Drake saw Rori whispering to Ana with a sneaky look and wondered what they were up to.",
- "10":"Drake brought a brush and towels to shine Worm, who purred while Drake felt peaceful. Suddenly his hand tingled and stuck to Worm, and he saw a vision — a cave, an explosion, and the king's soldiers chaining Worm and dragging him away. Drake doubted King Roland.",
- "11":"Griffith said the soldiers had captured the dragons and didn't think about what dragons want. After supper, Bo taught Drake the alphabet. Drake said his Stone had glowed with Worm. Then he heard a thunk, sat up, and saw Rori and Ana by Bo's bed!",
- "12":"Late at night, Rori and Ana wanted to take their dragons outside while the castle slept. Bo said it was a bad idea, but Drake agreed. They snuck past Griffith snoring and Simon sleeping. Rori lit candles. They woke the dragons, but Worm warned, \"Do not go into the tunnel!\" Drake went anyway, and Worm followed.",
- "13":"In the tunnel, a glowing red orb floated closer. Bo said it wasn't Griffith's magic. Vulcan roared and thrashed his tail, banging the walls. The tunnel shook and dirt fell. Drake yelled \"Run!\" but the walls caved in.",
- "14":"After the cave-in it was very dark. Worm had no dust on him. Kepri made a white ball of light. Vulcan pushed the rocks but they wouldn't budge, and Shu's water might flood the tunnel. Then Worm's green eyes glowed over his whole body.",
- "15":"Drake's Stone glowed too. Rori thought Worm would explode, but Drake said he was using his mind. The rocks broke into pieces and the tunnel cleared. At the entrance, they met Griffith and Simon. Griffith said the castle was awake and King Roland was furious.",
- "16":"Six guards waited. Griffith said the dragons tried to escape, but Rori admitted it was her fault. The masters said Worm saved them by turning the rocks to dust. Griffith explained Earth Dragons have great power and the Stone glows with a strong link. The red light meant danger was coming. Walking back, Drake felt connected to Worm and knew he was a Dragon Master now.",
+ "1":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "2":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "3":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "4":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "5":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "6":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "7":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "8":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "9":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "10":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "11":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "12":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "13":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "14":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "15":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
+ "16":"Write the model retell for this chapter here (teacher only, 3-5 short sentences in your own words).",
 }
 
 def esc(s): return html.escape(s,quote=True)
@@ -195,7 +202,7 @@ for num,title,stops in chapters:
 doc=f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dragon Masters #1 — Key-Word Retelling</title>
+<title>Dragon Masters #{BOOK_NUM} — Key-Word Retelling</title>
 <style>
   *{{box-sizing:border-box;}}
   body{{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;color:#1A2744;margin:0;background:#fff;}}
@@ -214,7 +221,10 @@ doc=f'''<!DOCTYPE html>
     font-size:14px;font-weight:bold;cursor:pointer;transition:.15s;}}
   .tab:hover{{border-color:#B85C00;}}
   .tab.active{{background:#B85C00;color:#fff;border-color:#B85C00;}}
-  .tabs .navtab{{width:auto;padding:0 14px;height:34px;border:1px solid #ddd;background:#fff;color:#1A2744;border-radius:8px;font-size:14px;font-weight:bold;cursor:pointer;transition:.15s;white-space:nowrap;}}
+
+  /* ── chapter prev/next (auto-added) ── */
+  .tabs .navtab{{width:auto;padding:0 14px;height:34px;border:1px solid #ddd;background:#fff;color:#1A2744;
+    border-radius:8px;font-size:14px;font-weight:bold;cursor:pointer;transition:.15s;white-space:nowrap;}}
   .tabs .navtab:hover{{background:#B85C00;color:#fff;border-color:#B85C00;}}
   h2{{font-size:19px;color:#B85C00;margin:0 0 18px;}}
   .stop{{display:flex;border:1px solid #ececec;border-radius:14px;overflow:hidden;margin-bottom:16px;}}
@@ -240,7 +250,7 @@ doc=f'''<!DOCTYPE html>
   }}
 </style></head><body>
 <div class="wrap">
-  <h1>Dragon Masters #1 · Rise of the Earth Dragon</h1>
+  <h1>Dragon Masters #{BOOK_NUM} · {BOOK_TITLE}</h1>
   <div class="sub">Key-Word Retelling</div>
   <div class="howto">Each card gives you <b>Where</b> and <b>When</b>. Your job: find
     <b>WHO</b> + <b>DID WHAT</b> and say it in your own words — don't read sentences, make your own!</div>
@@ -258,5 +268,5 @@ doc=f'''<!DOCTYPE html>
   }}
   showCh('1');
 </script></body></html>'''
-open("DM1_KeyWord_Retelling_AllChapters.html","w",encoding="utf-8").write(doc)
-print("bytes",len(doc))
+open(OUTFILE,"w",encoding="utf-8").write(doc)
+print("wrote", OUTFILE, len(doc), "bytes")
