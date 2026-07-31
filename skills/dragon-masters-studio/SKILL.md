@@ -4,17 +4,17 @@ description: >
   All-in-one bilingual (English + 简体中文) ESL teaching-material studio for the
   Dragon Masters series (Tracey West, Scholastic Branches) — DM1 "Rise of the
   Earth Dragon", DM2 "Saving the Sun Dragon", and every later title. Generates
-  THREE kinds of material, one chapter at a time: (1) a Chapter Lesson Plan
-  HTML in the Dragon Keep theme (castle shell + parchment surface, drawing-first
-  printable task card, EN-only toggle); (2) a Student Workbook + red Answer Key
-  pair (.docx, needs Node.js); (3) a whole-book Key-Word Retelling page (.html,
-  needs Python 3). Also handles restyles and batch theme sync. Trigger
+  THREE kinds of material, one chapter at a time: (1) an interactive Chapter
+  Lesson Plan HTML (课堂手账 style, drawing-first printable task card, EN-only
+  toggle); (2) a Student Workbook + red Answer Key pair (.docx, needs Node.js);
+  (3) a whole-book Key-Word Retelling page (.html, needs Python 3). Trigger
   whenever the user asks for ANY Dragon Masters / 驯龙大师 / 龙骑士 teaching
   material: "做 DM1 第 N 章教案/课件/任务卡", "DM 第X章 workbook / 练习册 /
-  答案版", "做 DM 复述 / retelling", "继续做下一章", uploads Dragon Masters
-  chapter PDFs, or references Drake, Worm, the Dragon Stone, or King Roland.
-  Carries house rules, per-chapter skill + task-card maps for DM1/DM2, and a
-  design standard for planning any later book.
+  学生版 / 答案版", "做 DM 复述 / retelling / 关键词复述卡", "继续做下一章",
+  "按 studio 风格做", uploads Dragon Masters chapter PDFs, or references Drake,
+  Worm, Bo, Ana, Rori, the Dragon Stone, or King Roland. Carries the shared
+  house rules, per-chapter reading-skill + task-card maps for DM1 (16 ch) and
+  DM2 (14 ch), and a design standard for planning any later book.
 ---
 
 # Dragon Masters Studio
@@ -25,8 +25,7 @@ before generating:
 
 | The user asks for… | Follow | Extra prerequisite |
 |---|---|---|
-| 教案 / 课件 / lesson plan / 任务卡 / task card | `references/lesson-plan.md` + `references/ui-standard.md` | Python 3 for the theme installer (optional) |
-| 换主题 / restyle / 排版、响应式、打印修复 / batch theme sync | `references/ui-standard.md` only — preserve all teaching content | Python 3 (optional) |
+| 教案 / 课件 / lesson plan / 任务卡 / task card | `references/lesson-plan.md` | none |
 | workbook / 练习册 / 学生版 + 答案版 | `references/workbook.md` | Node.js + `npm install docx` |
 | 复述 / retelling / 关键词复述卡 | `references/retelling.md` | Python 3 |
 

@@ -1,137 +1,249 @@
-# DM Chapter Lesson Plan (Dragon Keep edition)
 
-One interactive HTML per **chapter** (DM1 = 16 files, DM2 = 14 files), in the
-approved **Dragon Keep** visual system — castle-dark shell, parchment teaching
-surface. Every rule below is a hard requirement; do not regress.
+# DM Chapter Lesson Plan (per-chapter edition)
 
-## Route the request
+One interactive HTML per **chapter** (DM1 = 16 files, DM2 = 14 files). The
+template was finalized with the original author after several rounds —
+**every rule below is a hard requirement. Do not regress.**
 
-- **New chapter or teaching-content change** → read this file AND
-  `references/ui-standard.md`.
-- **Visual-only restyle, typography fix, responsive fix, print fix, or batch
-  theme sync** → read `references/ui-standard.md` only. Preserve all verified
-  teaching content — never rewrite questions, answers, vocabulary, timing, or
-  task-card instructions during a visual-only request.
-- **Missing or conflicting chapter facts, page numbers, or mappings** → write
-  `待补/待核对`; never guess.
+> **Chapter navigation bar**: every chapter file starts with `<nav
+> class="daynav">` right after `<body>`: a centered pill cluster — `← Ch N-1`
+> link · a `<select>` dropdown listing all chapters of the book (label =
+> `Ch N · Title`, current chapter `selected` with empty value, `onchange`
+> navigates via `location.href`) · `Ch N+1 →` link. Chapter 1's prev is
+> `<span class="off">← Prev</span>` (grayed, unclickable); the last chapter's
+> next is `<span class="off">The End 🐉</span>`. Links are **relative
+> filenames** — works only if all chapter files stay in the same folder with
+> unchanged names. The matching CSS block (`/* ── Day navigation (auto-added)
+> ── */` … `@media print{.daynav{display:none !important;}}`) is injected
+> before the first `</style>`; nav is hidden in print and stays clear of the
+> fixed top-right toolbar (centered, `z-index:40`). Both reference templates
+> already contain the nav + CSS — they were built when lessons were grouped by
+> teaching day, so when creating a chapter file **relabel the nav from days to
+> chapters** and update the prev/next hrefs + dropdown options accordingly.
+>
+> Locked content rules (v5): (1) vocab table = **Word / Definition (英英释义) /
+> In the Book** (中文 + Quick Check columns removed); (2) GOs have **no hints**,
+> and an **Answer Key button fills the answers straight into the boxes**
+> (`toggleGO`, per-box `data-ans`) — no reference paragraph under the GO;
+> (3) GO answers that narrate the chapter are **past tense**; (4) **no 💡/⚠️
+> tipline notes** on task cards. The reference templates already contain all of this.
+>
+> Locked card rules (v4): task cards are **DRAWING-FIRST** (draw, don't write
+> sentences) and print to **exactly one page, filled, never cut**. See the
+> Task Card rules below and the two reference assets.
 
-## Source authority
+## Inputs
 
-Use real project files, not chat memory:
+1. **Chapter PDF**: provided by the user (ask for it if missing) —
+   always read the actual chapter text first; quotes and page numbers must be real.
+2. **Chapter → skill → task card mapping**: `references/dm-series-data.md`
+   (this skill) — one table per book giving each chapter its SKILL A, optional
+   SKILL B, and its own task card. If the user maintains their own plan
+   document, use theirs instead.
+   **Only DM1 and DM2 have a ready-made table.** For DM3 and later titles, build
+   one first with `references/design-standard.md` (read the
+   whole book, then derive each chapter's skill from its text), and get the user
+   to confirm the table before generating lesson files.
+3. **Graphic organizer designs**: one GO per reading skill. Follow the GO
+   patterns already present in the two reference templates (fillable `.fill`
+   boxes, one `data-ans` per box); if the user supplies their own GO designs,
+   convert those into HTML inside the lesson plan.
+4. **Task card content**: every chapter has its own card — take it from the
+   per-chapter table in `dm-series-data.md` (DM1 = 16 cards, DM2 = 14 cards,
+   bound at the end into 《My Dragon Master Book N》). Card prompts are rendered
+   as a printable all-English **drawing-first** student card — convert any
+   "write" prompts into draw frames / 4-panel boards (see Task Card v4).
+   The card is always **the drawing-form of that chapter's reading skill** — the
+   skill→card-form lookup table is in `design-standard.md` (Rule 5).
 
-1. The chapter PDF the user provides (ask for it if missing) — quotes and page
-   references must come from it.
-2. `references/dm-series-data.md` (this skill) — each chapter's SKILL A,
-   optional SKILL B, and task card. DM3+: build the table first with
-   `references/design-standard.md` and get the user's confirmation.
-3. Existing verified lesson-plan HTML for content not explicitly being revised.
+## Output
 
-## Create or revise a lesson
+- File: `DM<book>_Ch<NN>_Lesson_Plan.html` (e.g. `DM1_Ch04_Lesson_Plan.html`),
+  delivered to the user (into their book folder's `3-Lesson Plan/` subfolder if
+  they keep one — all chapter files must stay together in one folder for the
+  relative chapter-nav links to work).
+- Start from `assets/template_day01.html` (final approved version).
+  **Copy it, keep ALL CSS/JS untouched, replace content only.**
+- Bump the localStorage key: `var KEY='dm<book>-ch<NN>-lp-v1'` (unique per file;
+  bump suffix on every content revision so stale saved edits don't mask updates).
 
-1. Confirm the book, chapter, reading skill, task card, and output folder.
-2. Read the chapter text before authoring vocabulary, quotes, page anchors,
-   answers, or examples.
-3. Start from an approved page in the same lesson set. If a structural template
-   is needed:
-   - `assets/template-world-card.html` — chapters with a world-building card
-     (character / dragon / name / power / home / dream);
-   - `assets/template-story-card.html` — chapters with a story/sequence card
-     (4-panel board).
-   The bundled templates carry **placeholders** (`[quote from the chapter]`,
-   `Sentence from the chapter containing <word> — replace with the real one`) —
-   always replace them with real sentences from the user's book. They are also
-   still Day-labelled: **relabel nav, title, header, footer and the `<select>`
-   options from days to chapters** (`DM1 · Ch N · Title`).
-4. Build exactly four tabs and matching panels in this order:
-   Vocabulary `#p1`, Pause Points `#p2`, Close Reading `#p3`, Task Card `#p4`.
-5. Preserve EN-only, edit, reset, answer reveal, print, chapter navigation, and
-   `localStorage`. Give every new or substantively revised page a unique storage
-   key (`var KEY='dm<book>-ch<NN>-lp-v1'`; bump the suffix on every content
-   revision so stale saved edits don't mask updates).
-6. Update the current chapter, previous/next targets, dropdown selection, title,
-   chapter metadata, and target filename **together** —
-   `DM<book>_Ch<NN>_Lesson_Plan.html`, all chapter files in one folder so the
-   relative nav links work.
-7. Apply the shared Dragon Keep theme and run validation before delivery
-   (see below).
+## Locked template rules
 
-## Four-panel teaching contract
+### Layout & style
+- 课堂手账 style: sky-blue (`#1d6cab` / `#2f8fd4`) on notebook ruled background,
+  lemon-yellow highlighter accents (`#ffe261`), 📌 pinned cards, slight card rotation.
+- Rounded sans font stack (Quicksand / Varela Round / Yuanti SC / 幼圆 / PingFang SC).
+  **No serif fonts.**
+- Full-screen layout — no max-width container ("不要细长的，要全屏").
+- Header: eyebrow (🐉 series line) + highlighted H1 `Chapter N · Chapter Title` +
+  subtitle + 4 meta cards (Chapter / Reading Skill / Task Card / Time).
 
-### Vocabulary `#p1`
-- About ten high-value words for ESL Grades 1–3.
-- Exactly three columns: Word (+pos) / short English-English Definition /
-  In the Book (real chapter sentence, target word italicized).
-- No Chinese column, no Quick Check, no pre-teach groups, no highlighted rows.
+### Four tabs (exactly these, in this order)
+1. **Vocabulary 词汇** — ~10 words. Table columns: **Word (+pos) / Definition
+   (英英释义) / In the Book** (real sentence from the chapter, target word
+   italicized). Definition = a short English-English definition (ESL Gr 1–3,
+   dictionary style, present tense is fine here). **NO 中文 column, NO Quick Check
+   column, NO pre-teach grouping, NO highlighted rows** — all of these were
+   removed in v5.
+2. **Pause Points 共读停顿点** — 3–5 stops anchored to real page numbers
+   ("PAUSE ① · end of p.2 — quote"). Each stop asks **exactly ONE question that
+   points at the chapter's reading skill** (+ a yellow skill tag). The answer sits
+   inside `<details class="ans">` — 👁 click-to-show, never visible by default.
+3. **Close Reading 精读策略** — if the chapter has two skills, **teach them separately**:
+   `SKILL A` blue bar, `SKILL B` gold bar. Each skill section =
+   (a) concept definition cards — student-facing definitions, e.g.
+   "CHARACTER: the people or animals in the story", English first, Chinese below,
+   plus a chapter example; then
+   (b) practice with the matching Graphic Organizer for the chapter's reading skill
+   rebuilt as fillable HTML (`.fill` contenteditable lines, **NO hints / no
+   `data-hint`** — boxes start blank). Each GO ends with an **Answer Key button**
+   `<button class="ansbtn" onclick="toggleGO(this)">👁 Answer Key</button>`:
+   clicking fills every `.fill` in that GO with its own `data-ans` (green),
+   clicking again clears. **Author one `data-ans` per box.** GO answers that
+   NARRATE the chapter are **past tense** (book quotes, theme sentences, and
+   general "what I know" facts keep their natural tense).
+   **NO reference-answer paragraph under the GO** — answers live only in the boxes (v5).
+   **You-do work must only practice content already taught in this lesson — never new material.**
+   **NO teaching-method instructions in the visible text**: no "I do/We do/You do"
+   labels, no "project this card", no "fill together / on their own", no printing
+   notes. Pure teaching content only (definitions, examples, GO, answers).
+4. **Task Card 任务卡 — DRAWING-FIRST (v4)** — the
+   `Print Task Card only` button (body.print-card mechanism prints just the card),
+   then a **printable all-English student card built around DRAWING, not
+   sentence-writing**. Hard rule: **replace every "write N sentences" block with a
+   drawing area + at most ONE caption line.** Keep guiding `.checks` (trait/word
+   choices) and short single-word fills; never multi-line writing.
+   **NO 💡/⚠️ `.tipline` notes** at the bottom of the card — every
+   "In the book…" model and writing tip was removed in v5; the `.tipline` print CSS may stay
+   (harmless, no element uses it). Two patterns:
+   - **Profile / world-building cards** (character, dragon, name, power, home,
+     dream — DM1 Ch1–7, DM2 Ch1/3/5) → one big `.draw-frame` (draw the character /
+     dragon / place) + a `.draw-grid` of small `.draw-cell` label boxes
+     ("1 word OR a tiny picture") + `.checks` for trait/word choices. A dream or
+     cause→effect card adds a `.draw-pair` (two mini-sketches). A naming card
+     keeps ONE short name line only. Reference: `assets/template_day01.html`.
+   - **Story / sequence cards** (anything with beats: SWBST, cause chains, trap →
+     tries → solution, action scenes, the reveal) → a 4-panel comic `.board` of
+     `.frame-cell`s (`.fc-num` beat label + `.fc-draw` panel + `.fc-cap` one ✍
+     caption line). The four panels map to the chapter's structure — e.g. a cause
+     chain (action → because → so → finally); a trap (trap → try1❌ → try2❌ →
+     cliffhanger); a climax (small → BIG → saved → faces). The final chapter's
+     card adds a Story Mountain SVG + a `.draw-pair` Before/After. **No Story
+     Mountain reference ships with this skill** — author the SVG fresh (a simple
+     5-point mountain path: setting → problem → climax → solution → ending) and
+     give it `class="sc-mtn"` so the print rule below caps its size.
+     Reference for the 4-panel board itself: `assets/template_story_card_day08.html`.
+   - Each chapter prints exactly ONE card — see the per-chapter card table in
+     `dm-series-data.md`.
+   - All prompts stay English (e.g. "Label it — 1 word or a tiny picture",
+     "draw 4 panels"). `.draw-*` / `.board` CSS is appended in both reference
+     templates — see "Drawing-first CSS & print" below; paste it verbatim.
 
-### Pause Points `#p2`
-- 3–5 stops anchored to verified page numbers and brief real-text cues.
-- Exactly ONE question per stop, practising the chapter's reading skill.
-- Progress from recall toward inference, synthesis, or prediction as the
-  chapter permits.
-- Answer hidden by default inside `<details class="ans">`.
+### Bilingual & interaction (already wired in the template JS/CSS — keep intact)
+- Bilingual layout: **English on top, Chinese below** (`.cn` spans render as block,
+  smaller gray). Exceptions stay inline/table-cell: `.tab .cn`, `th.cn`, `td.cn`, etc.
+- `EN only` toggle button hides every `.cn`; preference persisted.
+- Edit mode: ✏️ 编辑 makes all `.ed` regions contenteditable; every `[data-del]`
+  block gets a ✕ delete button; autosaves `#doc.innerHTML` to localStorage;
+  ↺ 重置 restores original; 🖨 打印 prints all tabs expanded.
+- **Pause-Point answers**: `<details class="ans"><summary>👁 Answer 答案</summary>…</details>` (click-to-show, hidden by default).
+- **GO answers**: per-box `data-ans` + an `.ansbtn` calling `toggleGO(this)`, which fills/clears every `.fill` in that GO. CSS `.fill.ans-filled{color:#1f7a4d;font-weight:600}` + `.ansbtn`; the JS stashes the student's text in `data-user` and restores it on toggle-off. (Already wired in both reference templates.)
+- Print CSS: `.go, .pause, .def, .defs, .se-grid, .ot-wrap, .student-card, .task,
+  .teacher-only, .meta, table, .idwy { break-inside: avoid; }` — **GOs and cards
+  must never be cut across PDF pages**.
 
-### Close Reading `#p3`
-- Two skills → teach separately with distinct skill sections (SKILL A blue,
-  SKILL B gold).
-- Short student-facing definition in English, Chinese support below, plus a
-  verified chapter example.
-- Rebuild the matching Graphic Organizer as editable HTML: every `.fill` starts
-  blank (no hints / no `data-hint`); every answerable box has its own
-  `data-ans`; one Answer Key button calls `toggleGO(this)` to fill or clear.
-- Narrative chapter answers in past tense; quotations, general facts, theme
-  statements keep their natural tense.
-- No reference-answer paragraph below the organizer.
-- Practice only material already taught in this lesson. No teaching-method
-  labels ("I do / We do / You do", "project this card") in visible content.
+### Drawing-first CSS & print (v4 — paste verbatim into every chapter file)
 
-### Task Card `#p4`
-- Printable, all-English, **drawing-first**: replace multi-sentence writing with
-  drawing space and at most one short caption line. Keep short single-word
-  labels and word/trait choices. No tip lines, no model-answer notes.
-- One filled print page, never cut. The `Print Task Card only` button
-  (body.print-card) must keep working.
-- Take the card from the per-chapter table in `dm-series-data.md` — the card is
-  always **the drawing-form of that chapter's reading skill** (lookup table in
-  `design-standard.md` Rule 5). World-building cards = big draw-frame + label
-  grid (+ `.draw-pair` for cause→effect); story cards = 4-panel `.board` with
-  one ✍ caption per panel. The final chapter's card adds a Story Mountain SVG +
-  Before/After pair — no reference asset ships for the SVG; author a simple
-  5-point mountain path and give it `class="sc-mtn"`.
+Append this block immediately after the base `@media print{…}` block, where
+both reference templates already carry it (`template_day01.html` lines 238–268).
+It is identical in every chapter file:
 
-## Apply or synchronize Dragon Keep
-
-Use the bundled shared assets instead of baking theme copies into every page:
-
-- `assets/dragon-keep-theme.css`
-- `assets/dragon-keep-theme.js`
-
-```bash
-python3 scripts/install_theme.py "/absolute/path/to/lesson folder"
-python3 scripts/install_theme.py "/absolute/path/to/lesson folder" --check
+```css
+/* ── drawing-first / storyboard task card (shared) ── */
+.student-card .draw-frame{border:1.5px solid #555;border-radius:8px;min-height:200px;margin:6px 0 12px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:12px;}
+.student-card .draw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:8px;margin-bottom:6px;}
+.student-card .draw-cell{border:1.5px solid #777;border-radius:6px;min-height:84px;display:flex;flex-direction:column;}
+.student-card .draw-cell .dc-lab{font-size:12px;font-weight:700;text-align:center;border-bottom:1px solid #999;padding:3px 4px;}
+.student-card .draw-cell .dc-box{flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:10px;text-align:center;}
+.student-card .draw-pair{display:grid;grid-template-columns:1fr 34px 1fr;align-items:center;gap:6px;margin-bottom:10px;}
+.student-card .draw-pair .dp-box{border:1.5px solid #555;border-radius:8px;min-height:120px;display:flex;flex-direction:column;}
+.student-card .draw-pair .dp-lab{font-size:12px;font-weight:700;text-align:center;border-bottom:1px solid #999;padding:3px 4px;}
+.student-card .draw-pair .dp-draw{flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:10px;}
+.student-card .draw-pair .dp-arrow{text-align:center;font-size:24px;color:#555;font-weight:800;}
+.student-card .board{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 4px;}
+.student-card .frame-cell{border:1.5px solid #555;border-radius:8px;overflow:hidden;}
+.student-card .frame-cell .fc-num{font-size:11px;font-weight:800;background:#eee;padding:2px 8px;}
+.student-card .frame-cell .fc-draw{min-height:110px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:10px;}
+.student-card .frame-cell .fc-cap{border-top:1px dashed #999;min-height:24px;font-size:12px;padding:3px 6px;}
+.student-card .frame-cell .fc-cap::before{content:"✍ ";color:#999;}
+@media print{
+  body.print-card{padding:6mm 10mm;}
+  .student-card{padding:16px 24px;break-inside:avoid;page-break-inside:avoid;}
+  .student-card .sc-task{padding:6px 12px;margin-bottom:8px;}
+  .student-card h5{margin:9px 0 4px;}
+  .student-card .tipline{margin-top:8px;padding-top:6px;}
+  /* fill exactly one page: card stretches, drawing areas absorb the slack */
+  body.print-card #p4 .student-card{display:flex !important;flex-direction:column;min-height:86vh;box-sizing:border-box;}
+  body.print-card #p4 .student-card .draw-frame{flex:3 1 0;}
+  body.print-card #p4 .student-card .draw-pair{flex:2 1 0;}
+  body.print-card #p4 .student-card .draw-pair .dp-box{min-height:0;height:100%;}
+  body.print-card #p4 .student-card .board{flex:1 1 0;grid-auto-rows:1fr;}
+  body.print-card #p4 .student-card .frame-cell{display:flex;flex-direction:column;}
+  body.print-card #p4 .student-card .frame-cell .fc-draw{flex:1 1 0;}
+  /* final-chapter card only (DM1 #16 / DM2 #14): cap the Story Mountain SVG */
+  body.print-card #p4 .student-card .sc-mtn{max-width:360px;height:auto;margin:2px auto 6px;}
+}
 ```
 
-(Needs **Python 3**; the pages themselves work without it, so if Python is
-unavailable, link the two assets manually in each page and say so.)
+**Why each rule matters (do not regress):**
+- `display:flex !important` is **required** — the base template has
+  `body.print-card #p4 .student-card{display:block !important}`; without
+  `!important` here it wins and the card stays block, leaving huge bottom whitespace.
+- `min-height:86vh` < 100vh **guarantees one page** (can't overflow) while the
+  flex-grow on `.draw-frame` / `.draw-pair` / `.board` fills the slack — so the card
+  is full, not half-empty, and the drawing space is large.
+- These are **CSS-only**, outside `#doc`, so they take effect on reload without a
+  KEY bump. (Still bump KEY when card *content* changes.)
 
-For a new book, copy the shared assets into that lesson folder and update only
-the `chapters` configuration in `dragon-keep-theme.js` (one entry per lesson —
-the Dragon Stone path sizes itself from the config). Hero art is **optional**:
-set `ART_BASE` to a folder of chapter art the user owns, or leave it `''` — the
-parchment hero renders fine without images. Never ship or hotlink book
-illustrations.
+### Content calibration
+- ESL Grade 1–3; definitions and questions in short, common-word English.
+- Quotes must be verbatim from the chapter PDF with correct page numbers.
+- Question ladder across pause points: recall → outside-trait/skill question →
+  synthesis → prediction at the chapter cliffhanger (when the chapter has one).
+- Each chapter must reference its task card's role in the book's card arc — the
+  cards accumulate into the student's own bound book, so a later card should
+  build on what earlier ones established (e.g. the dragon's hidden power planted
+  early pays off near the climax).
 
-## Validation contract
+## Workflow
 
-Before delivery:
+1. Read the chapter PDF (provided by the user).
+2. Pull the chapter's skill + task card from the per-chapter tables in
+   `references/dm-series-data.md` (or the user's own plan
+   document); design the GO for that skill following the patterns in the
+   reference templates.
+3. Copy `assets/template_day01.html` → new filename; replace header/meta,
+   vocabulary rows (Word / Definition / In the Book), pause points, skill sections
+   + GOs (blank `.fill` boxes + one `data-ans` each, past-tense narration, no ref
+   paragraph), task card (drawing-first, no tipline). Keep CSS/JS.
+4. Bump the localStorage KEY.
+5. **Fix the chapter nav**: relabel `<nav class="daynav">` to chapters — update
+   prev/next hrefs and the `<select>` options (current chapter = `selected`,
+   empty value; list all chapters of the book).
+6. Replace the footer `<div class="foot">` (`Day N / 10` → `Ch N / <total>`).
+7. Deliver the file to the user (keep all chapter files together in one folder).
 
-1. Run `install_theme.py --check` on the complete lesson folder.
-2. Confirm all navigation targets exist, CSS braces balance, JS parses.
-3. Confirm title chapter, selected nav chapter, and filename agree.
-4. Confirm no conflict markers and no duplicate shared-asset tags.
-5. For content work, check every quote, page number, answer, and chapter mapping
-   against the source PDF.
-6. Render at least one short page and the densest page when browser QA is
-   available; report static checks only when it is not.
+## Files
+
+- `assets/template_day01.html` — final approved file for a chapter teaching a
+  WORLD-building drawing card (`.draw-frame` + `.draw-grid` + `.checks`). Single
+  source of truth for structure, CSS and JS. Copy this for any new chapter.
+- `assets/template_story_card_day08.html` — final approved file for a chapter
+  teaching a **STORY card**: the 4-panel `.board` storyboard pattern + captions.
+- (The template filenames keep their original `day01`/`day08` names from the
+  day-based edition — the structure is unchanged. When authoring a per-chapter
+  file, replace the nav labels, the header, **the footer** (`<div class="foot">`
+  still reads `DM1 · Day N / 10` — change it to `DM1 · Ch N / 16`) and all content.)
 
 ## After delivering
 
