@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Cathy Chu">
+<meta name="description" content="Dragon Masters Book 1 · Day 1 教案：Ch 1 To the Castle! — 词汇、停顿点、Close Reading（Story Elements + Outside Traits 详细讲解 + GO）、可打印学生任务卡。">
+<meta name="generator" content="Kami">
+<title>DM1 · Day 1 · To the Castle! — Lesson Plan</title>
+<style>
+  :root{
+    --bg:#eef7ff;
+    --rule:#dceaf6;
+    --blue:#1d6cab;
+    --blue-soft:#2f8fd4;
+    --border:#b5d6ee;
+    --yellow:#ffe261;
+    --yellow-bg:#fff8d6;
+    --yellow-edge:#e3c93d;
+    --ink:#33424f;
+    --muted:#7d93a5;
+    --white:#fff;
+    --sans:"Quicksand","Varela Round","Comfortaa","Yuanti SC","幼圆","YouYuan","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{background:var(--bg);}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    background-image:linear-gradient(var(--rule) 1px,transparent 1px);
+    background-size:100% 28px;
+    padding:40px 4vw 64px;
+    line-height:1.75;font-size:15.5px;
+    min-height:100vh;
+  }
+
+  /* EN-only mode */
+  body.en .cn{display:none !important;}
+
+  /* bilingual layout: EN on top, CN below */
+  .cn{display:block;font-size:.92em;color:var(--muted);font-weight:500;line-height:1.6;}
+  .tab .cn,th .cn,.se-head .cn,.go-title .cn,.skillbar .cn,.ot-box .cn,.who .cn,.frame .cn,.cardbar .cn,.dex .cn,.tagx .cn{display:inline;font-size:inherit;color:inherit;font-weight:inherit;}
+  td.cn,th.cn{display:table-cell;}
+  .stepline .cn{margin-left:32px;}
+  h2 .cn{margin-left:0;}
+
+  /* click-to-show answers */
+  details.ans{margin-top:6px;}
+  details.ans summary{
+    list-style:none;display:inline-block;cursor:pointer;
+    font-size:12px;font-weight:700;color:var(--blue);
+    background:#eaf4fc;border:1.5px solid var(--border);border-radius:999px;
+    padding:2px 14px;user-select:none;
+  }
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary:hover{background:#dcecf9;}
+  details.ans[open] summary{background:var(--yellow);border-color:var(--yellow-edge);color:#6b5800;}
+  details.ans>div{margin-top:6px;}
+
+  /* ── Toolbar ── */
+  .toolbar{position:fixed;top:14px;right:18px;z-index:50;display:flex;gap:8px;}
+  .toolbar button{
+    font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;
+    border:1.5px solid var(--border);border-radius:999px;padding:6px 16px;
+    background:var(--white);color:var(--blue);box-shadow:0 2px 6px rgba(40,80,120,.12);
+  }
+  .toolbar button:hover{background:#eaf4fc;}
+  body.editing .toolbar #editBtn{background:var(--yellow);border-color:var(--yellow-edge);color:#6b5800;}
+  body.en .toolbar #langBtn{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .edit-tip{display:none;font-size:12px;color:#6b5800;background:var(--yellow-bg);border:1.5px dashed var(--yellow-edge);border-radius:6px;padding:4px 12px;margin-bottom:14px;}
+  body.editing .edit-tip{display:inline-block;}
+
+  /* ── Header ── */
+  .eyebrow{font-size:12px;letter-spacing:.18em;color:var(--blue-soft);text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+  h1{font-size:30px;font-weight:700;color:var(--blue);display:inline;background:linear-gradient(transparent 62%,var(--yellow) 62%);line-height:1.45;}
+  .subtitle{color:var(--muted);font-size:15px;margin:10px 0 18px;}
+  .meta{display:flex;gap:12px;margin-bottom:26px;flex-wrap:wrap;}
+  .meta div{background:var(--white);border:1.5px solid var(--border);border-radius:4px;padding:8px 16px;font-size:12.5px;color:var(--muted);flex:1;min-width:160px;transform:rotate(-.3deg);position:relative;}
+  .meta div:nth-child(2n){transform:rotate(.4deg);}
+  .meta b{color:var(--blue);display:block;font-size:14px;font-weight:700;}
+
+  /* ── Tabs ── */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;}
+  .tab{
+    font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--muted);
+    background:#e2eff9;border:1.5px solid var(--border);border-bottom:none;
+    border-radius:10px 10px 0 0;padding:10px 22px 8px;cursor:pointer;
+  }
+  .tab:hover{color:var(--blue);}
+  .tab.on{background:var(--white);color:var(--blue);position:relative;}
+  .tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--white);}
+  .panel{
+    display:none;background:var(--white);border:1.5px solid var(--border);
+    border-radius:0 10px 10px 10px;padding:30px 34px;margin-bottom:30px;min-height:60vh;
+  }
+  .panel.on{display:block;}
+  .panel h2{font-size:17px;color:var(--blue);font-weight:800;margin-bottom:16px;}
+  .panel h2 .badge{background:var(--yellow);color:#6b5800;border-radius:4px;padding:1px 10px;font-size:13px;margin-right:10px;transform:rotate(-2deg);display:inline-block;}
+
+  /* ── Vocabulary ── */
+  table{width:100%;border-collapse:collapse;font-size:14px;background:var(--white);border:1.5px solid var(--border);}
+  th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);text-align:left;padding:9px 12px;background:#eaf4fc;border-bottom:1.5px solid var(--border);}
+  td{padding:9px 12px;border-bottom:1px dashed #cfe3f2;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td.w{font-weight:700;color:var(--blue);white-space:nowrap;}
+  td .pos{font-weight:400;font-style:italic;color:var(--muted);font-size:12.5px;margin-left:3px;}
+  td.zh{white-space:nowrap;}
+
+  /* ── Pause points ── */
+  .pause{background:var(--white);border:1.5px solid var(--border);border-radius:4px;padding:15px 20px;margin-bottom:20px;position:relative;}
+  .pause::before{content:"📌";position:absolute;top:-11px;left:14px;font-size:16px;}
+  .pw{font-size:12.5px;color:var(--blue-soft);font-weight:800;margin-bottom:4px;}
+  .pw .tagx{background:var(--yellow);color:#6b5800;border-radius:3px;padding:0 8px;margin-left:8px;font-size:11.5px;}
+  .pq{font-size:15.5px;margin-bottom:6px;}
+  .pq b{color:var(--blue);}
+  .pa{font-size:13.5px;color:var(--muted);}
+  .pa b{color:var(--ink);}
+
+  /* ── Skill sections ── */
+  .skillbar{
+    background:var(--blue);color:#fff;font-weight:800;font-size:15.5px;
+    border-radius:6px;padding:9px 18px;letter-spacing:.05em;
+    margin:6px 0 16px;
+  }
+  .skillbar.gold{background:#b8860b;margin-top:34px;}
+  .skillintro{font-size:14px;color:#5d7283;margin:0 0 14px;background:#f4f9fd;border-left:4px solid var(--border);border-radius:0 6px 6px 0;padding:8px 14px;}
+  .defs3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+  .defs2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+
+  /* ── Concept cards (definitions) ── */
+  .defs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:6px 0 24px;}
+  .def{background:#fbfdff;border:1.5px solid var(--border);border-radius:8px;padding:12px 16px;position:relative;}
+  .def .dword{font-weight:800;color:var(--blue);font-size:15px;}
+  .def .dword .icon{margin-right:6px;}
+  .def .dmean{font-size:14px;margin-top:2px;}
+  .def .dcn{font-size:13px;color:var(--muted);}
+  .def .dex{font-size:12.5px;color:#6e6347;background:var(--yellow-bg);border-radius:4px;padding:3px 10px;margin-top:8px;display:inline-block;}
+  .def .dex b{color:#a07c00;}
+  .def.hl{border-color:var(--yellow-edge);background:#fffdf2;}
+
+  /* ── Close reading / GO ── */
+  .stepline{font-size:14px;font-weight:800;color:var(--blue);margin:22px 0 10px;}
+  .stepline .sno{background:var(--blue);color:#fff;border-radius:50%;width:24px;height:24px;display:inline-block;text-align:center;line-height:24px;font-size:12.5px;margin-right:8px;}
+  .idwy{display:flex;gap:12px;margin:10px 0 18px;flex-wrap:wrap;}
+  .idwy>div{flex:1;min-width:200px;background:var(--yellow-bg);border:1.5px dashed var(--yellow-edge);border-radius:6px;padding:11px 15px;font-size:13.5px;color:#6e6347;position:relative;}
+  .idwy b{display:block;color:#a07c00;font-size:14px;margin-bottom:2px;}
+
+  .go{border:2px solid var(--blue);border-radius:8px;margin:12px 0 26px;overflow:visible;position:relative;}
+  .go-title{background:var(--blue);color:#fff;font-weight:800;font-size:15px;padding:8px 18px;letter-spacing:.04em;border-radius:5px 5px 0 0;}
+  .go-title small{font-weight:500;opacity:.85;margin-left:8px;}
+  .go-body{padding:18px 20px;background:#fbfdff;border-radius:0 0 6px 6px;}
+
+  .se-grid{display:flex;gap:0;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;}
+  .se-col{flex:1;border-right:1.5px solid var(--border);}
+  .se-col:last-child{border-right:none;}
+  .se-head{background:#eaf4fc;text-align:center;padding:8px 6px;font-weight:800;color:var(--blue);font-size:14px;border-bottom:1.5px solid var(--border);min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .se-head small{display:block;font-weight:500;color:var(--muted);font-size:12px;}
+  .se-cell{padding:12px 14px;min-height:110px;font-size:14px;}
+  .fill{display:block;border-bottom:1.5px solid #9cc3e2;min-height:26px;margin:8px 0;outline:none;font-size:14px;color:#1a4f7e;}
+  .fill:empty::before{content:attr(data-hint);color:#b9cfdf;font-size:12.5px;}
+  .ref{font-size:12.5px;color:var(--muted);margin-top:10px;}
+  .ref b{color:var(--blue-soft);}
+  .stepchip{font-size:11px;font-weight:800;border-radius:3px;padding:0 8px;margin-left:8px;vertical-align:2px;}
+  .chip-i{background:#ffd9cf;color:#b14a31;}
+  .chip-w{background:#d9eecf;color:#4a7c2e;}
+  .chip-y{background:#d6e6f7;color:#1d6cab;}
+
+  .ot-wrap{display:flex;gap:16px;align-items:stretch;flex-wrap:wrap;}
+  .ot-center{flex:0 0 210px;background:var(--yellow-bg);border:2px dashed var(--yellow-edge);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;}
+  .ot-center .who{font-weight:800;color:#a07c00;font-size:14.5px;}
+  .ot-center .frame{width:120px;height:120px;border:1.5px solid var(--yellow-edge);border-radius:8px;background:#fff;margin:10px 0 6px;display:flex;align-items:center;justify-content:center;color:#d8c780;font-size:11.5px;}
+  .ot-boxes{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:320px;}
+  .ot-box{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:11px 14px;font-size:13.5px;position:relative;}
+  .ot-box .lab{font-weight:800;color:var(--blue);font-size:13px;}
+  .ot-box .ask{color:var(--muted);font-size:12px;margin-bottom:2px;}
+
+  /* ── Task card (student printable) ── */
+  .teacher-only{background:var(--yellow-bg);border:1.5px dashed var(--yellow-edge);border-radius:6px;padding:12px 18px;margin-bottom:20px;font-size:14px;color:#6e6347;position:relative;}
+  .teacher-only .tl{font-weight:800;color:#a07c00;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;}
+  .teacher-only .zh{display:block;font-size:12.5px;color:var(--muted);}
+
+  .student-card{
+    max-width:720px;margin:0 auto;background:#fff;border:2.5px solid #333;
+    border-radius:10px;padding:26px 32px;font-size:14.5px;color:#222;position:relative;
+  }
+  .student-card .sc-head{text-align:center;border-bottom:2.5px solid #333;padding-bottom:10px;margin-bottom:14px;}
+  .student-card .sc-head .sc-series{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#666;}
+  .student-card .sc-head h3{font-size:21px;font-weight:800;margin:2px 0;}
+  .student-card .sc-head .sc-sub{font-size:12.5px;color:#555;}
+  .student-card .sc-task{background:#f4f4f4;border-radius:6px;padding:8px 14px;font-size:13.5px;margin-bottom:14px;}
+  .student-card h5{font-size:13px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1.5px solid #333;padding-bottom:3px;margin:16px 0 8px;font-weight:800;}
+  .student-card .sline{display:flex;gap:8px;align-items:baseline;margin-bottom:9px;flex-wrap:wrap;}
+  .student-card .sline .lbl{font-weight:700;white-space:nowrap;}
+  .student-card .sline .blank{flex:1;border-bottom:1.5px solid #555;min-width:120px;min-height:20px;}
+  .student-card .sline .hint{font-size:11.5px;color:#888;font-style:italic;width:100%;}
+  .student-card .portrait{width:200px;height:200px;border:1.5px solid #555;border-radius:8px;margin:6px auto 4px;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:12px;}
+  .student-card .checks{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 10px;font-size:13.5px;margin-bottom:8px;}
+  .student-card .checks span::before{content:"☐ ";}
+  .student-card .tipline{font-size:12px;color:#666;border-top:1px dashed #999;margin-top:14px;padding-top:8px;}
+  .cardbar{text-align:center;margin-bottom:16px;}
+  .cardbar button{
+    font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;
+    border:1.5px solid var(--border);border-radius:999px;padding:6px 18px;
+    background:var(--white);color:var(--blue);
+  }
+  .cardbar button:hover{background:#eaf4fc;}
+
+  .foot{font-size:12.5px;color:var(--muted);text-align:right;border-top:1.5px dashed var(--border);padding-top:12px;}
+
+  /* ── Edit mode ── */
+  .del-btn{
+    display:none;position:absolute;top:-9px;right:-9px;width:22px;height:22px;
+    background:#e8694f;color:#fff;border-radius:50%;text-align:center;line-height:21px;
+    font-size:13px;cursor:pointer;z-index:10;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.25);
+  }
+  body.editing .del-btn{display:block;}
+  td .del-btn{top:6px;left:-9px;right:auto;}
+  tr{position:relative;}
+  body.editing [contenteditable="true"]:focus{outline:2px solid var(--yellow-edge);outline-offset:2px;border-radius:2px;}
+
+  @media print{
+    html,body{background:#fff;background-image:none;}
+    body{padding:8mm 12mm;}
+    .tabs,.toolbar,.edit-tip,.cardbar{display:none !important;}
+    .panel{display:block !important;margin-bottom:18px;min-height:0;border:none;padding:0 0 12px;}
+    /* never cut these blocks across pages */
+    .go,.pause,.def,.defs,.se-grid,.ot-wrap,.student-card,.task,.teacher-only,.meta,table,.idwy{break-inside:avoid;page-break-inside:avoid;}
+    .skillbar{break-after:avoid;page-break-after:avoid;}
+    .stepline{break-after:avoid;page-break-after:avoid;}
+    .del-btn{display:none !important;}
+    /* print ONLY the student card */
+    body.print-card #doc>*{display:none !important;}
+    body.print-card #p4{display:block !important;}
+    body.print-card #p4>*{display:none !important;}
+    body.print-card #p4 .student-card{display:block !important;border-width:2px;max-width:none;}
+  }
+  /* ── drawing-first / storyboard task card (shared) ── */
+  .student-card .draw-frame{border:1.5px solid #555;border-radius:8px;min-height:200px;margin:6px 0 12px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:12px;}
+  .student-card .draw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:8px;margin-bottom:6px;}
+  .student-card .draw-cell{border:1.5px solid #777;border-radius:6px;min-height:84px;display:flex;flex-direction:column;}
+  .student-card .draw-cell .dc-lab{font-size:12px;font-weight:700;text-align:center;border-bottom:1px solid #999;padding:3px 4px;}
+  .student-card .draw-cell .dc-box{flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:10px;text-align:center;}
+  .student-card .draw-pair{display:grid;grid-template-columns:1fr 34px 1fr;align-items:center;gap:6px;margin-bottom:10px;}
+  .student-card .draw-pair .dp-box{border:1.5px solid #555;border-radius:8px;min-height:120px;display:flex;flex-direction:column;}
+  .student-card .draw-pair .dp-lab{font-size:12px;font-weight:700;text-align:center;border-bottom:1px solid #999;padding:3px 4px;}
+  .student-card .draw-pair .dp-draw{flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:10px;}
+  .student-card .draw-pair .dp-arrow{text-align:center;font-size:24px;color:#555;font-weight:800;}
+  .student-card .board{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 4px;}
+  .student-card .frame-cell{border:1.5px solid #555;border-radius:8px;overflow:hidden;}
+  .student-card .frame-cell .fc-num{font-size:11px;font-weight:800;background:#eee;padding:2px 8px;}
+  .student-card .frame-cell .fc-draw{min-height:110px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:10px;}
+  .student-card .frame-cell .fc-cap{border-top:1px dashed #999;min-height:24px;font-size:12px;padding:3px 6px;}
+  .student-card .frame-cell .fc-cap::before{content:"✍ ";color:#999;}
+  @media print{
+    body.print-card{padding:6mm 10mm;}
+    .student-card{padding:16px 24px;break-inside:avoid;page-break-inside:avoid;}
+    .student-card .sc-task{padding:6px 12px;margin-bottom:8px;}
+    .student-card h5{margin:9px 0 4px;}
+    .student-card .tipline{margin-top:8px;padding-top:6px;}
+    body.print-card #p4 .student-card{display:flex !important;flex-direction:column;min-height:86vh;box-sizing:border-box;}
+    body.print-card #p4 .student-card .draw-frame{flex:3 1 0;}
+    body.print-card #p4 .student-card .draw-pair{flex:2 1 0;}
+    body.print-card #p4 .student-card .draw-pair .dp-box{min-height:0;height:100%;}
+    body.print-card #p4 .student-card .board{flex:1 1 0;grid-auto-rows:1fr;}
+    body.print-card #p4 .student-card .frame-cell{display:flex;flex-direction:column;}
+    body.print-card #p4 .student-card .frame-cell .fc-draw{flex:1 1 0;}
+  }
+  @media (max-width:640px){
+    body{padding:28px 14px 48px;}
+    .ot-center{flex:1 1 100%;}
+    .student-card .checks{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* ── GO answer-key fill ── */
+  .fill.ans-filled{color:#1f7a4d;font-weight:600;}
+  .ansbtn{font-family:inherit;cursor:pointer;border:1.5px solid #bcd9f0;background:#eaf3fb;color:#2f6da3;border-radius:8px;padding:5px 13px;font-size:13px;font-weight:700;margin-top:8px;}
+  .ansbtn:hover{background:#dcecf9;}
+  .go.show-ans .ansbtn{background:var(--yellow);border-color:var(--yellow-edge);color:#6b5800;}
+  .ans-note{display:none;margin-top:6px;}
+  .go.show-ans .ans-note{display:block;}
+
+  /* ── Day navigation (auto-added) ── */
+  .daynav{display:flex;justify-content:center;align-items:center;gap:10px;padding:14px 20px 0;position:relative;z-index:40;flex-wrap:wrap;}
+  .daynav a,.daynav .off{font-family:var(--sans);font-size:13px;font-weight:700;text-decoration:none;
+    border:1.5px solid var(--border);border-radius:999px;padding:6px 16px;
+    background:var(--white);color:var(--blue);box-shadow:0 2px 6px rgba(40,80,120,.12);white-space:nowrap;}
+  .daynav a:hover{background:#eaf4fc;}
+  .daynav .off{opacity:.35;box-shadow:none;}
+  .daynav select{font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;
+    border:1.5px solid var(--border);border-radius:999px;padding:6px 14px;
+    background:var(--white);color:var(--blue);box-shadow:0 2px 6px rgba(40,80,120,.12);max-width:360px;}
+  @media print{.daynav{display:none !important;}}
+</style>
+</head>
+<body>
+<nav class="daynav">
+  <span class="off">← Prev</span>
+  <select onchange="if(this.value)location.href=this.value" title="跳转到其他 Day">
+    <option value="" selected>Day 1 · To the Castle!（Ch 1）</option>
+    <option value="DM1_Day02_Ch2_Lesson_Plan.html">Day 2 · The Dragon Stone（Ch 2）</option>
+    <option value="DM1_Day03_Ch3_Lesson_Plan.html">Day 3 · More Dragons!（Ch 3）</option>
+    <option value="DM1_Day04_Ch4-5_Lesson_Plan.html">Day 4 · Worm + Do Something!（Ch 4–5）</option>
+    <option value="DM1_Day05_Ch6-7_Lesson_Plan.html">Day 5 · A New Friend + A Strange Dream（Ch 6–7）</option>
+    <option value="DM1_Day06_Ch8-9_Lesson_Plan.html">Day 6 · Flying Practice + Whispers（Ch 8–9）</option>
+    <option value="DM1_Day07_Ch10-11_Lesson_Plan.html">Day 7 · Worm&#x27;s Story + A Noise in the Night（Ch 10–11）</option>
+    <option value="DM1_Day08_Ch12-13_Lesson_Plan.html">Day 8 · A Sneaky Plan &amp; Trouble in the Tunnel（Ch 12–13）</option>
+    <option value="DM1_Day09_Ch14-15_Lesson_Plan.html">Day 9 · Trapped! &amp; Worm&#x27;s Surprise（Ch 14–15）</option>
+    <option value="DM1_Day10_Ch16_Lesson_Plan.html">Day 10 · Just the Beginning（Ch 16）</option>
+  </select>
+  <a href="DM1_Day02_Ch2_Lesson_Plan.html">Day 2 →</a>
+</nav>
+
+
+<div class="toolbar">
+  <button id="langBtn">EN only</button>
+  <button id="editBtn">✏️ 编辑<span class="cn2"></span></button>
+  <button id="resetBtn" title="清除所有修改，恢复原版">↺ 重置</button>
+  <button onclick="window.print()">🖨 打印</button>
+</div>
+
+<div id="doc">
+
+<header class="ed">
+  <div class="eyebrow">🐉 Dragon Masters · Book 1 · Rise of the Earth Dragon</div>
+  <div><h1>Day 1 · To the Castle!</h1></div>
+  <div class="subtitle">Chapter 1 lesson plan — Drake is taken to the castle and meets a red dragon behind the stone door.<span class="cn">第 1 章教案 — Drake 被带进城堡，推开石门见到红龙</span></div>
+  <span class="edit-tip">✏️ 编辑模式：点击任意文字直接修改；点模块右上角 ✕ 删除整块；再点「完成」退出。修改自动保存。</span>
+  <div class="meta">
+    <div data-del><span class="del-btn">✕</span>Chapter<b>Ch 1（pp. 1–7）</b></div>
+    <div data-del><span class="del-btn">✕</span>Reading Skill<b>Story Elements + Outside Traits</b></div>
+    <div data-del><span class="del-btn">✕</span>Task Card<b>#1 Meet Your Dragon Master</b></div>
+    <div data-del><span class="del-btn">✕</span>Time<b>~60 min</b></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab on" data-p="p1">1 · Vocabulary<span class="cn"> 词汇</span></button>
+  <button class="tab" data-p="p2">2 · Pause Points<span class="cn"> 停顿点</span></button>
+  <button class="tab" data-p="p3">3 · Close Reading<span class="cn"> 精读策略</span></button>
+  <button class="tab" data-p="p4">4 · Task Card<span class="cn"> 任务卡</span></button>
+</div>
+
+<!-- ═══════ TAB 1 · VOCABULARY ═══════ -->
+<div class="panel on ed" id="p1">
+  <h2><span class="badge">1</span>Vocabulary · 10 words<span class="cn">词汇</span></h2>
+  <table>
+    <thead><tr><th style="width:18%">Word</th><th style="width:40%">Definition<span class="cn"> 英英释义</span></th><th>In the Book<span class="cn"> 书中句</span></th></tr></thead>
+    <tbody>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>soldier <span class="pos">n.</span></td><td>a person who fights for a king or country</td><td>One of the king's <i>soldiers</i> rode up on a black horse.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>kingdom <span class="pos">n.</span></td><td>a land ruled by a king or queen</td><td>…growing onions in the <i>Kingdom</i> of Bracken forever.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>peasant <span class="pos">n.</span></td><td>a poor farmer who works on the land</td><td><i>Peasants</i> like Drake weren't allowed to speak unless spoken to.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>castle <span class="pos">n.</span></td><td>a big, strong stone home where a king or queen lives</td><td>They stopped in front of King Roland's <i>castle</i>.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>curious <span class="pos">adj.</span></td><td>wanting to know more about something</td><td>He felt afraid. But more than that, he was <i>curious</i>.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>hut <span class="pos">n.</span></td><td>a small, simple house</td><td>Drake's mother ran out of their <i>hut</i>.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>symbol <span class="pos">n.</span></td><td>a picture or mark that stands for something</td><td>…a gold dragon sewn on it — the <i>symbol</i> of King Roland.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>chosen <span class="pos">v.</span></td><td>picked out from a group</td><td>"The king has <i>chosen</i> him," the soldier said.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>shove <span class="pos">n./v.</span></td><td>a hard, sudden push</td><td>He opened the castle door and gave Drake a <i>shove</i>.</td></tr>
+      <tr data-del><td class="w"><span class="del-btn">✕</span>fireball <span class="pos">n.</span></td><td>a ball of fire</td><td>The dragon shot a huge <i>fireball</i> from his mouth!</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════ TAB 2 · PAUSE POINTS ═══════ -->
+<div class="panel ed" id="p2">
+  <h2><span class="badge">2</span>Pause Points<span class="cn">共读停顿点</span></h2>
+
+  <div class="pause" data-del><span class="del-btn">✕</span>
+    <div class="pw">PAUSE ① · end of p.2 — "Are you Drake?"<span class="tagx">Character + Setting</span></div>
+    <p class="pq"><b>Q:</b> Who is our main character, and where does the story begin? What does his family do?</p>
+    <details class="ans"><summary>👁 Answer<span class="cn"> 答案</span></summary><div>
+    <p class="pa">Drake; an onion patch / farm in the Kingdom of Bracken; his family grows onions. → Start filling the <b>Character</b> column of GO ① (Tab 3).<span class="cn">Drake；Bracken 王国的洋葱地；他家世代种洋葱。→ 顺势开始填 GO ① 的 Character 栏。</span></p>
+    </div></details>
+  </div>
+
+  <div class="pause" data-del><span class="del-btn">✕</span>
+    <div class="pw">PAUSE ② · p.4 — "…spurred on the horse, and sped off."<span class="tagx">Events + Outside Traits</span></div>
+    <p class="pq"><b>Q:</b> What does the soldier <b>look like</b>? How do his clothes tell us who he works for?</p>
+    <details class="ans"><summary>👁 Answer<span class="cn"> 答案</span></summary><div>
+    <p class="pa">yellow beard / black horse / shirt with a gold dragon — the gold dragon is King Roland's symbol, so his outside traits show his job. → Add to <b>Events</b>: a soldier takes Drake away.<span class="cn">黄胡子／黑马／绣金龙的衣服——金龙是国王的标志，外貌细节透露身份。Events 栏填入：a soldier takes Drake away。</span></p>
+    </div></details>
+  </div>
+
+  <div class="pause" data-del><span class="del-btn">✕</span>
+    <div class="pw">PAUSE ③ · end of p.6 — "But he was all alone."<span class="tagx">Setting Change</span></div>
+    <p class="pq"><b>Q:</b> Drake has moved through many places today. Can you name them in order?</p>
+    <details class="ans"><summary>👁 Answer<span class="cn"> 答案</span></summary><div>
+    <p class="pa">onion field → village → stone bridge → castle halls → down, down, down → big stone door. The setting moves from bright and safe to dark and strange.<span class="cn">洋葱地 → 村庄 → 石桥 → 城堡大厅 → 一路向下 → 大石门。场景从「明亮安全」走向「幽深陌生」。</span></p>
+    </div></details>
+  </div>
+
+  <div class="pause" data-del><span class="del-btn">✕</span>
+    <div class="pw">PAUSE ④ · end of p.7 — fireball!<span class="tagx">Predict</span></div>
+    <p class="pq"><b>Q:</b> A giant red dragon! What do you think happens next — and why is Drake here?</p>
+    <details class="ans"><summary>👁 Answer<span class="cn"> 答案</span></summary><div>
+    <p class="pa">Open prediction. Write predictions on sticky notes and check them tomorrow in Ch 2. Don't judge right/wrong — just ask "What makes you think so?"<span class="cn">开放预测，写便利贴，明天读 Ch 2 验证。</span></p>
+    </div></details>
+  </div>
+</div>
+
+<!-- ═══════ TAB 3 · CLOSE READING ═══════ -->
+<div class="panel ed" id="p3">
+  <h2><span class="badge">3</span>Close Reading · Story Elements + Outside Traits<span class="cn">精读策略</span></h2>
+
+  <!-- ════════ SKILL A · STORY ELEMENTS ════════ -->
+  <div class="skillbar">SKILL A · STORY ELEMENTS<span class="cn"> 故事三要素</span></div>
+
+  <div class="stepline"><span class="sno">A1</span>What are Story Elements?<span class="cn">什么是故事三要素？</span></div>
+  <p class="skillintro">Every story is built from <b>three pieces</b>. Good readers name all three while they read — if you can fill the three boxes, you understood the chapter.<span class="cn">每个故事都由三块「积木」搭成。会读书的人边读边找这三块——三栏都能填出来，就说明读懂了这一章。</span></p>
+  <div class="defs defs3">
+    <div class="def" data-del><span class="del-btn">✕</span>
+      <div class="dword"><span class="icon">🧑</span>CHARACTER</div>
+      <div class="dmean">The <b>people or animals</b> in the story.</div>
+      <div class="dcn cn">故事里的人物或动物。</div>
+      <div class="dex"><b>Ch 1:</b> Drake, the soldier, Mom</div>
+    </div>
+    <div class="def" data-del><span class="del-btn">✕</span>
+      <div class="dword"><span class="icon">🏰</span>SETTING</div>
+      <div class="dmean"><b>When and where</b> the story takes place.</div>
+      <div class="dcn cn">故事发生的时间和地点。</div>
+      <div class="dex"><b>Ch 1:</b> long ago · the Kingdom of Bracken — an onion field, then a castle</div>
+    </div>
+    <div class="def" data-del><span class="del-btn">✕</span>
+      <div class="dword"><span class="icon">⚡</span>EVENTS</div>
+      <div class="dmean"><b>What happens</b> in the story — beginning, middle, and end.</div>
+      <div class="dcn cn">故事里发生的事——开头、中间、结尾。</div>
+      <div class="dex"><b>Ch 1:</b> a soldier takes Drake to the castle</div>
+    </div>
+  </div>
+
+  <div class="stepline"><span class="sno">A2</span>Practice with GO ①<span class="cn">用 GO ① 练</span></div>
+  <div class="go" data-del><span class="del-btn">✕</span>
+    <div class="go-title">GO ① · STORY ELEMENTS</div>
+    <div class="go-body">
+      <div class="se-grid">
+        <div class="se-col">
+          <div class="se-head">CHARACTER<small>Who?<span class="cn"> 谁</span></small></div>
+          <div class="se-cell">
+            <span class="fill" data-ans="Drake (8, a farmer's son)" contenteditable="true"></span>
+            <span class="fill" data-ans="the soldier, Mom" contenteditable="true"></span>
+          </div>
+        </div>
+        <div class="se-col">
+          <div class="se-head">SETTING<small>Where? When?<span class="cn"> 哪里·何时</span></small></div>
+          <div class="se-cell">
+            <span class="fill" data-ans="long ago — an onion field in the Kingdom of Bracken" contenteditable="true"></span>
+            <span class="fill" data-ans="King Roland's castle" contenteditable="true"></span>
+          </div>
+        </div>
+        <div class="se-col">
+          <div class="se-head">EVENTS<small>What happens?<span class="cn"> 发生了什么</span></small></div>
+          <div class="se-cell">
+            <span class="fill" data-ans="a soldier took Drake away" contenteditable="true"></span>
+            <span class="fill" data-ans="they rode to the castle" contenteditable="true"></span>
+            <span class="fill" data-ans="Drake opened the door and saw a red dragon!" contenteditable="true"></span>
+          </div>
+        </div>
+      </div>
+      <div class="ans-tools"><button class="ansbtn" onclick="toggleGO(this)">👁 Answer Key<span class="cn"> 答案</span></button></div>
+    </div>
+  </div>
+
+  <!-- ════════ SKILL B · CHARACTER TRAITS → OUTSIDE TRAITS ════════ -->
+  <div class="skillbar gold">SKILL B · CHARACTER TRAITS → OUTSIDE TRAITS<span class="cn"> 人物特征 → 外在特征</span></div>
+
+  <div class="stepline"><span class="sno">B1</span>What are Character Traits? What are Outside Traits?<span class="cn">什么是人物特征？什么是外在特征？</span></div>
+  <div class="defs defs2">
+    <div class="def hl" data-del><span class="del-btn">✕</span>
+      <div class="dword" style="color:#a07c00;"><span class="icon">🏷️</span>CHARACTER TRAITS</div>
+      <div class="dmean">Words that <b>describe a character</b>. There are two kinds: <b>outside traits</b> (what you can SEE) and <b>inside traits</b> (what's in the heart).</div>
+      <div class="dcn cn">描述人物的词。分两种：outside traits（看得到的）和 inside traits（藏在心里的）。Inside traits 明天 Ch 2 学。</div>
+      <div class="dex"><b>Example:</b> tall = outside · brave = inside</div>
+    </div>
+    <div class="def hl" data-del><span class="del-btn">✕</span>
+      <div class="dword" style="color:#a07c00;"><span class="icon">👀</span>OUTSIDE TRAITS — today's focus</div>
+      <div class="dmean">What a character <b>looks like on the outside</b> — things you can <b>SEE</b>: hair, clothes, size, what they carry or ride.</div>
+      <div class="dcn cn">人物的外在特征——你能「看到」的：头发、衣服、高矮、带的东西、骑的马。</div>
+      <div class="dex"><b>Ch 1:</b> the soldier has a <b>yellow beard</b> — that's an outside trait!</div>
+    </div>
+  </div>
+
+  <div class="stepline"><span class="sno">B2</span>Practice with GO ②<span class="cn">用 GO ② 练</span></div>
+  <div class="go" data-del><span class="del-btn">✕</span>
+    <div class="go-title">GO ② · OUTSIDE TRAITS — The Soldier<small>outside traits tell us who he is<span class="cn"> · 外貌会说话</span></small></div>
+    <div class="go-body">
+      <div class="ot-wrap">
+        <div class="ot-center">
+          <div class="who">Character:<br><span class="fill" data-ans="the soldier" contenteditable="true" style="min-width:130px;"></span></div>
+          <div class="frame">(draw here<span class="cn"> 可画</span>)</div>
+        </div>
+        <div class="ot-boxes">
+          <div class="ot-box" data-del><span class="del-btn">✕</span>
+            <div class="lab">👀 Face &amp; Hair<span class="cn"> 长相</span></div>
+            <div class="ask">What do you SEE? Use the words from the book.</div>
+            <span class="fill" data-ans="a yellow beard" contenteditable="true"></span>
+          </div>
+          <div class="ot-box" data-del><span class="del-btn">✕</span>
+            <div class="lab">👕 Clothes<span class="cn"> 穿着</span></div>
+            <div class="ask">What is he wearing?</div>
+            <span class="fill" data-ans="a shirt with a gold dragon sewn on it" contenteditable="true"></span>
+          </div>
+          <div class="ot-box" data-del><span class="del-btn">✕</span>
+            <div class="lab">🐎 Has / Rides<span class="cn"> 物品坐骑</span></div>
+            <div class="ask">What does he have?</div>
+            <span class="fill" data-ans="a black horse" contenteditable="true"></span>
+          </div>
+          <div class="ot-box" data-del style="background:var(--yellow-bg);border-color:var(--yellow-edge);"><span class="del-btn">✕</span>
+            <div class="lab" style="color:#a07c00;">💡 It tells me…<span class="cn"> 这告诉我</span></div>
+            <div class="ask">What do his outside traits tell us about him?</div>
+            <span class="fill" data-ans="he worked for the king (the gold dragon was King Roland's symbol)" contenteditable="true"></span>
+          </div>
+        </div>
+      </div>
+      <div class="ans-tools"><button class="ansbtn" onclick="toggleGO(this)">👁 Answer Key<span class="cn"> 答案</span></button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TAB 4 · TASK CARD ═══════ -->
+<div class="panel ed" id="p4">
+  <h2><span class="badge">4</span>Task Card #1 · Meet Your Dragon Master<span class="cn">任务卡</span></h2>
+
+  <div class="cardbar"><button id="printCardBtn">🖨 Print Task Card only<span class="cn">（只打印学生卡）</span></button></div>
+
+  <!-- ═ STUDENT CARD · ENGLISH ONLY ═ -->
+  <div class="student-card">
+    <div class="sc-head">
+      <div class="sc-series">Dragon Masters · Book 1 · My Dragon Master Journal</div>
+      <h3>Task Card #1 · Meet Your Dragon Master</h3>
+      <div class="sc-sub">Read first: Chapter 1 — To the Castle! &nbsp;·&nbsp; Time: 20 min &nbsp;·&nbsp; Name: ______________</div>
+    </div>
+
+    <div class="sc-task">🎨 <b>Your task:</b> The king chose Drake. Now <b>DRAW</b> your own Dragon Master — outside AND inside.</div>
+
+    <h5>Draw your Dragon Master</h5>
+    <div class="draw-frame">✏️ draw yourself as a Dragon Master</div>
+
+    <h5>Outside — 1 word or a tiny picture in each box</h5>
+    <div class="draw-grid">
+      <div class="draw-cell"><div class="dc-lab">Name</div><div class="dc-box">write</div></div>
+      <div class="draw-cell"><div class="dc-lab">Age</div><div class="dc-box">write</div></div>
+      <div class="draw-cell"><div class="dc-lab">🏠 Home</div><div class="dc-box">word / 🖼</div></div>
+      <div class="draw-cell"><div class="dc-lab">👨‍🌾 Family job</div><div class="dc-box">word / 🖼</div></div>
+      <div class="draw-cell"><div class="dc-lab">💇 Hair</div><div class="dc-box">word / 🖼</div></div>
+      <div class="draw-cell"><div class="dc-lab">👕 Clothes</div><div class="dc-box">word / 🖼</div></div>
+    </div>
+
+    <h5>Inside — pick 3 (✓)</h5>
+    <div class="checks">
+      <span>brave</span><span>curious</span><span>kind</span>
+      <span>clever</span><span>shy</span><span>stubborn</span>
+      <span>loyal</span><span>funny</span><span>quiet</span>
+    </div>
+
+    <h5>My heart — draw or 1 word in each</h5>
+    <div class="draw-grid">
+      <div class="draw-cell"><div class="dc-lab">💖 I want…</div><div class="dc-box">word / 🖼</div></div>
+      <div class="draw-cell"><div class="dc-lab">😨 I fear…</div><div class="dc-box">word / 🖼</div></div>
+      <div class="draw-cell"><div class="dc-lab">🌟 Secret hope</div><div class="dc-box">word / 🖼</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">DM1 · Day 1 / 10</div>
+
+</div><!-- /#doc -->
+
+<script>
+(function(){
+  var KEY='dm1-day1-lp-v12';
+  var LANGKEY='dm1-lp-lang';
+  var doc=document.getElementById('doc');
+
+  /* restore saved edits */
+  try{
+    var saved=localStorage.getItem(KEY);
+    if(saved){doc.innerHTML=saved;}
+  }catch(e){}
+
+  /* restore language */
+  try{
+    if(localStorage.getItem(LANGKEY)==='en'){document.body.classList.add('en');}
+  }catch(e){}
+
+  function save(){
+    try{localStorage.setItem(KEY,doc.innerHTML);}catch(e){}
+  }
+  var saveTimer=null;
+  function saveSoon(){clearTimeout(saveTimer);saveTimer=setTimeout(save,400);}
+
+  /* delegated clicks: tabs / delete / print-card */
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.tab');
+    if(t){
+      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
+      document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('on');});
+      t.classList.add('on');
+      var p=document.getElementById(t.dataset.p);
+      if(p)p.classList.add('on');
+      return;
+    }
+    var d=e.target.closest('.del-btn');
+    if(d && document.body.classList.contains('editing')){
+      var blk=d.closest('[data-del]');
+      if(blk && confirm('Delete this block? 删除这个模块？')){blk.remove();saveSoon();}
+      return;
+    }
+    var pc=e.target.closest('#printCardBtn');
+    if(pc){
+      document.body.classList.add('print-card');
+      window.print();
+      setTimeout(function(){document.body.classList.remove('print-card');},500);
+      return;
+    }
+  });
+  window.onafterprint=function(){document.body.classList.remove('print-card');};
+
+  /* language toggle */
+  var langBtn=document.getElementById('langBtn');
+  function syncLangBtn(){
+    langBtn.textContent=document.body.classList.contains('en')?'中英':'EN only';
+  }
+  syncLangBtn();
+  langBtn.addEventListener('click',function(){
+    document.body.classList.toggle('en');
+    try{localStorage.setItem(LANGKEY,document.body.classList.contains('en')?'en':'cn');}catch(e){}
+    syncLangBtn();
+  });
+
+  /* edit mode toggle */
+  var editBtn=document.getElementById('editBtn');
+  function setEditable(on){
+    document.querySelectorAll('.ed').forEach(function(el){
+      el.contentEditable=on?'true':'false';
+    });
+    document.querySelectorAll('.tab').forEach(function(el){el.contentEditable='false';});
+    document.querySelectorAll('.del-btn').forEach(function(el){el.contentEditable='false';});
+  }
+  editBtn.addEventListener('click',function(){
+    var on=!document.body.classList.contains('editing');
+    document.body.classList.toggle('editing',on);
+    setEditable(on);
+    editBtn.textContent=on?'✓ 完成':'✏️ 编辑';
+    if(!on)save();
+  });
+
+  /* autosave */
+  document.addEventListener('input',function(e){
+    if(doc.contains(e.target))saveSoon();
+  });
+
+  /* reset */
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(confirm('Clear all edits and restore the original? 清除所有修改，恢复原版？')){
+      try{localStorage.removeItem(KEY);}catch(e){}
+      location.reload();
+    }
+  });
+})();
+</script>
+
+
+<script>
+function toggleGO(btn){
+  var go=btn.closest('.go'); if(!go) return;
+  var on=go.classList.toggle('show-ans');
+  go.querySelectorAll('.fill').forEach(function(s){
+    if(on){ if(s.getAttribute('data-user')===null){ s.setAttribute('data-user', s.innerHTML); } s.innerHTML=s.getAttribute('data-ans')||''; s.classList.add('ans-filled'); }
+    else { s.innerHTML=s.getAttribute('data-user')||''; s.removeAttribute('data-user'); s.classList.remove('ans-filled'); }
+  });
+}
+</script>
+</body>
+</html>
