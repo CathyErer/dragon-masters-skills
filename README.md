@@ -1,91 +1,73 @@
-# Dragon Masters Skills 🐉
+# Dragon Masters Studio 🐉
 
-Open-source agent skills for making bilingual (English + 简体中文) ESL teaching
-materials for the **Dragon Masters** series (Tracey West, Scholastic Branches) —
-drawing-first per-chapter lesson plans, student workbooks + answer keys, and
-key-word retelling pages.
+**One skill, three workflows** — an open-source agent skill that makes bilingual
+(English + 简体中文) ESL teaching materials for the **Dragon Masters** series
+(Tracey West, Scholastic Branches).
 
-为 **Dragon Masters（驯龙大师）** 系列制作双语 ESL 教学材料的开源 agent skills：
-画画优先的每章课件、学生练习册 + 答案版、关键词复述页。
+**一个 skill 装完所有功能** —— 为 **Dragon Masters（驯龙大师）** 系列制作双语
+ESL 教学材料的开源 agent skill。
 
 Follows the open [Agent Skills](https://agentskills.io) standard (`SKILL.md` +
-YAML frontmatter), so the same skill folders work in **Claude Code / Claude
+YAML frontmatter), so the same skill folder works in **Claude Code / Claude
 Cowork**, **OpenAI Codex**, **腾讯 WorkBuddy**, and any other agent that supports
 the standard.
 
-## What's inside · 包含什么
+## What it makes · 产出什么
 
-| Skill | What it makes · 产出 |
+| Workflow | Output · 产出 |
 |---|---|
-| `dragon-studio` | The hub 中枢：house rules 风格规范、DM1 16 章 / DM2 14 章的逐章 reading skill + 任务卡对照表、**给 DM3 及以后用的逐章设计标准**（8 条规律 + 7 步流程）；自动路由到下面三个 skill。 |
-| `dm-lesson-plan` | One interactive lesson-plan HTML **per chapter** 每章一个课件（4 tabs、drawing-first printable task cards、中英双语 + EN-only toggle）。 |
-| `dm-workbook` | Per-chapter student workbook + red answer key（.docx，需要 Node.js + `docx` 包）。 |
-| `dm-retelling` | Whole-book retelling practice page（.html）— STOP cards with WHO / DID WHAT keyword groups，每章一个 tab，可打印。 |
+| Lesson plan 教案 | One interactive lesson-plan HTML **per chapter** 每章一个课件（4 tabs、drawing-first printable task card、中英双语 + EN-only toggle）。 |
+| Workbook 练习册 | Per-chapter student workbook + red answer key（.docx，需要 Node.js）。 |
+| Retelling 复述 | Whole-book retelling page（.html）— STOP cards with WHO / DID WHAT keyword groups，每章一个 tab，可打印（需要 Python 3）。 |
+
+Built in: house rules 风格规范、DM1 16 章 / DM2 14 章的逐章 reading skill +
+任务卡对照表、**给 DM3 及以后用的逐章设计标准**（8 条规律 + 7 步流程）。
 
 ## Install · 安装
 
-First get the files:
+It's **one skill folder**: `skills/dragon-masters-studio/`. Install it one of
+two ways — 只有一个 skill 文件夹，两种装法任选：
+
+### 方式 A · Download the zip（不用 git，推荐）
+
+From [Releases](https://github.com/CathyErer/dragon-masters-skills/releases/latest)
+download **`dragon-masters-studio.zip`** (not "Source code"), then:
+
+- **Claude.ai / Claude Cowork**: Settings → Capabilities → Skills, upload the zip.
+  设置 → 功能 → Skills，直接上传这个 zip。
+- **腾讯 WorkBuddy**: 控制面板 →「安装技能」，上传这个 zip；或解压后放进
+  `~/.workbuddy/skills/dragon-masters-studio/`。
+- **Claude Code / OpenAI Codex**: unzip into `~/.claude/skills/dragon-masters-studio/`
+  or `~/.agents/skills/dragon-masters-studio/`.
+
+### 方式 B · git clone
 
 ```bash
 git clone https://github.com/CathyErer/dragon-masters-skills.git
 cd dragon-masters-skills
+
+# Claude Code
+mkdir -p ~/.claude/skills && cp -r skills/dragon-masters-studio ~/.claude/skills/
+
+# OpenAI Codex
+mkdir -p ~/.agents/skills && cp -r skills/dragon-masters-studio ~/.agents/skills/
+
+# 腾讯 WorkBuddy
+mkdir -p ~/.workbuddy/skills && cp -r skills/dragon-masters-studio ~/.workbuddy/skills/
 ```
 
-The four skill folders live in `skills/`. Copy **all four together** into your
-agent's skill directory — `dm-lesson-plan` and `dm-retelling` read the
-per-chapter tables out of `dragon-studio/references/`, so the hub must be
-installed too.
-
-四个 skill 都在 `skills/` 目录下，**必须四个一起装**——`dm-lesson-plan` 和
-`dm-retelling` 要读 `dragon-studio/references/` 里的逐章表。
-
-### Claude Code
-
-```bash
-mkdir -p ~/.claude/skills && cp -r skills/* ~/.claude/skills/
-```
-
-Restart Claude Code, then ask 「有哪些 Dragon Masters skill?」 — you should see
-`dragon-studio`, `dm-lesson-plan`, `dm-workbook`, `dm-retelling`.
-
-Per-project instead of global: put the same folders in `.claude/skills/` inside
-your project.
-
-Or install the whole repo as a plugin:
+Claude Code can also install it as a plugin:
 
 ```
 /plugin marketplace add CathyErer/dragon-masters-skills
 /plugin install dragon-masters-skills@dragon-masters-skills
 ```
 
-### Claude.ai / Claude Cowork
+Verify 验证: restart the agent, then ask 「做 DM1 第 1 章的教案」 — it should load
+`dragon-masters-studio` and ask you for the chapter PDF.
 
-Zip each skill folder (the folder containing `SKILL.md`) and upload it in
-**Settings → Capabilities → Skills**. Upload **all four** — if `dragon-studio` is
-missing, the other skills will ask you for the per-chapter table instead of
-inventing one. 把**四个**文件夹分别压缩成 zip，在设置 → 功能 → Skills 里全部上传。
-
-### OpenAI Codex
-
-```bash
-mkdir -p ~/.agents/skills && cp -r skills/* ~/.agents/skills/
-```
-
-Or per-repo: `.agents/skills/` in your project. Invoke with `$skill-name` or let
-Codex pick the skill automatically from its description.
-
-### 腾讯 WorkBuddy
-
-```bash
-mkdir -p ~/.workbuddy/skills && cp -r skills/* ~/.workbuddy/skills/
-```
-
-或在 WorkBuddy 控制面板选择「安装技能」，指向本仓库/本地目录。
-
-### Other agents · 其他工具
-
-Any tool that reads `SKILL.md` per the [agentskills.io](https://agentskills.io)
-standard works — point it at the folders in `skills/`.
+Any other tool that reads `SKILL.md` per the [agentskills.io](https://agentskills.io)
+standard works the same way — point it at `skills/dragon-masters-studio/`.
 
 ## Usage · 用法
 
@@ -119,13 +101,13 @@ lessons. Rule 1 is binding: no book, no table.
 
 ## Requirements · 依赖
 
-| Skill | Needs | If it's missing |
+| Workflow | Needs | If it's missing |
 |---|---|---|
-| `dm-lesson-plan` | nothing — copies and edits an HTML template | works everywhere |
-| `dm-retelling` | **Python 3** (standard library only) | build the HTML by hand from the reference template |
-| `dm-workbook` | **Node.js 18+** and `npm install docx` (needs internet once) | ask the agent for the workbook as HTML instead of .docx |
+| Lesson plan 教案 | nothing — copies and edits an HTML template | works everywhere |
+| Retelling 复述 | **Python 3** (standard library only) | build the HTML by hand from the reference template |
+| Workbook 练习册 | **Node.js 18+** and `npm install docx` (needs internet once) | ask the agent for the workbook as HTML instead of .docx |
 
-如果你用的 agent 不能执行命令，`dm-workbook` 就跑不了 —— 让它直接出 HTML 版练习册。
+如果你用的 agent 不能执行命令，workbook 就跑不了 —— 让它直接出 HTML 版练习册。
 
 ## Troubleshooting · 常见问题
 

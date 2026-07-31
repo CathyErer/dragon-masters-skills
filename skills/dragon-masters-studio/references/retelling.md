@@ -1,19 +1,3 @@
----
-name: dm-retelling
-description: >
-  Generates a single-file, printable RETELLING practice page (.html) for a whole
-  Dragon Masters book (Tracey West, Scholastic Branches) — one combined file with a tab
-  per chapter. Each chapter is broken into STOP cards that give the student the scene
-  (Where + When) and then split the key words into two color-coded groups: WHO (the
-  people / dragons) and DID WHAT (the actions, verb-led). Students retell each scene in
-  their OWN words by picking one WHO + one DID WHAT = "Somebody did something", then
-  string the STOPs together with First / Then / Next / Finally. Designed so students
-  CANNOT just read a printed sentence aloud. Trigger when the user says "做 DM 复述 /
-  retelling", "DM1/DM2 复述", "关键词复述卡", "做复述", "retelling worksheet", "驯龙大师复述",
-  or asks for a retell / summary activity for Dragon Masters. English-only, white background.
-  Needs Python 3 to run the bundled generator.
-  Calibrated to ESL Grade 1–3 (first time retelling chapter books).
----
 
 # Dragon Masters — Key-Word Retelling page
 
@@ -114,7 +98,7 @@ titled "Dragon Masters #1" **and overwrite the DM1 file** — always set the con
 
 Name the file `DM<book>_KeyWord_Retelling_AllChapters.html` and deliver it to the
 user (into their book folder's `4-Retelling/` subfolder if they keep one — see the
-`dragon-studio` hub's suggested layout).
+studio's suggested folder layout in SKILL.md).
 
 ## DM2 note
 

@@ -1,21 +1,3 @@
----
-name: dm-workbook
-description: >
-  Generates a matched pair of .docx files — a Student Workbook (pure black &
-  white) and an Answer Key (answers in red, bold + underlined) — for any chapter
-  of the Dragon Masters series by Tracey West (Scholastic Branches), e.g. "Rise
-  of the Earth Dragon", "Saving the Sun Dragon", "Secret of the Water Dragon",
-  and later titles. Trigger whenever the user uploads Dragon Masters book pages
-  and asks to create, regenerate, or update a workbook, student worksheet,
-  answer key, 练习册, 答案版, 学生版, or 答案; or says things like "给龙骑士做
-  workbook", "给驯龙大师做练习", "Dragon Masters 第X章 练习", "给 Dragon Masters
-  做个 workbook" with Dragon Masters pages in context.
-  Each workbook has exactly 5 sections: Vocabulary Matching (5), Multiple Choice
-  (5), Fill in the Blank (5 + word bank), Short Answer (1), and Think & Create
-  (1 creative prompt with drawing box). Content is calibrated to CCSS Grade 2
-  reading and writing standards. Needs Node.js to run the bundled build script.
-  Always produce BOTH files unless explicitly told otherwise.
----
 
 # Dragon Masters Workbook Generator
 
@@ -24,7 +6,6 @@ Produces a matched pair of `.docx` files from a single Node.js build script:
 - **`<Book_Title>_Ch<N>_Workbook.docx`** — student-facing, pure black & white, blank answer spaces
 - **`<Book_Title>_Ch<N>_AnswerKey.docx`** — teacher-facing, same layout, answers in RED
 
----
 
 ## How to run
 
@@ -58,7 +39,6 @@ Then verify both files: if the environment provides a docx validation script
 Finally, deliver BOTH files to the user through whatever file-delivery mechanism
 the current agent environment provides — Workbook first, then Answer Key.
 
----
 
 ## Workflow
 
@@ -88,7 +68,6 @@ The 7 things to edit:
 Run the build, verify BOTH outputs are valid, then deliver them to the user.
 Student Workbook first, Answer Key second.
 
----
 
 ## Content writing rules (CCSS Grade 2)
 
@@ -133,7 +112,6 @@ All content must be calibrated to:
 - Always include: "Draw a picture and write 1–2 sentences about it."
 - The worksheet has a drawing box + 3 writing lines — no need to add more
 
----
 
 ## Design specifications
 
@@ -174,7 +152,6 @@ Name/Date line (student workbook only).
 - Creative question: red italic teacher note:
   *"(Student answers will vary. Accept any thoughtful response with a picture and 1–2 complete sentences.)"*
 
----
 
 ## Critical implementation rules
 
@@ -204,7 +181,6 @@ These are NOT optional — they come from hard-won experience:
    - Pattern: `<Title_With_Underscores>_Ch<N>_Workbook.docx` and `_AnswerKey.docx`
    - Example: `Rise_of_the_Earth_Dragon_Ch1_Workbook.docx`
 
----
 
 ## Quality checklist before presenting files
 
@@ -220,7 +196,6 @@ These are NOT optional — they come from hard-won experience:
 - [ ] Answer key PDF preview shows red answers in all 5 sections
 - [ ] Writing lines render as separate lines (not collapsed into one)
 
----
 
 ## Known variants of the series
 

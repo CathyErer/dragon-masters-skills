@@ -1,19 +1,3 @@
----
-name: dm-lesson-plan
-description: >
-  Generates a Chapter Lesson Plan interactive HTML for the Dragon Masters series
-  (DM1 "Rise of the Earth Dragon", DM2 "Saving the Sun Dragon", and later titles),
-  ONE FILE PER CHAPTER. Trigger when the user says "做 DM1 第 N 章教案", "做 DM1
-  第 N 章课件", "DM 第X章任务卡", "驯龙大师第X章教案", "DM Chapter N lesson plan",
-  "task card", "继续做下一章", "按模板做下一章", or uploads Dragon
-  Masters chapter PDFs asking for a lesson plan / 教案 / 课件 / 任务卡. Output is a single
-  self-contained HTML in the locked "课堂手账" style (sky-blue notebook background
-  + lemon-yellow highlighter + 📌 pinned cards, rounded sans-serif, full-screen).
-  Task cards are DRAWING-FIRST (draw, don't write sentences) and print to one
-  filled page. NEVER invent a new layout — copy assets/template_day01.html (world
-  card) or assets/template_story_card_day08.html (story card) and replace content
-  only.
----
 
 # DM Chapter Lesson Plan (per-chapter edition)
 
@@ -52,17 +36,12 @@ template was finalized with the original author after several rounds —
 
 1. **Chapter PDF**: provided by the user (ask for it if missing) —
    always read the actual chapter text first; quotes and page numbers must be real.
-2. **Chapter → skill → task card mapping**: the `dragon-studio` hub skill's
-   `references/dm-series-data.md` — one table per book giving each chapter its
-   SKILL A, optional SKILL B, and its own task card. If the user maintains their
-   own plan document, use theirs instead.
-   **Where to find it**: it is a sibling of this skill folder —
-   `../dragon-studio/references/dm-series-data.md` (installed as a plugin:
-   `$CLAUDE_PLUGIN_ROOT/skills/dragon-studio/references/…`). **If you cannot find
-   it, do not proceed from memory** — tell the user 「请把 dragon-studio skill 一起
-   装上（逐章技能表在里面）」 and stop.
+2. **Chapter → skill → task card mapping**: `references/dm-series-data.md`
+   (this skill) — one table per book giving each chapter its SKILL A, optional
+   SKILL B, and its own task card. If the user maintains their own plan
+   document, use theirs instead.
    **Only DM1 and DM2 have a ready-made table.** For DM3 and later titles, build
-   one first with `dragon-studio`'s `references/design-standard.md` (read the
+   one first with `references/design-standard.md` (read the
    whole book, then derive each chapter's skill from its text), and get the user
    to confirm the table before generating lesson files.
 3. **Graphic organizer designs**: one GO per reading skill. Follow the GO
@@ -239,8 +218,8 @@ It is identical in every chapter file:
 ## Workflow
 
 1. Read the chapter PDF (provided by the user).
-2. Pull the chapter's skill + task card from the per-chapter tables in the
-   `dragon-studio` hub's `references/dm-series-data.md` (or the user's own plan
+2. Pull the chapter's skill + task card from the per-chapter tables in
+   `references/dm-series-data.md` (or the user's own plan
    document); design the GO for that skill following the patterns in the
    reference templates.
 3. Copy `assets/template_day01.html` → new filename; replace header/meta,
