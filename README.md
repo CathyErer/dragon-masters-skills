@@ -17,7 +17,7 @@ the standard.
 
 | Skill | What it makes · 产出 |
 |---|---|
-| `dragon-studio` | The hub 中枢：house rules 风格规范、DM1 16 章 / DM2 14 章的逐章 reading skill + 任务卡对照表；自动路由到下面三个 skill。 |
+| `dragon-studio` | The hub 中枢：house rules 风格规范、DM1 16 章 / DM2 14 章的逐章 reading skill + 任务卡对照表、**给 DM3 及以后用的逐章设计标准**（8 条规律 + 7 步流程）；自动路由到下面三个 skill。 |
 | `dm-lesson-plan` | One interactive lesson-plan HTML **per chapter** 每章一个课件（4 tabs、drawing-first printable task cards、中英双语 + EN-only toggle）。 |
 | `dm-workbook` | Per-chapter student workbook + red answer key（.docx，需要 Node.js + `docx` 包）。 |
 | `dm-retelling` | Whole-book retelling practice page（.html）— STOP cards with WHO / DID WHAT keyword groups，浏览器可编辑。 |
@@ -81,6 +81,18 @@ Provide the chapter PDFs of the book you own, then ask in plain language —
 House rules baked in 内置风格规范：ESL Grade 1–3 · English on top / 中文在下 ·
 学生材料不出现教学法术语 · drawing-first 任务卡打印正好一页 · 只用书中真实原句和页码 ·
 答案版红字加粗下划线。
+
+### DM3 及以后 · Books 3 and beyond
+
+DM1 和 DM2 的逐章 reading skill + 任务卡表是现成的。**DM3–DM10 没有现成表**，
+skill 会按 `design-standard.md` 里的 8 条规律先读完整本书、逐章从文本证据推出
+技能和任务卡，把表给你确认后再生成课件。核心规则是「技能由文本决定」——
+没有书就不排表。
+
+DM1/DM2 have ready-made per-chapter tables. For **any later title**, the hub
+skill derives one from the book itself using a documented design standard
+(8 rules + a 7-step procedure) and shows you the table before generating
+lessons. Rule 1 is binding: no book, no table.
 
 ## Requirements · 依赖
 

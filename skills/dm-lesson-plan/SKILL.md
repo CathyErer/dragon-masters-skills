@@ -55,6 +55,10 @@ template was finalized with the original author after several rounds —
    `references/dm-series-data.md` — one table per book giving each chapter its
    SKILL A, optional SKILL B, and its own task card. If the user maintains their
    own plan document, use theirs instead.
+   **Only DM1 and DM2 have a ready-made table.** For DM3 and later titles, build
+   one first with `dragon-studio`'s `references/design-standard.md` (read the
+   whole book, then derive each chapter's skill from its text), and get the user
+   to confirm the table before generating lesson files.
 3. **Graphic organizer designs**: one GO per reading skill. Follow the GO
    patterns already present in the two reference templates (fillable `.fill`
    boxes, one `data-ans` per box); if the user supplies their own GO designs,
@@ -64,6 +68,8 @@ template was finalized with the original author after several rounds —
    bound at the end into 《My Dragon Master Book N》). Card prompts are rendered
    as a printable all-English **drawing-first** student card — convert any
    "write" prompts into draw frames / 4-panel boards (see Task Card v4).
+   The card is always **the drawing-form of that chapter's reading skill** — the
+   skill→card-form lookup table is in `design-standard.md` (Rule 5).
 
 ## Output
 

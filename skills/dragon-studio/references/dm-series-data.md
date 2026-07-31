@@ -4,6 +4,11 @@ Lesson plans are generated **one per chapter**: DM1 = 16 lessons, DM2 = 14 lesso
 Each chapter gets a main reading skill (SKILL A), an optional second skill
 (SKILL B), and one drawing-first task card.
 
+> **DM3 and later titles are NOT in this file.** Build their table with
+> `design-standard.md` (same folder) — read the whole book, derive each chapter's
+> skill from its own text, then write it up in the format below. Never invent a
+> per-chapter table without the book.
+
 ## DM1 "Rise of the Earth Dragon" — per-chapter map (16 ch)
 
 | Ch | Title | 🎯 SKILL A | ➕ SKILL B | 📝 Task card (drawing-first) |

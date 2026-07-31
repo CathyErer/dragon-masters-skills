@@ -55,12 +55,21 @@ outputs themselves.
 
 - **DM1 "Rise of the Earth Dragon"** = 16 chapters → 16 chapter lesson plans + 16 task cards. **DM1 = 创角期**: card by card students build their own Dragon Master + dragon, bound at the end into 《My Dragon Master Book 1》.
 - **DM2 "Saving the Sun Dragon"** = 14 chapters → 14 lessons + 14 cards. **DM2 = 续集冒险**: students reuse the DM1 character / dragon / hidden power and write a 6-chapter sequel, bound into 《My Dragon Master Book 2》.
-- The per-chapter reading-skill + task-card maps for both books are in
+- The per-chapter reading-skill + task-card maps for DM1 and DM2 are in
   `references/dm-series-data.md`. **Read it before generating any chapter or card.**
+- **DM3 and every later title have no ready-made table.** Build one with
+  `references/design-standard.md` — the 8 design rules + a 7-step procedure,
+  reverse-engineered from how DM1/DM2 were actually taught. Rule 1 is binding:
+  the skill for a chapter comes from that chapter's text, so **read the whole
+  book first**. If the user has not supplied the chapter PDFs, ask for them and
+  stop — never invent a per-chapter table.
 
 ## Workflow for "做 DM<book> 第 N 章"
 
 1. Read `references/dm-series-data.md` → chapter N's reading skill and task card.
+   **DM3+**: no table exists yet — follow `references/design-standard.md` to build
+   one from the whole book, and show the user the table for confirmation before
+   generating 14–16 lesson files.
 2. Read the chapter PDF the user provides (ask for it if missing).
 3. Invoke `dm-lesson-plan` (chapter lesson-plan HTML) and/or `dm-workbook` (workbook), applying the house rules.
 4. Deliver the files to the user (into their book folder if they keep one).
